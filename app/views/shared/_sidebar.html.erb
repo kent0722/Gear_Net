@@ -1,64 +1,71 @@
-<aside class="fixed top-24 flex flex-col w-60 rounded text-white overflow-hidden">
+<aside class="fixed top-24 flex flex-col w-36 md:w-48 xl:w-60 rounded text-white overflow-auto">
   <div class="w-full border-r-2 border-gray-500 h-[calc(100vh-110px)] justify-between">
     <!-- ホーム -->
     <div class="flex items-center w-56 ml-2">
-      <%= link_to posts_path, class: "flex items-center w-full h-16 px-3 mt-2 hover:bg-gray-700 rounded-lg" do %>
-        <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
+      <%= link_to posts_path, class: "flex items-center w-32 md:w-44 xl:w-full h-14 xl:h-16 px-3 mt-2 hover:bg-gray-700 rounded-lg" do %>
+        <svg class="size-4 md:size-5 xl:size-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" stroke-width="2" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
         </svg>
-        <span class="ml-2 text-sm font-medium">ホーム</span>
+        <span class="ml-2 text-xs md:text-sm font-medium">ホーム</span>
       <% end %>
     </div>
     <!-- 検索 -->
     <div class="flex items-center w-56 ml-2">
-      <a class="flex items-center w-full h-16 px-3 mt-2 hover:bg-gray-700 rounded-lg" href="#">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+      <a class="flex items-center w-32 md:w-44 xl:w-full h-14 xl:h-16 px-3 mt-2 hover:bg-gray-700 rounded-lg" href="#">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4 md:size-5 xl:size-6">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
           </svg>
-          <span class="ml-2 text-sm font-medium">検索</span>
+          <span class="ml-2 text-xs md:text-sm font-medium">検索</span>
         </a>
     </div>
     <!-- メッセージ -->
     <div class="flex items-center w-56 ml-2">
-      <a class="flex items-center w-full h-16 px-3 mt-2 hover:bg-gray-700 rounded-lg" href="#">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+      <a class="flex items-center w-32 md:w-44 xl:w-full h-14 xl:h-16 px-3 mt-2 hover:bg-gray-700 rounded-lg" href="#">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4 md:size-5 xl:size-6">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.625 9.75a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H8.25m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0H12m4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm0 0h-.375m-13.5 3.01c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.184-4.183a1.14 1.14 0 0 1 .778-.332 48.294 48.294 0 0 0 5.83-.498c1.585-.233 2.708-1.626 2.708-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0 0 12 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018Z" />
           </svg>
-          <span class="ml-2 text-sm font-medium">メッセージ</span>
+          <span class="ml-2 text-xs md:text-sm font-medium">メッセージ</span>
         </a>
     </div>
     <!-- お知らせ -->
     <div class="flex items-center w-56 ml-2">
-      <a class="flex items-center w-full h-16 px-3 mt-2 hover:bg-gray-700 rounded-lg" href="#">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+      <a class="flex items-center w-32 md:w-44 xl:w-full h-14 xl:h-16 px-3 mt-2 hover:bg-gray-700 rounded-lg" href="#">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4 md:size-5 xl:size-6">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0" />
           </svg> 
-          <span class="ml-2 text-sm font-medium">お知らせ</span>
+          <span class="ml-2 text-xs md:text-sm font-medium">お知らせ</span>
         </a>
     </div>
      <!-- 投稿 -->
     <div class="flex items-center w-56 ml-2"> 
-      <%= link_to new_post_path, class: "flex items-center w-full h-16 px-3 mt-2 hover:bg-gray-700 rounded-lg" do %>
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+      <%= link_to new_post_path, class: "flex items-center w-full h-14 xl:h-16 px-3 mt-2 hover:bg-gray-700 rounded-lg" do %>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4 md:size-5 xl:size-6">
           <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
         </svg>
-        <span class="ml-2 text-sm font-medium">投稿</span>
+        <span class="ml-2 text-xs md:text-sm font-medium">投稿</span>
       <% end %>
     </div>
     <!-- その他 -->
-    <div id="OtherDrop"></div>
-    <%# <div id="dropdown2" class="flex justify-center w-56 z-10 hidden bg-[#353539]  divide-y divide-gray-100 rounded-lg">
-        <ul class="w-52 text-sm text-white">
-          <li>
-            <a href="#" class="flex items-center block px-4 py-2 h-16 hover:bg-gray-600 rounded-md">ヘルプ</a>
-          </li>
-          <li>
-            <a href="#" class="flex items-center block px-4 py-2 h-16 hover:bg-gray-600 rounded-md">プライバシー</a>
-          </li>
-           <li>
-            <a href="#" class="flex items-center block px-4 py-2 h-16 hover:bg-gray-600 rounded-md">利用規約</a>
-          </li>
-        </ul>
-    </div> %>
+   <div id="sideDropdownButton" class="absolute items-center w-56 ml-2">
+      <div class="flex items-center w-32 md:w-44 xl:w-full h-14 xl:h-16 px-3 mt-2 hover:bg-gray-700 rounded-lg cursor-pointer" href="#">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6">
+          <path fill-rule="evenodd" d="M3 6.75A.75.75 0 0 1 3.75 6h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 6.75ZM3 12a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 12Zm0 5.25a.75.75 0 0 1 .75-.75H12a.75.75 0 0 1 0 1.5H3.75a.75.75 0 0 1-.75-.75Z" clip-rule="evenodd" />
+        </svg>
+        <span class="ml-2 text-xs md:text-sm font-medium">その他</span>
+      </div>
+    </div> 
+    <div id="sideDropdownMenu" class="hidden flex justify-center  w-56 ml-2 mt-16 xl:mt-20 bg-[#353539] rounded-lg">
+      <ul class="w-52 text-sm text-white">
+        <li>
+          <a href="#" class="block flex items-center px-4 py-2 h-14 xl:h-16 w-28 md:w-40 xl:w-52 text-xs md:text-sm hover:bg-gray-600 rounded-md">ヘルプ</a>
+        </li>
+        <li>
+          <a href="#" class="block flex items-center px-4 py-2 h-14 xl:h-16 w-28 md:w-40 xl:w-52 text-xs md:text-sm hover:bg-gray-600 rounded-md">プライバシー</a>
+        </li>
+        <li>
+          <a href="#" class="block flex items-center px-4 py-2 h-14 xl:h-16 w-28 md:w-40 xl:w-52 text-xs md:text-sm hover:bg-gray-600 rounded-md">利用規約</a>
+        </li>
+      </ul>
+    </div>
   </div>
 </aside>

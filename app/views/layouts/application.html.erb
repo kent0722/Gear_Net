@@ -12,6 +12,7 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
+    
   </head>
 
   <body class="<%= logged_in? ? 'logged-in' : 'logged-out' %>">
@@ -26,6 +27,5 @@
     <%= yield %>
     <!-- Flowbite JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"></script>
-    <script src="js/application.js defer"></script>
   </body>
 </html>

@@ -1,10 +1,10 @@
-<div class="fixed left-48 right-48 flex justify-center pt-16 h-screen z-50 animate-fadeIn">
+<div class="absolute flex justify-center pt-16 bg-black/30 h-screen w-screen backdrop-blur-sm z-50 animate-fadeIn">
   <div class="fixed top-0 mt-16 w-5/12">
     <div class="bg-gray-100 rounded-xl">
       <div class="w-full mx-auto px-4">
-        <div class="border-b border-gray-700/20 grid grid-cols-3 font-medium">
-          <%= link_to 'キャンセル', posts_path, class: 'px-4 py-2 rounded-lg text-gray-700' %>
-          <span class="flex items-center justify-center font-semibold">新規作成</span>
+        <div class="border-b border-gray-700/20 grid grid-cols-2 font-medium">
+          <%= link_to 'キャンセル', post_path, class: 'px-4 py-2 rounded-lg text-gray-700' %>
+          <%= link_to '削除', post_path, data: { turbo_method: "delete", turbo_confirm: '削除しますか' }, class: 'flex justify-end text-red-500 px-4 py-2 rounded-lg' %>  
         </div>
         <%= form_with(model: @post) do |f| %>
           <div>
@@ -68,15 +68,14 @@
             <div class="grid grid-cols-2 my-4 mb-5 group"> 
               <%= f.file_field :image, class: 'hidden', id: 'file-input', accept: 'image/png, image/jpeg' %>
               <label for="file-input" class="relative border-2 border-gray-500 bg-gray-300 h-60 w-70 mt-5 mr-4 rounded-xl flex flex-col items-center justify-center cursor-pointer overflow-hidden">
-                <svg id="fileSvg"xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="absolute z-50 mb-4 size-20 text-gray-600/30">
+                <svg id='fileSvg' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="absolute top-50% right-50% z-50 size-20 text-white">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M6.827 6.175A2.31 2.31 0 0 1 5.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 0 0-1.134-.175 2.31 2.31 0 0 1-1.64-1.055l-.822-1.316a2.192 2.192 0 0 0-1.736-1.039 48.774 48.774 0 0 0-5.232 0 2.192 2.192 0 0 0-1.736 1.039l-.821 1.316Z" />
                   <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 12.75a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0ZM18.75 10.5h.008v.008h-.008V10.5Z" />
                 </svg>
-                 <div id="placeholder-text" class="mt-20 text-gray-600">ファイルを選択してください</div>
-                <img id="image-preview" class="hidden h-full w-full object-cover" src="" alt="選択された画像"/>
+                <img id="image-preview" class="relative h-full w-full object-cover" src="<%= url_for(@post.image) %>" alt="選択された画像" />
               </label>
               <div class="w-32 h-28 mt-52 ml-44">
-                <%= f.submit "投稿する", class: "text-blue-700 border border-blue-700 hover:bg-blue-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm w-full sm:w-auto px-6 py-4 text-center" %>
+                <%= f.submit "編集する", class: "text-blue-700 border border-blue-700 hover:bg-blue-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm w-full sm:w-auto px-6 py-4 text-center" %>
               </div>   
             </div>
           </div>

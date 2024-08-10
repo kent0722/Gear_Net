@@ -1,46 +1,30 @@
-<header class="fixed top-0 left-0 right-0 flex items-center text-white h-20">
-  <nav class="container mx-auto">
-    <div class="flex justify-between items-center">
-      
+<% header_class = logged_in? ? 'bg-[#171718]' : '' %>
+<header class="fixed top-0 left-0 right-0 flex items-center text-white h-20 z-50 <%= header_class %>">
+  <nav class=" container mx-auto">
+    <div class="flex justify-between items-center">    
       <div class="flex items-center">
-        <a harf="root_path" class="ml-3 text-white text-3xl font-sans font-bold">GearNet.</a>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="text-yellow-600 size-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="m3.75 13.5 10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z" />
+        </svg>
+        <a harf="root_path" class="ml-3 text-white text-2xl md:text-3xl xl:text-3xl font-sans font-bold ">GearNet.</a>
       </div>
-
-      <div class="Absolute flex items-center">
+      <div class="flex items-center">
         <% if logged_in? %>
           <!-- Profile tooltip -->
-          <div id="UserAicon"></div>
-          <%# <div data-tooltip-target="tooltip-profile" class="hover:bg-gray-700 rounded-full">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-10">
-              <path fill-rule="evenodd" d="M18.685 19.097A9.723 9.723 0 0 0 21.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 0 0 3.065 7.097A9.716 9.716 0 0 0 12 21.75a9.716 9.716 0 0 0 6.685-2.653Zm-12.54-1.285A7.486 7.486 0 0 1 12 15a7.486 7.486 0 0 1 5.855 2.812A8.224 8.224 0 0 1 12 20.25a8.224 8.224 0 0 1-5.855-2.438ZM15.75 9a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" clip-rule="evenodd" />
-            </svg>
-          </div>   
-          <div id="tooltip-profile" class="px-3 py-2 invisible text-sm bg-[#353539] rounded-lg">
-            プロフィール
-          </div>  %>
-
-          <!-- Dropdown menu -->
-          <div id="AccountDrop"></div>
-          <%= link_to 'Logout', logout_path, data: { turbo_method: "delete" }, class: 'block px-4 py-2 hover:bg-gray-600 ronded-md' %>
-
-          <%# <div data-dropdown-toggle="dropdown" data-tooltip-target="tooltip-account" class="mx-12 hover:bg-gray-700 rounded-full">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-              <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
-            </svg>
-          </div>
-          <div id="tooltip-account" class="px-3 py-2 invisible text-sm bg-[#353539] rounded-lg">アカウント</div>    
-          <div id="dropdown" class="w-30 z-10 hidden bg-[#353539] divide-y divide-gray-100 rounded-lg">
-              <ul class="py-2 text-sm text-white">
-                <li>
-                  <a href="#" class="block px-4 py-2 hover:bg-gray-600 rounded-md">プロフィール</a>
-                </li>
-                <li>
-                   link_to 'Log out', logout_path, data: { turbo_method: "delete" }, class: 'block px-4 py-2 hover:bg-gray-600 ronded-md' 
-                </li>
+          <%# <div id="UserAicon"></div> %>
+          <div class="fixed top-1 right-1">
+            <div id="dropdownButton" class="mx-6 p-3 hover:bg-gray-700 rounded-full cursor-pointer">
+              <%= image_tag 'defaultUser.jpg', class:'border border-black/80 size-10 md:size-12 xl:size-12 rounded-full' %>
+            </div>   
+            <div id="dropdownMenu" class="bg-[#353539] w-28 rounded-lg hidden">
+              <ul class="text-center w-28">
+                <li><%= link_to 'マイページ', "#", class: 'block px-4 py-2 hover:bg-gray-600 rounded-lg' %></li>
+                <li><%= link_to 'Logout', logout_path, data: { turbo_method: "delete" }, class: 'block px-4 py-2 hover:bg-gray-600 rounded-lg' %></li>
               </ul>
-          </div> %>
+            </div>
+          </div>
         <% else %> 
-          <%= link_to 'Log In', login_path, class: 'text-xl font-light hover:opacity-40' %>
+          <%= link_to 'Log In', login_path, class: 'sm:text-md md:text-xl xl:text-xl font-light hover:opacity-40' %>
           <%= link_to 'Sign Up', new_user_path, class: 'p-1 px-3 ml-16 text-black bg-white transition hover:opacity-40 text-xs font-bold rounded-sm' %>
         <% end %>
       </div>
