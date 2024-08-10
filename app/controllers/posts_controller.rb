@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :require_login
-  before_action :set_user, only: %i[show edit destroy]
+  before_action :set_user, only: %i[show edit update destroy]
   
   def index
     @posts = current_user.posts.includes(:user).order(created_at: :desc)
@@ -23,7 +23,15 @@ class PostsController < ApplicationController
 
   def edit; end
 
-  def update; end
+  def update
+    if @post.update(post_params)
+    redirect_to post_path(@post), flash: { notice: '編集しました' }
+   else
+    flash.now[:danger] = '編集に失敗しました'
+    render :edit, status: :unprocessable_entity
+   end
+  end
+
 
   def destroy
     @post.destroy

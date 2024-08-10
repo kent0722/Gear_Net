@@ -2,5 +2,6 @@
 import "@hotwired/turbo-rails"
 import "./controllers"
 import "./newPosts.js"
+import "./editPosts.js"
 import "./DropMenu.js"
 import "./react/entrypoints/App";
