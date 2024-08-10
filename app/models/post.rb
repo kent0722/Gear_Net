@@ -1,6 +1,6 @@
 class Post < ApplicationRecord
   belongs_to :user
-  has_one_attached :image, dependent: :destroy
+  has_one_attached :image
 
   validates :brand, presence: true, length: { maximum: 20 }
   validates :category, presence: true, length: { maximum: 20 }
