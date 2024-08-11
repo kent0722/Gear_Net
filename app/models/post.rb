@@ -1,5 +1,6 @@
 class Post < ApplicationRecord
   belongs_to :user
+  has_many :comments, dependent: :destroy  
   has_one_attached :image
 
   validates :brand, presence: true, length: { maximum: 20 }
@@ -21,7 +22,7 @@ class Post < ApplicationRecord
   'Charvel': 'charvel',
   'Collings': 'collings',
   'Cort': 'cort',
-  'Crews Maniac Sound': 'crews_maniac_sound',
+  'Crews': 'crews_maniac_sound',
   'Dingwall': 'dingwall',
   'Eastman': 'eastman',
   'Edwards': 'edwards',
@@ -29,13 +30,12 @@ class Post < ApplicationRecord
   'ESP': 'esp',
   'EVH': 'evh',
   'Fender': 'fender',
-  'Fender Custom Shop': 'fender_custom_shop',
+  'Fender CS': 'fender',
   'Fernandes': 'fernandes',
   'Fodera': 'fodera',
   'Fujigen': 'fujigen',
   'G&L': 'gl',
-  'Gibson': 'gibson',
-  'Gibson Custom': 'gibson_custom',
+  'Gibson CS': 'gibson',
   'Godin': 'godin',
   'Greco': 'greco',
   'Gretsch': 'gretsch',
@@ -53,7 +53,7 @@ class Post < ApplicationRecord
   'Momose': 'momose',
   'Music Man': 'music_man',
   'Ovation': 'ovation',
-  'PRS (Paul Reed Smith)': 'prs',
+  'PRS': 'prs',
   'Rickenbacker': 'rickenbacker',
   'Sadowsky': 'sadowsky',
   'Sago': 'sago',

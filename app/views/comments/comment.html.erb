@@ -1,0 +1,40 @@
+<div class="flex items-center  h-full py-12">
+  <div>
+    <%= image_tag 'defaultUser.jpg', class: "border border-black/80 rounded-full mr-2 cursor-pointer", width: 40, height: 40 %>
+  </div>
+  <div class="text-sm font-semibold">
+    <% comment.user.name %>
+    <span class="font-normal ml-2"><%= time_ago_in_words(@post.created_at) %>前</span>
+    <div class="font-normal break-words w-80"><%= comment.body %></div>
+  </div>
+</div>
+
+
+
+<%# <!-- 表示されているコメントのIDが入るように調整してください -->
+<tr id="comment-25">
+  <td style="width: 60px">
+    <!-- image_tagを使う形に修正してください -->
+     image_tag 'sample.jpg', class: "rounded-circle", size: '50x50' 
+  </td>
+  <td>
+    <h3 class="small"> comment.user.decorate.full_name </h3>
+    <p> comment.body </p>
+  </td>
+  <td class="action">
+    <ul class="list-inline justify-content-center" style="float: right;">
+      <li class="list-inline-item">
+        <!-- ここからlink_toを使う形に修正してください -->
+         link_to  '#', class: 'edit-comment-link' do 
+          <i class='bi bi-pencil-fill'></i>
+         end 
+      </li>
+      <li class="list-inline-item">
+        <!-- ここからlink_toを使う形に修正してください -->
+         link_to comment_path(comment.id), data: { turbo_method: 'delete' }, class: 'delete-comment-link' do 
+          <i class='bi bi-trash-fill'></i>
+         end 
+      </li>
+     </ul>
+  </td>
+</tr> %>

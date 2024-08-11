@@ -3,10 +3,13 @@ class PostsController < ApplicationController
   before_action :set_user, only: %i[show edit update destroy]
   
   def index
-    @posts = current_user.posts.includes(:user).order(created_at: :desc)
+    @posts = Post.all.includes(:user).order(created_at: :desc)
   end
 
-  def show; end
+  def show
+    @comment = Comment.new
+    @comments = @post.comments.includes(:user).order(created_at: :desc)
+  end
 
   def new
     @post = Post.new
@@ -28,7 +31,7 @@ class PostsController < ApplicationController
     redirect_to post_path(@post), flash: { notice: '編集しました' }
    else
     flash.now[:danger] = '編集に失敗しました'
-    render :edit, status: :unprocessable_entity
+    redirect_to posts_path(@post)
    end
   end
 
