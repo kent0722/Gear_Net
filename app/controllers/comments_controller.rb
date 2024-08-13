@@ -4,18 +4,12 @@ class CommentsController < ApplicationController
   def create
     @comment = current_user.comments.build(comment_params)
     @comment.save
-    respond_to do |format|
-      format.turbo_stream 
-    end
   end
 
 
    def destroy
     @comment = Comment.find(params[:id])
-    @comment.destroy
-    respond_to do |format|
-      format.turbo_stream 
-    end
+    @comment.destroy!
   end
 
   private 

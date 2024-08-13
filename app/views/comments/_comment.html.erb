@@ -1,4 +1,4 @@
-<div id="<%= dom_id(comment) %>" class="flex items-center w-96 py-3">
+<div id="comment-<%= comment.id %>" class="flex items-center w-96 py-3">
   <div>
     <%= image_tag 'defaultUser.jpg', class: "border border-black/80 rounded-full cursor-pointer", width: 40, height: 40 %>
   </div>
@@ -22,26 +22,3 @@
     </div>
   <% end %>
 </div>
-
-<%# <script>
- document.addEventListener('DOMContentLoaded', () => {
-    const renderComponentComment = () => {
-      const commentDropdownButton = document.getElementById('commentDropdownButton');
-      const commentDropdownMenu = document.getElementById('commentDropdownMenu');
-
-      if (commentDropdownButton) {
-        commentDropdownButton.addEventListener('click', (e) => {
-          e.stopPropagation();
-          commentDropdownMenu.classList.toggle('hidden');
-        });
-
-        document.addEventListener('click', (e) => {
-          if (!commentDropdownButton.contains(e.target) && !commentDropdownMenu.contains(e.target)) {
-            commentDropdownMenu.classList.add('hidden');
-          }
-        });
-      }
-    };
-    document.addEventListener('turbo:load', renderComponentComment);
-  });
-</script> %>
