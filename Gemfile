@@ -2,6 +2,7 @@ source "https://rubygems.org"
 
 ruby "3.2.3"
 gem 'react-rails'
+gem 'pry-rails'
 gem 'rails-i18n', '~> 7.0.0'
 gem 'sorcery'
 gem "aws-sdk-s3"

@@ -1,12 +1,35 @@
-<div class="flex items-center mb-4 group">
-  <%= form_with(model: [@post, @comment], local: true) do |f| %>
-    <div class="grid grid-cols-2">
-       <%= f.text_field :body, class: "py-2.5 px-0 w-80 text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-gray-700 peer resizese-none", placeholder: '投稿する' %>
-        <%= f.button type: "submit", class: "ml-32 text-gray-400 hover:text-gray-700" do %>
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-7">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5" />
-          </svg>
-        <% end %>
-    </div>
-  <% end %>
-</div>
+<%= turbo_frame_tag 'new_comment' do %>
+  <div class="flex items-center mb-4 group">
+    <%= form_with(model: comment, url: post_comments_path(@post), local: false) do |f| %>
+      <div class="grid grid-cols-2">
+        <%= f.text_field :body, id: 'textField', class: "py-2.5 px-0 w-80 text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-gray-700 peer resizese-none", placeholder: '投稿する' %>
+          <%= f.button type: "submit", id: 'disableButton', class: "ml-28 text-gray-400 hover:text-gray-700 cursor-pointer", disabled: true do %>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-7">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5" />
+            </svg>
+          <% end %>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const renderComponentForm = () => {
+      const textField = document.getElementById('textField');
+      const disableButton = document.getElementById('disableButton');
+
+      if (disableButton && textField) {
+        // テキストフィールドの入力イベントを監視
+        textField.addEventListener('input', () => {
+          if (textField.value.trim() === '') {
+            disableButton.disabled = true; // 入力が空の場合はボタンを無効化
+          } else {
+            disableButton.disabled = false; // 入力がある場合はボタンを有効化
+          }
+        });
+      }
+    };
+    document.addEventListener('turbo:load', renderComponentForm); // Turboのロードイベントを使用
+  });
+</script>

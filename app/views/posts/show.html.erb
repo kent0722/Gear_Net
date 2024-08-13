@@ -1,5 +1,5 @@
-<div class="fixed top-16 left-20 bg-blue-500/30 w-screen h-0 mx-auto ml-2 z-50 animate-fadeIn">
-    <div class="flex justify-center overflow-hidden w-11/12">
+<div class="fixed top-16 left-48 bg-blue-500/30 w-screen h-0 mx-auto ml-2 z-50 animate-fadeIn">
+    <div class="flex justify-center overflow-auto w-11/12">
       <div class="px-2 w-full max-w-xl bg-white rounded-s-2xl">
         <div class="flex justify-center p-2 cursor-default">
           <div class="pt-4 pl-4">
@@ -59,9 +59,9 @@
         </div> 
       </div>
       <!-- ここからコメントフォーム -->
-      <div class="grid grid-rows border-l border-gray-700/2 bg-white w-3/12 rounded-e-lg">
-        <% if @post.user == current_user %>
-          <div class="border-b border-gray-700/20 h-14 pr-4">
+      <div class="grid grid-rows border-l border-gray-700/2 bg-white w-3/12 rounded-e-lg"> 
+        <div class="border-b border-gray-700/20 h-14 pr-4">
+          <% if @post.user == current_user %>
             <div class="flex justify-end h-12">
               <div id="showDropdownButton" class="pt-2">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-8 cursor-pointer">
@@ -79,44 +79,17 @@
                 </li>
               </ul>
             </div>
-          </div>
-        <% end %>
+          <% end %>
+        </div>
         <!-- コメント一覧 -->
         <div class="custom-scrollbar ml-2 fixed top-32 h-3/4 overflow-auto">
-          <div class="h-16">
-
-            <!-- １件目のコメント -->
-            <div class="flex items-center  h-full py-12">
-              <div>
-                <%= image_tag 'defaultUser.jpg', class: "border border-black/80 rounded-full mr-2 cursor-pointer", width: 40, height: 40 %>
-              </div>
-              <div class="text-sm font-semibold">
-                test_user
-                <span class="font-normal ml-2"><%= time_ago_in_words(@post.created_at) %>前</span>
-                <div class="font-normal break-words w-80">test</div>
-              </div>
-            </div>
-            <!-- 2件目のコメント -->
-            <div class="flex items-center  h-full py-12">
-              <div>
-                <%= image_tag 'defaultUser.jpg', class: "border border-black/80 rounded-full mr-2 cursor-pointer", width: 40, height: 40 %>
-              </div>
-              <div class="text-sm font-semibold">
-                test_user
-                <span class="font-normal ml-2"><%= time_ago_in_words(@post.created_at) %>前</span>
-                <div class="font-normal break-words w-80">test</div>
-              </div>
-            </div>
-
-            <div class="flex items-center  h-full py-12">
-              <%= render @comments %>
-            </div>
-
+          <div id="comments" class="h-16">
+            <%= render @comments %>
           </div>
         </div>
         <!-- ここからコメント入力フォーム -->
-        <div class="fixed bottom-4 border-t border-gray-700/20 p-4 w-3/12">
-          <%= render 'comments/form' %>
+        <div class="fixed z-50 bottom-5 buttom-0 border-t border-gray-700/20 p-4 w-3/12">
+          <%= render 'comments/form', comment: @comment, post: @post %>
         </div>
       </div>
     </div>
@@ -128,3 +101,7 @@
     <%= render 'posts/edit', post: @post %>
   </div>
 </div>
+
+<script>
+  
+</script>
