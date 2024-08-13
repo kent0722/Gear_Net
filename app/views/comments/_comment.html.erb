@@ -8,17 +8,41 @@
     <div class="font-normal break-words w-80"><%= comment.body %></div>
   </div>
   <% if current_user.own?(comment) %>
-    <button id="commentDropdownButton" class=" pr-1">
+    <button class="commentDropdownButton pr-1">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
         <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 12.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 18.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5Z" />
       </svg>
     </button>
-    <div id="commentDropdownMenu" class=" bg-[#353539] w-28 rounded-lg">
-      <ul class="text-white text-center w-28">
+    <div class="commentDropdownMenu absolute right-0 mt-20 bg-[#353539] w-20 rounded-lg hidden">
+      <ul class="text-white text-center">
         <li>
-          <%= link_to '削除', comment_path(comment), data: { turbo_method: 'delete', turbo_confirm: '投稿を削除しますか' }, class: 'delete-comment-link block px-4 py-2 hover:bg-gray-600 rounded-lg' %>
+          <%= link_to '削除', comment_path(comment), data: { turbo_method: 'delete', turbo_confirm: '投稿を削除しますか' }, class: 'text-sm block px-6 py-3 hover:bg-gray-600 rounded-lg' %>
         </li>
       </ul>
     </div>
   <% end %>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const renderComponentComment = () => {
+    const commentDropdownButtons = document.querySelectorAll('.commentDropdownButton');
+    const commentDropdownMenus = document.querySelectorAll('.commentDropdownMenu');
+
+    commentDropdownButtons.forEach((button, index) => {
+      const menu = commentDropdownMenus[index];
+
+      button.addEventListener('click', () => {
+        menu.classList.toggle('hidden');
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!button.contains(e.target) && !menu.contains(e.target)) {
+          menu.classList.add('hidden');
+        }
+      });
+    });
+  };
+  document.addEventListener('turbo:load', renderComponentComment);
+});
+</script>
