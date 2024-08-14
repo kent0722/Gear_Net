@@ -13,7 +13,7 @@
         <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 12.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 18.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5Z" />
       </svg>
     </button>
-    <div class="commentDropdownMenu absolute right-6 lg:right-0 mt-20 bg-[#353539] w-20 rounded-lg hidden">
+    <div class="commentDropdownMenu absolute right-0 mt-20 bg-[#353539] w-20 rounded-lg hidden">
       <ul class="text-white text-center">
         <li>
           <%= link_to '削除', comment_path(comment), data: { turbo_method: 'delete', turbo_confirm: '投稿を削除しますか' }, class: 'text-sm block px-6 py-3 hover:bg-gray-600 rounded-lg' %>
