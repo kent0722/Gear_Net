@@ -1,12 +1,30 @@
-<footer class="fixed bottom-0 left-0 right-0 bg-[#171718]/90">
+<footer class="fixed z-0 bottom-0 left-0 right-0 bg-[#171718]/90">
  <div class="text-gray-200 max-w-7xl mx-auto px-4 py-6">
     <ul class="flex text-sm space-x-8 justify-center">
-      <li>ヘルプ</li>
-      <li>プライバシー</li>
-      <li>利用規約</li>
+      <li>
+        <button id="openModalTerms">利用規約</button>
+      </li>
+      <li>
+        <button id="openModalPolicy">プライバシーポリシー</button>
+      </li>
+      <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSfLhEfYmU4qfPeir9hnvZFJagbuRbEzKuXeen9rmyWaAI8DNw/viewform?usp=sf_link">お問い合わせ</a></li>
     </ul>
     <div class="flex justify-center">
       <span class="text-sm">2024 © Copyright - GearNet. </span>
     </div>
   </div>
 </footer>
+
+<div id="modalTerms" class="fixed inset-0 justify-center bg-black/80 backdrop-blur-sm z-50 hidden">
+  <button id="closeModalTerms"></button>
+  <div id="modalContentTerms" class="w-[800px]">
+    <%= render 'pages/Terms_of_use' %>
+  </div>
+</div>
+
+<div id="modalPolicy" class="fixed inset-0 items-center justify-center bg-black/80 backdrop-blur-sm z-50 hidden">
+  <button id="closeModalPolicy"></button>
+  <div id="modalContent" class="w-[800px]">
+    <%= render 'pages/policy' %>
+  </div>
+</div>

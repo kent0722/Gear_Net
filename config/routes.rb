@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   post '/login', to:'user_sessions#create'
   delete '/logout', to:'user_sessions#destroy'
   root 'home#top'
+  get 'pages/Terms_of_use'
+  get 'pages/policy'
   resources :users, only: [:new, :create]
   resources :posts do
     resources :comments, only: %i[create destroy], shallow: true

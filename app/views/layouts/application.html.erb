@@ -15,7 +15,7 @@
     
   </head>
 
-  <body class="<%= logged_in? ? 'logged-in' : 'logged-out' %>">
+  <body class="<%= logged_in? ? 'logged-in' : 'logged-out' %> animate-fadeIn">
     <% if logged_in? %>
       <%= render 'shared/header' %>
       <%= render 'shared/sidebar' %> 
@@ -29,3 +29,4 @@
     <script src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"></script>
   </body>
 </html>
+
