@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :require_login
+  before_action :gest_authenticated, only: %i[new create edit destroy] 
   before_action :set_user, only: %i[show edit update destroy]
   
   def index

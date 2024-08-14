@@ -22,9 +22,13 @@
         <div class="mb-8 border-b-2 border-gray-500/30"></div>
 
         <%= f.submit "googleでログインする", class: 'w-full h-12 mb-8 bg-white border border-gray-500/70 hover:bg-sky-50 rounded-3xl' %>
-        <p class='mb-8'>初めて利用する場合：
-            <%= link_to 'ユーザー登録', new_user_path, class: 'text-indigo-500 hover:text-indigo-600' %>
+        <p class='mb-2'>初めて利用する場合：
+          <%= link_to 'ユーザー登録', new_user_path, class: 'text-indigo-500 hover:text-indigo-600' %>
         </p>
+         <p class='mb-8'>ゲストで利用する場合：
+           <%= link_to 'ログイン', '/guest_login', data: { turbo_method: :post }, class: 'text-indigo-500 hover:text-indigo-600' %>
+        </p>
+    
       <% end %>
     </div>
   </div>

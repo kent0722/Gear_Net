@@ -55,17 +55,37 @@
       </div>
     </div> 
     <div id="sideDropdownMenu" class="hidden flex justify-center  w-56 ml-2 mt-16 xl:mt-20 bg-[#353539] rounded-lg">
-      <ul class="w-52 text-sm text-white">
-        <li>
-          <a href="#" class="block flex items-center px-4 py-2 h-14 xl:h-16 w-28 md:w-40 xl:w-52 text-xs md:text-sm hover:bg-gray-600 rounded-md">ヘルプ</a>
-        </li>
-        <li>
-          <a href="#" class="block flex items-center px-4 py-2 h-14 xl:h-16 w-28 md:w-40 xl:w-52 text-xs md:text-sm hover:bg-gray-600 rounded-md">プライバシー</a>
-        </li>
-        <li>
-          <a href="#" class="block flex items-center px-4 py-2 h-14 xl:h-16 w-28 md:w-40 xl:w-52 text-xs md:text-sm hover:bg-gray-600 rounded-md">利用規約</a>
-        </li>
-      </ul>
+      <div class="mx-auto">
+        <ul class="w-52 text-sm text-white">
+          <li>
+            <button id="openModalTerms" class="block flex items-center px-4 py-2 h-14 xl:h-16 w-28 md:w-40 xl:w-52 text-xs md:text-sm hover:bg-gray-600 rounded-md">利用規約</button>
+          </li>
+          <li>
+            <button id="openModalPolicy" class="block flex items-center px-4 py-2 h-14 xl:h-16 w-28 md:w-40 xl:w-52 text-xs md:text-sm hover:bg-gray-600 rounded-md">プライバシーポリシー</button>
+          </li>
+          <li>
+            <a 
+              a href="https://docs.google.com/forms/d/e/1FAIpQLSfLhEfYmU4qfPeir9hnvZFJagbuRbEzKuXeen9rmyWaAI8DNw/viewform?usp=sf_link"
+              class="block flex items-center px-4 py-2 h-14 xl:h-16 w-28 md:w-40 xl:w-52 text-xs md:text-sm hover:bg-gray-600 rounded-md">
+              お問い合わせ
+            </a>
+          </li>
+        </ul>
+      </div> 
     </div>
   </div>
 </aside>
+
+<div id="modalTerms" class="fixed inset-0 justify-center bg-black/80 backdrop-blur-sm z-50 hidden">
+  <button id="closeModalTerms"></button>
+  <div id="modalContentTerms" class="w-[800px]">
+    <%= render 'pages/Terms_of_use' %>
+  </div>
+</div>
+
+<div id="modalPolicy" class="fixed inset-0 items-center justify-center bg-black/80 backdrop-blur-sm z-50 hidden">
+  <button id="closeModalPolicy"></button>
+  <div id="modalContent" class="w-[800px]">
+    <%= render 'pages/policy' %>
+  </div>
+</div>

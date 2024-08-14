@@ -6,6 +6,8 @@ gem 'pry-rails'
 gem 'rails-i18n', '~> 7.0.0'
 gem 'sorcery'
 gem "aws-sdk-s3"
+gem 'image_processing', '~> 1.2'
+gem 'mini_magick'
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.1.3", ">= 7.1.3.4"
 

@@ -1,7 +1,7 @@
-<div class="fixed top-16 left-48 bg-blue-500/30 w-screen h-0 mx-auto ml-2 z-50 animate-fadeIn">
-    <div class="flex justify-center overflow-auto w-11/12">
-      <div class="px-2 w-full max-w-xl bg-white rounded-s-2xl">
-        <div class="flex justify-center p-2 cursor-default">
+<div class="fixed top-24 lg:top-20 left-64 lg:left-96 mx-auto z-0 animate-fadeIn">
+    <div class="w-10/12 lg:w-auto flex justify-center">
+      <div class="px-2 min-w-96 bg-white rounded-2xl md:rounded-l-2xl  md:rounded-none lg:rounded-l-2xl lg:rounded-none">
+        <div class="flex justify-center h-32 lg:h-auto p-2 cursor-default">
           <div class="pt-4 pl-4">
             <!-- アイコン画像 -->
             <%= image_tag 'defaultUser.jpg', class: "border border-black/80 rounded-full cursor-pointer", width: 80, height: 80 %>
@@ -9,20 +9,20 @@
             <div class="text-lg font-semibold pt-1 pr-2"><%= current_user.name %></div>
           </div>
           <div class="flex flex-col w-11/12 ml-4 font-semibold italic space-y-2">
-            <div class="flex flex-wrap text-3xl w-full pt-2">
+            <div class="flex flex-wrap text-2xl lg:text-3xl w-full pt-2">
               <!-- ブランド・楽器の種類 -->
               <%= @post.brand %>
               <span class="pl-2"><%= @post.category %></span>
             </div>
             <!-- 楽器のモデル -->
             <% if @post.instrument_model.present? %>
-              <div class="text-xl pl-2"><%= @post.instrument_model %></div>
+              <div class="text-lg lg:text-xl pl-2"><%= @post.instrument_model %></div>
             <% end %>
             <!-- 製造年月 -->
             <% if @post.production_year.present? %>
-              <div class="text-xl text-right pr-6 mb-1"><%= @post.production_year %>年製</div>
+              <div class="text-lg lg:text-xl text-right pr-6 mb-1"><%= @post.production_year %>年製</div>
             <% else %>
-              <div class="text-xl text-right pr-6 mb-1">&nbsp;</div>
+              <div class="text-lg lg:text-xl text-right pr-6 mb-1">&nbsp;</div>
             <% end %>
           </div>  
         </div>
@@ -31,18 +31,19 @@
         </div>
         <!-- メイン画像 -->
         <% if @post.image.present? %>
-          <%= image_tag @post.image, class: "object-cover h-[32rem] w-full border-2 border-gray-700 rounded-xl" %>
+          <%= image_tag @post.image.variant(resize_to_fill: [580, 500]), class: "object-contain h-[24rem] lg:h-[32rem] w-[680px] border-2 border-gray-700 bg-black/90 rounded-xl" %>
+
         <% else %>
           <%= image_tag 'default.jpg', class: "object-cover h-[32rem] w-full border-2 border-gray-700 rounded-xl" %> 
         <% end %>
         <div class="h-48 cursor-default">
           <div class="grid grid-cols-2 h-12">
-            <div class="flex items-center pl-4 text-2xl italic">
+            <div class="flex items-center pl-4 text-xl lg:text-2xl italic">
               <%= l @post.created_at, format: :custom_default %>
             </div>
             <div class="flex items-center">
-            <%= link_to "フォローする", '#', class: "px-4 py-2 ml-24 bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-700 hover:to-blue-900 text-white text-sm rounded-full shadow-md transition-all duration-300 ease-in-out transform hover:-translate-y-1" %>
-              <span class="pl-6">
+            <%= link_to "フォローする", '#', class: "px-4 py-2 ml-6 lg:ml-24 bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-700 hover:to-blue-900 text-white text-xs lg:text-sm rounded-full shadow-md transition-all duration-300 ease-in-out transform hover:-translate-y-1" %>
+              <span class="pl-4 lg:pl-6">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 cursor-pointer">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
                 </svg>
@@ -59,8 +60,8 @@
         </div> 
       </div>
       <!-- ここからコメントフォーム -->
-      <div class="grid grid-rows border-l border-gray-700/2 bg-white w-3/12 rounded-e-lg"> 
-        <div class="border-b border-gray-700/20 h-14 pr-4">
+      <div class="sm:hidden md:block border-l border-gray-700/20 bg-white w-[480px] lg:w-[380px] rounded-r-2xl"> 
+        <div class="border-b border-gray-700/20 h-12 pr-4">
           <% if @post.user == current_user %>
             <div class="flex justify-end h-12">
               <div id="showDropdownButton" class="pt-2">
@@ -69,7 +70,7 @@
                 </svg>
               </div>
             </div> 
-            <div id="showDropdownMenu" class="fixed top-16 right-56 bg-[#353539] w-28 rounded-lg hidden">
+            <div id="showDropdownMenu" class="absolute lg:fixed z-50 ml-96 lg:top-20 right-24 lg:right-24 bg-[#353539] w-28 rounded-lg hidden">
               <ul class="text-white text-center w-28">
                 <li>
                   <button id="openModal" class="block px-4 py-2 w-28 hover:bg-gray-600 rounded-lg">編集</button>   
@@ -82,13 +83,13 @@
           <% end %>
         </div>
         <!-- コメント一覧 -->
-        <div class="custom-scrollbar ml-2 fixed top-32 h-3/4 overflow-auto">
+        <div class="ml-1 lg:ml-2 fixed top-36 lg:top-32  h-2/3 lg:h-3/4 custom-scrollbar overflow-auto">
           <div id="comment" class="h-16">
             <%= render @comments %>
           </div>
         </div>
         <!-- ここからコメント入力フォーム -->
-        <div class="fixed z-50 bottom-5 buttom-0 border-t border-gray-700/20 p-4 w-3/12">
+        <div class="border-t border-gray-700/20 absolute z-50 bottom-0 lg:bottom-5 p-4 h-20 w-[294px] lg:w-[380px]">
           <%= render 'comments/form', comment: @comment, post: @post %>
         </div>
       </div>

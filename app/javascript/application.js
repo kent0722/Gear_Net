@@ -4,4 +4,5 @@ import "./controllers"
 import "./newPosts.js"
 import "./editPosts.js"
 import "./DropMenu.js"
+import "./TermsAndPolicyModal.js"
 import "./react/entrypoints/App";
