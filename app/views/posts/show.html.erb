@@ -31,7 +31,8 @@
         </div>
         <!-- メイン画像 -->
         <% if @post.image.present? %>
-          <%= image_tag @post.image, class: "object-cover h-[24rem] lg:h-[32rem] w-[680px] border-2 border-gray-700 bg-black/90 rounded-xl" %>
+          <%= image_tag @post.image.variant(resize_to_fill: [580, 500]), class: "object-contain h-[24rem] lg:h-[32rem] w-[680px] border-2 border-gray-700 bg-black/90 rounded-xl" %>
+
         <% else %>
           <%= image_tag 'default.jpg', class: "object-cover h-[32rem] w-full border-2 border-gray-700 rounded-xl" %> 
         <% end %>

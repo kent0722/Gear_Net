@@ -17,6 +17,7 @@
               <%= image_tag 'defaultUser.jpg', class:'border border-black/80 size-10 md:size-12 xl:size-12 rounded-full' %>
             </div>   
             <div id="dropdownMenu" class="bg-[#353539] w-28 rounded-lg hidden">
+              <div class="block text-center border-b-2 border-gray-300/60 px-4 py-3 cursor-default"><%= current_user.name %></div>
               <ul class="text-center w-28">
                 <li><%= link_to 'マイページ', "#", class: 'block px-4 py-2 hover:bg-gray-600 rounded-lg' %></li>
                 <li><%= link_to 'Logout', logout_path, data: { turbo_method: "delete" }, class: 'block px-4 py-2 hover:bg-gray-600 rounded-lg' %></li>

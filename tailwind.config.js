@@ -23,12 +23,6 @@ module.exports = {
         slideInAndFadeOut: 'slideInAndFadeOut 3s ease-in-out forwards',
         fadeIn: 'fadeIn 0.5s ease-in-out',
       },
-      screens: {
-        sm: '640px',
-        md: '768px',
-        lg: '1024px',
-        xl: '1280px',
-      },
     },
   },
   plugins: [],
