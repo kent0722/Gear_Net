@@ -35,6 +35,7 @@ class Post < ApplicationRecord
   'Fodera': 'fodera',
   'Fujigen': 'fujigen',
   'G&L': 'gl',
+  'Gibson': 'gibson',
   'Gibson CS': 'gibson',
   'Godin': 'godin',
   'Greco': 'greco',

@@ -1,6 +1,6 @@
 <div class="fixed top-24 lg:top-20 left-64 lg:left-96 mx-auto z-0 animate-fadeIn">
     <div class="w-10/12 lg:w-auto flex justify-center">
-      <div class="px-2 min-w-96 bg-white rounded-s-2xl">
+      <div class="px-2 min-w-96 bg-white rounded-2xl md:rounded-l-2xl  md:rounded-none lg:rounded-l-2xl lg:rounded-none">
         <div class="flex justify-center h-32 lg:h-auto p-2 cursor-default">
           <div class="pt-4 pl-4">
             <!-- アイコン画像 -->
@@ -31,7 +31,7 @@
         </div>
         <!-- メイン画像 -->
         <% if @post.image.present? %>
-          <%= image_tag @post.image, class: "object-cover h-[24rem] lg:h-[32rem] w-full border-2 border-gray-700 rounded-xl" %>
+          <%= image_tag @post.image, class: "object-cover h-[24rem] lg:h-[32rem] w-[680px] border-2 border-gray-700 bg-black/90 rounded-xl" %>
         <% else %>
           <%= image_tag 'default.jpg', class: "object-cover h-[32rem] w-full border-2 border-gray-700 rounded-xl" %> 
         <% end %>
@@ -59,7 +59,7 @@
         </div> 
       </div>
       <!-- ここからコメントフォーム -->
-      <div class="border-l border-gray-700/20 bg-white w-[430px] lg:w-[380px] rounded-r-2xl"> 
+      <div class="sm:hidden md:block border-l border-gray-700/20 bg-white w-[480px] lg:w-[380px] rounded-r-2xl"> 
         <div class="border-b border-gray-700/20 h-12 pr-4">
           <% if @post.user == current_user %>
             <div class="flex justify-end h-12">

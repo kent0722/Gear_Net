@@ -66,7 +66,7 @@
 ## **機能の実装方針予定**
 | カテゴリ | 技術 |
 | --- | --- |
-| フロントエンド | React |
+| フロントエンド | Javascript |
 | バックエンド | Ruby 3.2.2 / Ruby on Rails 7.1.3 |
 | データベース | Postgres |
 | 環境構築 | Docker |
@@ -79,7 +79,6 @@
   ・acts_as_follower: フォロー機能の実装 <br>
   ・ransack: 検索機能 <br>
   ・stimulus-autocomplete: 検索補完機能の実装予定 <br>
-  ・carrierwave: 画像、動画にアップロード <br>
   ・image_processing: 画像のリサイズ <br>
   ・streamio-ffmpeg: 動画の長さ、ファイルサイズの検証および変換 <br>
   ・acts-as-taggable-on: タグ機能 <br>
