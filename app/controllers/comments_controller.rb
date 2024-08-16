@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_post_id, only: %i[create]
-  before_action :gest_authenticated, only: %i[create destroy] 
+  before_action :guest_authenticated, only: %i[create destroy] 
   
   def create
     @comment = current_user.comments.build(comment_params)
