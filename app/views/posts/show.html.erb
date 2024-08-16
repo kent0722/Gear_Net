@@ -16,7 +16,7 @@
             </div>
             <!-- 楽器のモデル -->
             <% if @post.instrument_model.present? %>
-              <div class="text-lg lg:text-xl pl-2"><%= @post.instrument_model %></div>
+              <div class="text-xl lg:text-3xl pl-2"><%= @post.instrument_model %></div>
             <% end %>
             <!-- 製造年月 -->
             <% if @post.production_year.present? %>
@@ -31,7 +31,7 @@
         </div>
         <!-- メイン画像 -->
         <% if @post.image.present? %>
-          <%= image_tag @post.image.variant(resize_to_fill: [580, 500]), class: "object-contain h-[24rem] lg:h-[32rem] w-[680px] border-2 border-gray-700/50 bg-black/90 rounded-xl" %>
+          <%= image_tag @post.image.variant(resize_to_fit: [580, 800]), class: "object-contain h-[24rem] lg:h-[32rem] w-[680px] border-2 border-gray-700/50 bg-black/90 rounded-xl" %>
 
         <% else %>
           <%= image_tag 'default.jpg', class: "object-cover h-[32rem] w-full border-2 border-gray-700 rounded-xl" %> 
