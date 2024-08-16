@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
     redirect_to login_url, alert: 'ログインしてください'
   end
 
-  def gest_authenticated
+  def guest_authenticated
     if current_user&.name == 'guest'
       redirect_to posts_path, alert: 'ゲストユーザーはこの操作を行うことができません。'
     end
@@ -18,5 +18,4 @@ class ApplicationController < ActionController::Base
       redirect_to posts_path
     end
   end
-
 end

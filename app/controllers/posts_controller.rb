@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :require_login
-  before_action :gest_authenticated, only: %i[new create edit destroy] 
+  before_action :guest_authenticated, only: %i[new create edit destroy] 
   before_action :set_user, only: %i[show edit update destroy]
   
   def index
@@ -10,6 +10,7 @@ class PostsController < ApplicationController
   def show
     @comment = Comment.new
     @comments = @post.comments.includes(:user).order(created_at: :desc)
+    @likes = @post.likes.includes(:user)
   end
 
   def new
@@ -35,7 +36,6 @@ class PostsController < ApplicationController
     redirect_to posts_path(@pso)
    end
   end
-
 
   def destroy
     @post.destroy
