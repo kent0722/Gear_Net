@@ -40,7 +40,7 @@
             <!-- Year / Tags -->
             <div class="grid md:grid-cols-2">
               <div class="relative z-0 w-full mb-5 group">
-                <%= f.number_field :production_year, list: "year-list", in: 1950..2014, class: "block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-500/70 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer", placeholder: " " %>
+                <%= f.number_field :production_year, list: "year-list", in: 1950..2024, class: "block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-500/70 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer", placeholder: " " %>
                 <datalist id="year-list">
                   <% Post.production_years.keys.each do |year| %>
                     <option value="<%= year %>">
