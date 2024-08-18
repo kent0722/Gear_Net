@@ -1,5 +1,5 @@
-<div class="mx-auto pt-20 text-gray-600 animate-fadeIn z-50 bg-black/30 h-screen w-screen backdrop-blur-sm">
-  <div class="bg-gray-100 ronded-lg w-1/3 mx-auto rounded-xl">
+<div class="flex items-center pt-20 text-gray-600 animate-fadeIn z-50 bg-black/30 h-screen w-screen backdrop-blur-sm">
+  <div class="bg-gray-100 mx-auto w-[350px] md:w-[520px] h-[600px] md:h-[700px] rounded-xl">
     <div class="flex flex-col items-center space-y-4 border-red-300">
      <%= link_to root_path, class: "ml-auto" do %>
         <div class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg w-8 h-8 inline-flex justify-center items-center">
@@ -8,32 +8,32 @@
           </svg>
         </div>
       <% end %>
-      <h1 class="pt-8 text-gray-900 text-2xl font-semibold">ユーザー登録</h1>     
+      <h1 class="pt-8 text-gray-900 text-xl md:text-2xl font-semibold">ユーザー登録</h1>     
       <%= form_with(model: @user, url: users_path, method: "post") do |f| %>
         <div class="mb-2">
-          <%= f.label :name %>
-          <%= f.text_field :name, class: 'block w-72 rounded-md', placeholder: 'ユーザーネーム' %>
+          <%= f.label :name, class: 'ml-4 md:ml-0 text-xs md:text-base' %>
+          <%= f.text_field :name, class: 'block mx-auto w-[240px] md:w-[290px] rounded-md', placeholder: 'ユーザーネーム' %>
           <% @user.errors.where(:name).each do |name| %>
             <p class="text-red-500"><%= name.full_message %></p>
           <% end %>
         </div>
         <div class="mb-2">
-          <%= f.label :email %>
-          <%= f.text_field :email, class: 'block w-72 rounded-md', placeholder: 'メール' %>
+          <%= f.label :email, class: 'ml-4 md:ml-0 text-xs md:text-base' %>
+          <%= f.text_field :email, class: 'block mx-auto w-[240px] md:w-[290px] rounded-md', placeholder: 'メール' %>
           <% @user.errors.where(:email).each do |email| %>
             <p class="text-red-500"><%= email.full_message %></p>
           <% end %>
         </div>
         <div class="mb-2">
-          <%= f.label :password %>
-          <%= f.password_field :password, class: 'block w-72 rounded-md', placeholder: 'パスワード' %>
+          <%= f.label :password, class: 'ml-4 md:ml-0 text-xs md:text-base' %>
+          <%= f.password_field :password, class: 'block mx-auto w-[240px] md:w-[290px] rounded-md', placeholder: 'パスワード' %>
           <% @user.errors.where(:password).each do |password| %>
             <p class="text-red-500"><%= password.full_message %></p>
           <% end %>
         </div>
         <div class="mb-6">
-          <%= f.label :password_confirmation %>
-          <%= f.password_field :password_confirmation, class: 'block w-72 rounded-md', placeholder: 'パスワード(確認用)' %>
+          <%= f.label :password_confirmation, class: 'ml-4 md:ml-0 text-xs md:text-base' %>
+          <%= f.password_field :password_confirmation, class: 'block mx-auto w-[240px] md:w-[290px] rounded-md', placeholder: 'パスワード(確認用)' %>
           <% @user.errors.where(:password_confirmation).each do |password_confirmation| %>
             <p class="text-red-500"><%= password_confirmation.full_message %></p>
           <% end %>
@@ -43,9 +43,9 @@
 
         <div class="mb-8 border-b-2 border-gray-500/30"></div>
 
-        <%= f.submit "googleで登録する", class: 'w-full h-12 mb-8 bg-white border border-gray-500/70 hover:bg-sky-50 rounded-3xl' %>
+         <%# f.submit "googleで登録する", class: 'w-full h-12 mb-8 bg-white border border-gray-500/70 hover:bg-sky-50 rounded-3xl'  %>
         <p class='mb-8'>アカウントをお持ちの場合：
-            <%= link_to 'ログイン', login_path, class: 'text-indigo-500 hover:text-indigo-600' %>
+            <%= link_to 'ログイン', login_path, class: 'text-sm md:text-base text-indigo-500 hover:text-indigo-600' %>
         </p>
       <% end %>
     </div>

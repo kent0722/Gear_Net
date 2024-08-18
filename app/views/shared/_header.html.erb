@@ -1,7 +1,7 @@
 <% header_class = logged_in? ? 'bg-[#171718]' : '' %>
 <header class="fixed top-0 left-0 right-0 flex items-center text-white h-20 z-50 <%= header_class %>">
-  <nav class=" container mx-auto">
-    <div class="flex justify-between items-center">    
+  <nav class="mx-12 w-full">
+    <div class="flex items-center justify-between">    
       <div class="flex items-center">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="text-yellow-600 size-6">
           <path stroke-linecap="round" stroke-linejoin="round" d="m3.75 13.5 10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z" />
@@ -10,8 +10,6 @@
       </div>
       <div class="flex items-center">
         <% if logged_in? %>
-          <!-- Profile tooltip -->
-          <%# <div id="UserAicon"></div> %>
           <div class="fixed top-1 right-1">
             <div id="dropdownButton" class="mx-6 p-3 hover:bg-gray-700 rounded-full cursor-pointer">
               <%= image_tag 'defaultUser.jpg', class:'border border-black/80 size-10 md:size-12 xl:size-12 rounded-full' %>
@@ -25,7 +23,7 @@
             </div>
           </div>
         <% else %> 
-          <%= link_to 'Log In', login_path, class: 'sm:text-md md:text-xl xl:text-xl font-light hover:opacity-40' %>
+          <%= link_to 'Log In', login_path, class: 'jusm:text-md md:text-xl xl:text-xl font-light hover:opacity-40' %>
           <%= link_to 'Sign Up', new_user_path, class: 'p-1 px-3 ml-16 text-black bg-white transition hover:opacity-40 text-xs font-bold rounded-sm' %>
         <% end %>
       </div>
