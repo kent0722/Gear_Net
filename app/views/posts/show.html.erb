@@ -1,7 +1,8 @@
-<div class="fixed top-24 lg:top-20 left-64 lg:left-96 mx-auto z-0">
-    <div class="w-10/12 lg:w-auto flex justify-center">
-      <div class="px-2 min-w-96 bg-white rounded-2xl md:rounded-l-2xl  md:rounded-none lg:rounded-l-2xl lg:rounded-none">
-        <div class="flex justify-center lg:h-auto p-2 cursor-default">
+<div class="flex justify-center pt-20 custom-scrollbar overflow-auto">
+  <div class=" mx-8">
+    <div class="border-2 border-red-500 lg:w-auto flex justify-center">
+      <div class="border-2 border-blue-500 min-w-[420px] max-w-[420px] md:min-w-[280px] lg:min-w-[580px] bg-white rounded-2xl md:rounded-l-2xl md:rounded-none lg:rounded-l-2xl lg:rounded-none">
+        <div class="border-2 border-blue-500 flex justify-center lg:h-36 p-2 cursor-default">
           <div class="pt-4 pl-4">
             <!-- アイコン画像 -->
             <%= image_tag 'defaultUser.jpg', class: "border border-black/80 rounded-full cursor-pointer", width: 80, height: 80 %>
@@ -22,18 +23,15 @@
             <% end %>
             <!-- 製造年月 -->
             <% if @post.production_year.present? %>
-              <div class="text-lg lg:text-2xl text-right pr-6 pb-2"><%= @post.production_year %>年製</div>
+              <div class="text-lg lg:text-2xl text-right pr-6 pb-6"><%= @post.production_year %>年製</div>
             <% else %>
               <div class="text-lg lg:text-2xl text-right pr-6 pb-2">&nbsp;</div>
             <% end %>
           </div>  
         </div>
-        <div class="text-lg text-right mr-4 -mt-4">
-          #ギター
-        </div>
         <!-- メイン画像 -->
         <% if @post.image.present? %>
-          <%= image_tag @post.image.variant(resize_to_fit: [580, 800]), class: "object-contain h-[490px] w-[680px] border-2 border-gray-700/50 bg-black/90 rounded-xl" %>
+          <%= image_tag @post.image.variant(resize_to_fit: [580, 800]), class: "object-contain h-[490px] w-[680px] border-2 border-gray-700/50 bg-black/90" %>
 
         <% else %>
           <%= image_tag 'default.jpg', class: "object-cover h-[32rem] w-full border-2 border-gray-700 rounded-xl" %> 
@@ -51,7 +49,7 @@
             </div>
           </div>
           <div>
-            <div class="border-2 border-gray-500/30 bg-gray-200 w-11/12 mx-auto h-32 rounded-3xl">
+            <div class="h-32">
               <div class="pt-2 pl-5">
                 <%= simple_format(@post.body) %>
               </div>
@@ -60,7 +58,7 @@
         </div> 
       </div>
       <!-- ここからコメントフォーム -->
-      <div class="sm:hidden md:block border-l border-gray-700/20 bg-white w-[480px] lg:w-[380px] rounded-r-2xl"> 
+      <div class="hidden md:block border-l border-gray-700/20 bg-white md:w-[300px] lg:w-[330px] rounded-r-2xl"> 
         <div class="border-b border-gray-700/20 h-12 pr-4">
           <% if @post.user == current_user %>
             <div class="flex justify-end h-12">
@@ -83,7 +81,7 @@
           <% end %>
         </div>
         <!-- コメント一覧 -->
-        <div class="ml-1 lg:ml-2 fixed top-36 lg:top-32  h-2/3 lg:h-3/4 custom-scrollbar overflow-auto">
+        <div class="bsolute top-36 lg:top-24 ml-1 a h-2/3 lg:h-[685px] w-[330px] custom-scrollbar overflow-auto">
           <div id="comment" class="h-16">
             <%= render @comments %>
           </div>
@@ -102,4 +100,4 @@
     <%= render 'posts/edit', post: @post %>
   </div>
 </div>
-
+</div>
