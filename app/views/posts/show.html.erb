@@ -1,5 +1,4 @@
-<div class="flex justify-center pt-20 custom-scrollbar overflow-auto">
-  <div class=" mx-8">
+<div class="absolute top-24 lg:top-20 left-36 md:left-52 lg:left-72  mx-8">
     <div class="border-2 border-red-500 lg:w-auto flex justify-center">
       <div class="border-2 border-blue-500 min-w-[420px] max-w-[420px] md:min-w-[280px] lg:min-w-[580px] bg-white rounded-2xl md:rounded-l-2xl md:rounded-none lg:rounded-l-2xl lg:rounded-none">
         <div class="border-2 border-blue-500 flex justify-center lg:h-36 p-2 cursor-default">
@@ -81,7 +80,7 @@
           <% end %>
         </div>
         <!-- コメント一覧 -->
-        <div class="bsolute top-36 lg:top-24 ml-1 a h-2/3 lg:h-[685px] w-[330px] custom-scrollbar overflow-auto">
+        <div class="top-36 lg:top-12 ml-1 absolute h-2/3 lg:h-[685px] w-[330px] custom-scrollbar overflow-auto">
           <div id="comment" class="h-16">
             <%= render @comments %>
           </div>
@@ -100,4 +99,4 @@
     <%= render 'posts/edit', post: @post %>
   </div>
 </div>
-</div>
+
