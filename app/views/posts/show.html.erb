@@ -1,6 +1,6 @@
 <div class="absolute top-24 lg:top-20 left-20 md:left-52 lg:left-64 mx-8">
     <div class="lg:w-auto flex justify-center">
-      <div class=" min-w-[360px] max-w-[360px] md:min-w-[420px] lg:min-w-[580px] bg-white rounded-2xl md:rounded-l-2xl md:rounded-none lg:rounded-l-2xl lg:rounded-none">
+      <div class=" min-w-[360px] max-w-[360px] md:min-w-[420px] lg:min-w-[580px] bg-white rounded-lg md:rounded-l-lg md:rounded-none lg:rounded-l-lg lg:rounded-none">
         <div class="flex justify-center h-32 md:h-36 p-2 cursor-default">
           <div class="pt-4 pl-4">
             <!-- アイコン画像 -->
@@ -28,12 +28,16 @@
             <% end %>
           </div>  
         </div>
+         <div class="text-sm text-right mr-4 -mt-2">
+            <span class="text-sm mr-4"><%= time_ago_in_words(@post.created_at) %>前</span>
+            #ギター
+          </div>
         <!-- メイン画像 -->
         <% if @post.image.present? %>
           <%= image_tag @post.image.variant(resize_to_fit: [580, 800]), class: "object-contain h-[320px] md:h-[490px] w-[480px] md:w-[680px] border-2 border-gray-700/50 bg-black/90" %>
 
         <% else %>
-          <%= image_tag 'default.jpg', class: "object-cover h-[32rem] w-full border-2 border-gray-700 rounded-xl" %> 
+          <%= image_tag 'default.jpg', class: "object-cover h-[32rem] w-full border-2 border-gray-700 rounded-lg" %> 
         <% end %>
         <div class="h-48 cursor-default">
           <div class="grid grid-cols-2 h-12">
@@ -57,7 +61,7 @@
         </div> 
       </div>
       <!-- ここからコメントフォーム -->
-      <div class="hidden md:block border-l border-gray-700/20 bg-white md:min-w-[300px] lg:w-[330px] rounded-r-2xl"> 
+      <div class="hidden md:block border-l border-gray-700/20 bg-white md:min-w-[300px] lg:w-[330px] rounded-r-lg"> 
         <div class="border-b border-gray-700/20 h-12 pr-4">
           <% if @post.user == current_user %>
             <div class="flex justify-end h-12">
