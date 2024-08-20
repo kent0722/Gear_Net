@@ -1,60 +1,56 @@
-<div class="border-2 border-red-500 flex justify-center mt-20 ml-16 sm:ml-12 md:ml-48 lg:ml-48 xl:ml-60 z-0 custom-scrollbar orverflow-auto">
-  <div class="grid grid-row md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+<div class="flex justify-center mt-20 ml-40 md:ml-[280px] lg:ml-[260px] xl:ml-[320px] z-0 max-w-[330px] md:min-w-[620px] lg:min-w-[940px] xl:min-w-[1250px] custom-scrollbar overflow-auto">
+  <div class="mx-2 grid grid-row md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
     <% @posts.each do |post| %>
-      <%= link_to post_path(post), class: "border-2 border-red-500 m-3 max-w-sm bg-white rounded-2xl transition-transform transform hover:scale-105 cursor-pointer" do %>
-        <div class="flex justify-center pt-3 px-3">
-          <div class="border-2 border-red-500 pt-3 -ml-2 w-[60px]">
-            <!-- アイコン画像 -->
-            <%= image_tag 'defaultUser.jpg', class: "border border-black/80 rounded-full min-w-12", width: 50, height: 50  %>
-            <!-- ユーザー名 -->
-            <div class="text-xs font-semibold pr-2"><%= post.user.name %></div>
-          </div>
-          <div class="flex flex-col font-semibold min-w-48 w-96 italic space-x-2">
-            <div class="flex flex-wrap text-xl w-72">
-              <!-- ブランド・楽器の種類 -->
-              <%= post.brand %>
-              <span class="pl-2"><%= post.category %></span>
+      <%= link_to post_path(post), class: "bg-white max-w-xs rounded-2xl transition-transform transform hover:scale-105 cursor-pointer" do %>
+        <div class="hidden md:block">
+          <div class="flex items-center justify-center pt-1 px-2 h-20 min-w-sm">
+            <div class="-ml-1 min-w-[60px]">
+              <!-- アイコン画像 -->
+              <%= image_tag 'defaultUser.jpg', class: "border border-black/80 rounded-full min-w-11 ml-1", width: 20, height: 20 %>
+              <!-- ユーザー名 -->
+              <div class="text-center text-xs font-semibold pr-2"><%= post.user.name %></div>
             </div>
-            <!-- 楽器のモデル -->
-            <% if post.instrument_model.present? %>
-              <div class="text-md mr-2 flex-wrap "><%= post.instrument_model %></div>
-            <% else %>
-               <div class="text-md mr-2">&nbsp;</div>
-            <% end %>
-
-            <!-- 製造年月 -->
-            <% if post.production_year.present? %>
-              <div class="text-base text-right pr-6 mb-1"><%= post.production_year %>年製</div>
-            <% else %>
-              <div class="text-base text-right pr-6 mb-1">&nbsp;</div>
-            <% end %>
+            <div class="flex flex-col font-semibold min-w-48 w-96 italic space-x-2 truncate">
+              <div class="flex items-center text-xl w-72">
+                <!-- ブランド・楽器の種類 -->
+                <%= post.brand %>
+                <span class="pl-2 text-md"><%= post.category %></span>
+              </div>
+              <!-- 楽器のモデル -->
+              <% if post.instrument_model.present? %>
+                <div class="text-sm mr-2 truncate"><%= post.instrument_model %></div>
+              <% else %>
+                <div class="text-md mr-2">&nbsp;</div>
+              <% end %>
+            </div>
           </div>
-        </div>
-        <div class="text-sm text-right mr-4 -mt-2">
-          <span class="text-sm mr-4"><%= time_ago_in_words(post.created_at) %>前</span>
-           #ギター
+          <div class="text-sm text-right mr-4 -mt-2">
+            <span class="text-sm mr-4"><%= time_ago_in_words(post.created_at) %>前</span>
+            #ギター
+          </div>
         </div>
         <!-- メイン画像 -->
         <% if post.image.present? %>
           <div class="relative">
-              <%= image_tag post.image, class: "object-cover h-72 w-96 border-t-2 border-black rounded-b-2xl", size: "80x80" %>
-              <% if current_user.liked?(post) %>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="absolute top-2 right-4 text-red-500 size-6">
-                  <path d="m11.645 20.91-.007-.003-.022-.012a15.247 15.247 0 0 1-.383-.218 25.18 25.18 0 0 1-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0 1 12 5.052 5.5 5.5 0 0 1 16.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 0 1-4.244 3.17 15.247 15.247 0 0 1-.383.219l-.022.012-.007.004-.003.001a.752.752 0 0 1-.704 0l-.003-.001Z" />
-                </svg>
-                <span class="absolute top-1 right-1 text-white">
-                  <%= post.likes.count %>
-                </span>
-              <% else %>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="absolute top-2 right-4 text-gray-700 size-6">
-                  <path d="m11.645 20.91-.007-.003-.022-.012a15.247 15.247 0 0 1-.383-.218 25.18 25.18 0 0 1-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0 1 12 5.052 5.5 5.5 0 0 1 16.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 0 1-4.244 3.17 15.247 15.247 0 0 1-.383.219l-.022.012-.007.004-.003.001a.752.752 0 0 1-.704 0l-.003-.001Z" />
-                </svg>
-                <span class="absolute top-1 right-1 ">
+            <%= image_tag post.image, class: "object-cover h-52 w-52 md:w-96 border-t-2 border-black rounded-2xl md:rounded-b-2xl md:rounded-none", size: "80x80" %>
+            <% if current_user.liked?(post) %>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="absolute top-2 right-4 text-red-500 size-6">
+                <path d="m11.645 20.91-.007-.003-.022-.012a15.247 15.247 0 0 1-.383-.218 25.18 25.18 0 0 1-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0 1 12 5.052 5.5 5.5 0 0 1 16.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 0 1-4.244 3.17 15.247 15.247 0 0 1-.383.219l-.022.012-.007.004-.003.001a.752.752 0 0 1-.704 0l-.003-.001Z" />
+              </svg>
+              <span class="absolute top-1 right-1 text-white">
                 <%= post.likes.count %>
-              <% end %>
+              </span>
+            <% else %>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="absolute top-2 right-4 text-gray-700 size-6">
+                <path d="m11.645 20.91-.007-.003-.022-.012a15.247 15.247 0 0 1-.383-.218 25.18 25.18 0 0 1-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0 1 12 5.052 5.5 5.5 0 0 1 16.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 0 1-4.244 3.17 15.247 15.247 0 0 1-.383.219l-.022.012-.007.004-.003.001a.752.752 0 0 1-.704 0l-.003-.001Z" />
+              </svg>
+              <span class="absolute top-1 right-1">
+                <%= post.likes.count %>
+              </span>
+            <% end %>
           </div>
         <% else %>
-          <%= image_tag 'default.jpg', class: "object-cover h-72 w-96 border-t-2 border-black rounded-b-2xl" %>
+          <%= image_tag 'default.jpg', class: "object-cover h-72 w-96 border-t-2 border-black rrounded-2xl md:rounded-b-2xl md:rounded-none" %>
         <% end %>
       <% end %>
     <% end %>
