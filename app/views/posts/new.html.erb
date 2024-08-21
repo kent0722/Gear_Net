@@ -1,16 +1,16 @@
-<div class="fixed left-80 lg:left-48 right-48 flex justify-center pt-16 z-0 animate-fadeIn">
-  <div class="fixed top-4 mt-16 w-7/12 lg:w-5/12">
-    <div class="bg-gray-100 rounded-xl">
+<div class="absolute top-24 lg:top-20 left-20 md:left-52 lg:left-64 mx-8 animate-fadeIn">
+  <div class=" min-w-[360px] max-w-[360px] md:min-w-[550px] lg:min-w-[650px]">
+    <div class="bg-gray-100 h-[650px] md:h-[750px] rounded-lg">
       <div class="w-full mx-auto px-4">
         <div class="border-b border-gray-700/20 grid grid-cols-3 font-medium">
-          <%= link_to 'キャンセル', posts_path, class: 'px-4 py-2 rounded-lg text-gray-700' %>
+          <%= link_to 'キャンセル', posts_path, class: 'px-4 py-2 text-xs md:text-base rounded-lg text-gray-700' %>
           <span class="flex items-center justify-center font-semibold">新規作成</span>
         </div>
         <%= form_with(model: @post) do |f| %>
           <div>
             <!-- Brand / Category -->
-            <div class="grid md:grid-cols-2 mt-16">
-              <div class="relative z-0 w-full mb-5 group">
+            <div class="grid md:grid-cols-2 mt-4 md:mt-16">
+              <div class="relative z-0 w-full mb-3 md:mb-5 group">
                 <%= f.text_field :brand, id: "brand", list: "brand-list", class: "block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-500/70 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer", placeholder: " ", required: true %>
                 <datalist id="brand-list">
                   <% Post.brands.keys.each do |brand| %>
@@ -19,7 +19,7 @@
                 </datalist>
                 <label for="brand-list" class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">ブランド名:</label>
               </div>
-              <div class="relative z-0 w-full mb-5 group">
+              <div class="relative z-0 w-full mb-3 md:mb-5 group">
                 <%= f.text_field :category, id: "category", maxlength: 15, class: "block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-500/70 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer", placeholder: " ", required: true %>
                 <label for="category" class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">楽器のカテゴリー:</label>
                 <% @post.errors.where(:category).each do |category| %>
@@ -29,7 +29,7 @@
             </div>
 
             <!-- Model -->
-            <div class="relative z-0 w-full mb-5 group">
+            <div class="relative z-0 w-full mb-3 md:mb-5 group">
               <%= f.text_field :instrument_model, id: "instrument_model", maxlength: 25, class: "block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-500/70 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer", placeholder: " " %>
               <label for="instrument_model" class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">楽器のモデル:</label>
               <% @post.errors.where(:instrument_model).each do |instrument_model| %>
@@ -39,7 +39,7 @@
 
             <!-- Year / Tags -->
             <div class="grid md:grid-cols-2">
-              <div class="relative z-0 w-full mb-5 group">
+              <div class="relative z-0 w-full mb-3 md:mb-5group">
                 <%= f.number_field :production_year, list: "year-list", in: 1950..2024, class: "block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-500/70 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer", placeholder: " " %>
                 <datalist id="year-list">
                   <% Post.production_years.keys.each do |year| %>
@@ -49,14 +49,14 @@
                 <label for="production_year" class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">製造年月:</label>
               </div>
 
-              <div class="relative z-0 w-full mb-5 group">
+              <div class="relative z-0 w-full mb-3 md:mb-5 group">
                 <label for="tags" class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">タグ:</label>
               </div>
             </div>
 
             <!-- Text -->
-            <div class="boarder border-red-500 relative z-0 w-full mb-5 group">
-              <%= f.text_area :body, id: "body", rows: 10, class: "block px-0 w-full text-sm bg-transparent border-0 border-b-2 border-gray-500/70 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer resize-none", placeholder: " " %>
+            <div class="relative z-0 w-full mb-3 md:mb-5 group">
+              <%= f.text_area :body, id: "body", rows: 8, class: "block px-0 w-full text-sm bg-transparent border-0 border-b-2 border-gray-500/70 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer resize-none", placeholder: " " %>
               <label for="body" class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">本文:</label>
               <% @post.errors.where(:body).each do |body| %>
                 <p class="text-red-500"><%= body.full_message %></p>
@@ -65,19 +65,21 @@
           </div>
           <div>
             <!-- File Upload -->
-            <div class="grid grid-cols-2 my-4 mb-5 group"> 
+            <div class="grid grid-cols-2 my-4 group"> 
               <%= f.file_field :image, class: 'hidden', id: 'file-input', accept: 'image/png, image/jpeg' %>
-              <label for="file-input" class="relative border-2 border-gray-500 bg-gray-300 h-60 w-70 mt-5 mr-4 rounded-xl flex flex-col items-center justify-center cursor-pointer overflow-hidden">
+              <label for="file-input" class="relative bg-gray-300 h-40 md:h-60 w-[180px] md:w-[260px] lg:w-[320px] mt-5 mr-4 flex flex-col items-center justify-center cursor-pointer overflow-hidden">
                 <svg id="fileSvg"xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="absolute z-50 mb-4 size-20 text-gray-600/30">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M6.827 6.175A2.31 2.31 0 0 1 5.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 0 0-1.134-.175 2.31 2.31 0 0 1-1.64-1.055l-.822-1.316a2.192 2.192 0 0 0-1.736-1.039 48.774 48.774 0 0 0-5.232 0 2.192 2.192 0 0 0-1.736 1.039l-.821 1.316Z" />
                   <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 12.75a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0ZM18.75 10.5h.008v.008h-.008V10.5Z" />
                 </svg>
-                 <div id="placeholder-text" class="mt-20 text-gray-600">ファイルを選択してください</div>
+                 <div id="placeholder-text" class="mt-20 text-gray-600 text-xs md:text-base">ファイルを選択してください</div>
                 <img id="image-preview" class="hidden h-full w-full object-cover" src="" alt="選択された画像"/>
               </label>
-              <div class="w-32 h-28 mt-52 ml-36 lg:ml-44">
+              
+              <div class="w-32 mt-32 md:mt-52 ml-10 md:ml-36 lg:ml-48">
                 <%= f.submit "投稿する", class: "text-blue-700 border border-blue-700 hover:bg-blue-700 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm w-full sm:w-auto px-6 py-4 text-center" %>
-              </div>   
+              </div>  
+               
             </div>
           </div>
         <% end %>
