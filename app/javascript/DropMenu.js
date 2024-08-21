@@ -4,6 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const dropdownMenu = document.getElementById('dropdownMenu');
     const showDropdownButton = document.getElementById('showDropdownButton');
     const showDropdownMenu = document.getElementById('showDropdownMenu');
+    const showSmDropdownButton = document.getElementById('showSmDropdownButton');
+    const showSmDropdownMenu = document.getElementById('showSmDropdownMenu');
     const sideDropdownButton = document.getElementById('sideDropdownButton');
     const sideDropdownMenu = document.getElementById('sideDropdownMenu');
 
@@ -21,8 +23,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     //show
     if (showDropdownButton){
-      showDropdownButton.addEventListener('click', (event) => {
-        event.stopPropagation();
+      showDropdownButton.addEventListener('click', (e) => { 
+        e.stopPropagation();
         showDropdownMenu.classList.toggle('hidden');
       });
       document.addEventListener('click', (e) => {
@@ -30,6 +32,17 @@ document.addEventListener('DOMContentLoaded', () => {
           showDropdownMenu.classList.add('hidden');
         }
       });
+    }
+    if (showSmDropdownButton){
+      showSmDropdownButton.addEventListener('click', (e) => {
+        e.stopPropagation();
+        showSmDropdownMenu.classList.toggle('hidden');
+      })
+      document.addEventListener('click', (e) => {
+        if (!showSmDropdownButton.contains(e.target) && !showSmDropdownMenu.contains(e.target)){
+          showSmDropdownMenu.classList.add('hidden');
+        }
+      })
     }
     // side
     if (sideDropdownButton){

@@ -3,6 +3,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const openModal = document.getElementById("openModal");
     const closeModal = document.getElementById("closeModal");
     const modal = document.getElementById("modal");
+    const openSmModal = document.getElementById("openSmModal");
+    const closeSmModal = document.getElementById("closeSmModal");
+    const smModal = document.getElementById("smModal");
     const editBrandInput = document.getElementById('edit_brand');
     const nodeList = document.querySelectorAll('#edit_brand-list option')
     const editDatalistOptions = Array.from(nodeList).map(option => option.value);
@@ -31,6 +34,24 @@ document.addEventListener('DOMContentLoaded', () => {
           document.body.style.overflow = "";
         }
       });
+
+      if(openSmModal){
+        openSmModal.addEventListener('click', () => {
+          smModal.style.display = 'flex';
+          document.body.style.overflow = 'hidden';
+        })
+        closeSmModal.addEventListener('click', () => {
+          smModal.style.display = "none";
+          document.body.style.overflow = "";
+        })
+        smModal.addEventListener('click', (e) => {
+          if (e.target === smModal) {
+            smModal.style.display = 'none';
+            document.body.style.overflow = "";
+          }
+        });
+      }
+
        //brand 入力制限
       if(editBrandInput){
         editBrandInput.addEventListener('input', () => {

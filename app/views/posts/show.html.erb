@@ -49,13 +49,13 @@
               <%= render 'likes/like_button' %>
               <span class="block md:hidden w-4 h-10">
                 <div class="ml-2">
-                  <div id="showDropdownButton" class="pt-2">
+                  <div id="showSmDropdownButton" class="pt-2">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 12.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 18.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5Z" />
                     </svg>
                   </div>
                 </div> 
-                <div id="showDropdownMenu" class="absolute z-50 top-50 md:top-10 right-0 bg-[#353539] w-28 rounded-lg hidden">
+                <div id="showSmDropdownMenu" class="absolute z-50 top-50 right-0 bg-[#353539] w-28 rounded-lg hidden">
                   <ul class="text-white text-center w-28">
                     <li>
                       <button id="openModal" class="block px-4 py-2 w-28 hover:bg-gray-600 rounded-lg">編集</button>   
@@ -91,7 +91,7 @@
             <div id="showDropdownMenu" class="absolute z-50 top-10 right-0 bg-[#353539] w-28 rounded-lg hidden">
               <ul class="text-white text-center w-28">
                 <li>
-                  <button id="openModal" class="block px-4 py-2 w-28 hover:bg-gray-600 rounded-lg">編集</button>   
+                  <button id="openSmModal" class="block px-4 py-2 w-28 hover:bg-gray-600 rounded-lg">編集</button>   
                 </li>
                 <li>
                   <%= link_to '削除', post_path, data: { turbo_method: "delete", turbo_confirm: '削除しますか' }, class: 'block px-4 py-2 hover:bg-gray-600 rounded-lg' %>
@@ -121,3 +121,9 @@
   </div>
 </div>
 
+<div id="smModal" class="fixed inset-0 justify-center bg-black/80 backdrop-blur-sm z-50 custom-scrollbar overflow-auto hidden">
+  <button id="closeSmModal">閉じる</button>
+  <div id="modalContent">
+    <%= render 'posts/edit', post: @post %>
+  </div>
+</div>
