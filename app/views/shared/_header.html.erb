@@ -1,5 +1,5 @@
-<% header_class = logged_in? ? 'bg-[#171718]' : '' %>
-<header class="fixed top-0 left-0 right-0 flex items-center text-white h-20 z-50 <%= header_class %>">
+<% header_class = logged_in? ? 'bg-[#171718] z-50' : 'z-0' %>
+<header class="fixed top-0 left-0 right-0 flex items-center text-white h-20 <%= header_class %>">
   <nav class="mx-12 w-full">
     <div class="flex items-center justify-between">    
       <div class="flex items-center">

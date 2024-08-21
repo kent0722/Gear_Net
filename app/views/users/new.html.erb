@@ -1,5 +1,5 @@
 <div class="absolute z-50 flex justify-center pt-5 md:pt-10 text-gray-600 bg-black/30 h-screen w-screen backdrop-blur-sm animate-fadeIn">
-  <div class="bg-gray-100 mx-auto w-[350px] md:w-[520px] h-[610px] md:h-[640px] rounded-xl">
+  <div class="bg-gray-100 mx-auto w-[350px] md:w-[520px] h-[580px] md:h-[640px] rounded-xl">
     <div class="flex flex-col items-center space-y-4 border-red-300">
      <%= link_to root_path, class: "ml-auto" do %>
         <div class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg w-8 h-8 inline-flex justify-center items-center">
@@ -14,28 +14,21 @@
           <%= f.label :name, class: 'ml-0 text-xs md:text-base' %>
           <%= f.text_field :name, class: 'block mx-auto w-[240px] md:w-[290px] rounded-md', placeholder: 'ユーザーネーム' %>
           <% @user.errors.where(:name).each do |name| %>
-            <p class="text-red-500"><%= name.full_message %></p>
+            <p class="text-red-500 text-xs md:text-sm"><%= name.full_message %></p>
           <% end %>
         </div>
         <div class="mb-2">
           <%= f.label :email, class: 'ml-0 text-xs md:text-base' %>
           <%= f.text_field :email, class: 'block mx-auto w-[240px] md:w-[290px] rounded-md', placeholder: 'メール' %>
           <% @user.errors.where(:email).each do |email| %>
-            <p class="text-red-500"><%= email.full_message %></p>
-          <% end %>
-        </div>
-        <div class="mb-2">
-          <%= f.label :password, class: 'ml-0 text-xs md:text-base' %>
-          <%= f.password_field :password, class: 'block mx-auto w-[240px] md:w-[290px] rounded-md', placeholder: 'パスワード' %>
-          <% @user.errors.where(:password).each do |password| %>
-            <p class="text-red-500"><%= password.full_message %></p>
+            <p class="text-red-500 text-xs md:text-sm"><%= email.full_message %></p>
           <% end %>
         </div>
         <div class="mb-6">
-          <%= f.label :password_confirmation, class: 'ml-0 text-xs md:text-base' %>
-          <%= f.password_field :password_confirmation, class: 'block mx-auto w-[240px] md:w-[290px] rounded-md', placeholder: 'パスワード(確認用)' %>
-          <% @user.errors.where(:password_confirmation).each do |password_confirmation| %>
-            <p class="text-red-500"><%= password_confirmation.full_message %></p>
+          <%= f.label :password, class: 'ml-0 text-xs md:text-base' %>
+          <%= f.password_field :password, class: 'block mx-auto w-[240px] md:w-[290px] rounded-md', placeholder: 'パスワード' %>
+          <% @user.errors.where(:password).each do |password| %>
+            <p class="text-red-500 text-xs md:text-sm"><%= password.full_message %></p>
           <% end %>
         </div>
         
@@ -47,7 +40,7 @@
         <div class="mb-6 border-b-2 border-gray-500/30"></div>
 
         <div class="flex justify-center">
-           <%# f.submit "googleで登録する", class: 'w-60 md:w-full h-12 mb-4 md:mb-6 bg-white border border-gray-500/70 hover:bg-sky-50 rounded-3xl' %>
+           <%= f.submit "googleで登録する", class: 'w-60 md:w-full h-12 mb-4 md:mb-6 bg-white border border-gray-500/70 hover:bg-sky-50 rounded-3xl' %>
         </div>
 
         <p class='text-sm md:text-base mb-8'>アカウントをお持ちの場合：
