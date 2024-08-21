@@ -1,5 +1,9 @@
-<% if current_user.liked?(@post) %>
-  <%= render 'likes/unlike' %>
-<% else %>
-  <%= render 'likes/like' %>
+<%= turbo_frame_tag "like-button-#{@post.id}" do %>
+  <% if current_user.liked?(@post) %>
+    <div class="animate-jiggle">
+      <%= render 'likes/unlike', post: @post %>
+    </div>
+  <% else %>
+    <%= render 'likes/like', post: @post %>
+  <% end %>
 <% end %>

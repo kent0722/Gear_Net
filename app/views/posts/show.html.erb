@@ -46,10 +46,12 @@
               <!-- フォロー機能 -->
               <%= link_to "フォローする", '#', class: "text-white text-xs px-3 py-2 ml-4 md:ml-16 lg:ml-24 bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-700 hover:to-blue-900 rounded-full shadow-md transition-all duration-300 ease-in-out transform hover:-translate-y-1" %>
               <!-- いいね機能 -->
-              <%= render 'likes/like_button' %>
+              <div class="absolute top-[405px] md:top-[590px] lg:top-[605px] right-[35px] md:right-[310px] lg:right-[365px]">
+                <%= render 'likes/like_button' %>
+              </div>
               <% if @post.user == current_user %>
                 <span class="block md:hidden w-4 h-10">
-                  <div class="ml-2">
+                  <div class="ml-10">
                     <div id="showSmDropdownButton" class="pt-2">
                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 12.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 18.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5Z" />
