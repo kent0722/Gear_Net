@@ -1,37 +1,33 @@
 <div class="absolute top-24 lg:top-20 left-20 md:left-52 lg:left-64 mx-8">
     <div class="lg:w-auto flex justify-center">
       <div class="min-w-[360px] max-w-[360px] md:min-w-[420px] lg:min-w-[580px] bg-white rounded-lg md:rounded-l-lg md:rounded-none lg:rounded-l-lg lg:rounded-none">
-        <div class="flex justify-center h-32 md:h-36 p-2 cursor-default">
-          <div class="pt-4 pl-4">
+        <div class="flex items-center justify-center h-24 md:h-28 lg:h-32 cursor-default">
+          <div class="pt-4 pl-5">
             <!-- アイコン画像 -->
-            <%= image_tag 'defaultUser.jpg', class: "border border-black/80 rounded-full cursor-pointer", width: 80, height: 80 %>
+            <%= image_tag 'defaultUser.jpg', class: "border border-black/80 rounded-full cursor-pointer", width: 60, height: 60 %>
             <!-- ユーザー名 -->
-            <div class="text-lg font-semibold pt-1 pr-2"><%= @post.user.name %></div>
+            <div class="text-xs md:text-sm font-semibold pt-1 pr-2"><%= @post.user.name %></div>
           </div>
-          <div class="flex flex-col w-11/12 ml-4 font-semibold italic space-y-2">
-            <div class="flex flex-wrap text-xl lg:text-3xl w-full pt-2">
+          <div class="flex flex-col w-[500px] ml-4 font-semibold italic">
+            <div class="text-xl md:text-2xl lg:text-3xl pt-5 pr-2">
               <!-- ブランド・楽器の種類 -->
               <%= @post.brand %>
-              <span class="pl-2"><%= @post.category %></span>
+              <span class="ml-2"><%= @post.category %></span>
             </div>
             <!-- 楽器のモデル -->
             <% if @post.instrument_model.present? %>
-              <div class="text-xl lg:text-2xl pl-2"><%= @post.instrument_model %></div>
+              <div class="text-md lg:text-2xl mt-2 ml-0 md:ml-4"><%= @post.instrument_model %></div>
             <% else %>
-              <div class="text-xl lg:text-2xl pl-2">&nbsp;</div>  
+              <div class="text-lg lg:text-2xl pl-2">&nbsp;</div>  
             <% end %>
             <!-- 製造年月 -->
             <% if @post.production_year.present? %>
-              <div class="text-lg lg:text-2xl text-right pr-6 pb-6"><%= @post.production_year %>年製</div>
+              <div class="text-md lg:text-xl text-right mr-5"><%= @post.production_year %>年製</div>
             <% else %>
               <div class="text-lg lg:text-2xl text-right pr-6 pb-2">&nbsp;</div>
             <% end %>
           </div>  
         </div>
-         <div class="text-sm text-right mr-4 -mt-2">
-            <span class="text-sm mr-4"><%= time_ago_in_words(@post.created_at) %>前</span>
-            #ギター
-          </div>
         <!-- メイン画像 -->
         <% if @post.image.present? %>
           <%= image_tag @post.image.variant(resize_to_fit: [580, 800]), class: "object-contain h-[320px] md:h-[490px] w-[480px] md:w-[680px] border-2 border-gray-700/50 bg-black/90" %>
@@ -43,10 +39,12 @@
           <div class="grid grid-cols-2 h-12">
             <div class="flex items-center pl-4 text-xl lg:text-2xl italic">
               <%= l @post.created_at, format: :custom_default %>
+              <span class="hidden md:block text-xs px-2 lg:px-4 pt-2 md:w-20 lg:w-24"><%= time_ago_in_words(@post.created_at) %>前</span>
+               <span class="text-xs pt-2 ml-2 md:ml-0 -mr-0 md:-mr-8">#ギター</span>
             </div>
             <div class="flex items-center">
               <!-- フォロー機能 -->
-              <%= link_to "フォローする", '#', class: "px-4 py-2 ml-4 md:ml-8 lg:ml-24 bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-700 hover:to-blue-900 text-white text-xs lg:text-sm rounded-full shadow-md transition-all duration-300 ease-in-out transform hover:-translate-y-1" %>
+              <%= link_to "フォローする", '#', class: "text-white text-xs px-3 py-2 ml-4 md:ml-16 lg:ml-24 bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-700 hover:to-blue-900 rounded-full shadow-md transition-all duration-300 ease-in-out transform hover:-translate-y-1" %>
               <!-- いいね機能 -->
               <%= render 'likes/like_button' %>
             </div>
