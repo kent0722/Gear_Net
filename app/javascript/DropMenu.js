@@ -8,6 +8,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const showSmDropdownMenu = document.getElementById('showSmDropdownMenu');
     const sideDropdownButton = document.getElementById('sideDropdownButton');
     const sideDropdownMenu = document.getElementById('sideDropdownMenu');
+    const footerBarDropdownButton = document.getElementById('footerBarDropdownButton');
+    const footerBarDropdownMenu = document.getElementById('footerBarDropdownMenu');
 
     //header
     if (dropdownButton){
@@ -55,6 +57,18 @@ document.addEventListener('DOMContentLoaded', () => {
           sideDropdownMenu.classList.add('hidden');
         }
       });
+    }
+    // footerbar
+    if (footerBarDropdownButton){
+      footerBarDropdownButton.addEventListener('click', (e) => {
+        e.stopPropagation();
+        footerBarDropdownMenu.classList.toggle('hidden');
+      })
+      document.addEventListener('click', (e) => {
+        if (!footerBarDropdownButton.contains(e.target) && !footerBarDropdownMenu.contains(e.target)){
+          footerBarDropdownMenu.classList.add('hidden');
+        }
+      })
     }
   };
   document.addEventListener('turbo:load', renderComponents);

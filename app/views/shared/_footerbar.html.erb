@@ -1,5 +1,5 @@
-<div class="block md:hidden">
-  <div class="fixed z-50 bottom-0 left-0 right-0 bg-[#171718] flex flex-cols w-full rounded text-white overflow-auto">
+<div>
+  <div class="fixed md:hidden z-50 bottom-0 left-0 right-0 bg-[#171718] flex flex-cols w-full rounded text-white overflow-auto">
     <div class="flex items-center border-t-2 border-gray-500 justify-between w-full pr-10">
       <!-- ホーム -->
       <div class="flex items-center w-4">
@@ -47,7 +47,7 @@
         <% end %>
       </div>
       <!-- その他 -->
-      <div id="sideDropdownButton" class="flex items-center w-4">
+      <div id="footerBarDropdownButton" class="flex items-center w-4">
         <div class="flex items-center w-16 h-14 px-3 mt-2 hover:bg-gray-700 rounded-lg cursor-pointer" href="#">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-7">
             <path fill-rule="evenodd" d="M3 6.75A.75.75 0 0 1 3.75 6h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 6.75ZM3 12a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 12Zm0 5.25a.75.75 0 0 1 .75-.75H12a.75.75 0 0 1 0 1.5H3.75a.75.75 0 0 1-.75-.75Z" clip-rule="evenodd" />
@@ -55,19 +55,19 @@
           <span class="hidden">その他</span>
         </div>
       </div> 
-      <div id="sideDropdownMenu" class="hidden flex justify-center text-center w-52 px-1 mt-16 bg-[#353539] rounded-lg">
-        <div class="mx-auto">
-          <ul class="w-48 text-sm text-white">
+      <div id="footerBarDropdownMenu" class="hidden fixed bottom-20 right-1 text-center w-24 px-1 mt-16 bg-[#353539] rounded-lg">
+        <div class="flex justify-center">
+          <ul class="text-center w-28 text-sm text-white">
             <li>
-              <button id="openModalTerms" class="block flex items-center px-4 py-2 h-14 w-20 text-xs hover:bg-gray-600 rounded-md">利用規約</button>
+              <button id="footerBarOpenModalTerms" class="block flex items-center justify-center px-2 py-2 h-14 w-24 text-xs hover:bg-gray-600 rounded-md">利用規約</button>
             </li>
             <li>
-              <button id="openModalPolicy" class="block flex items-center px-4 py-2 h-14 w-20 text-xs hover:bg-gray-600 rounded-md">プライバシーポリシー</button>
+              <button id="footerBarOpenModalPolicy" class="block flex items-center justify-center px-2 py-2 h-14 w-24 text-xs hover:bg-gray-600 rounded-md">プライバシーポリシー</button>
             </li>
             <li>
               <a 
                 a href="https://docs.google.com/forms/d/e/1FAIpQLSfLhEfYmU4qfPeir9hnvZFJagbuRbEzKuXeen9rmyWaAI8DNw/viewform?usp=sf_link"
-                class="block flex items-center px-4 py-2 h-14 md:h-16 w-20 md:w-44 lg:w-52 text-sm hover:bg-gray-600 rounded-md">
+                class="block flex items-center justify-center px-2 py-2 h-14 w-24 text-xs hover:bg-gray-600 rounded-md">
                 お問い合わせ
               </a>
             </li>
@@ -77,16 +77,16 @@
     </div>
   </aside>
 
-  <div id="modalTerms" class="fixed inset-0 justify-center bg-black/80 backdrop-blur-sm z-50 hidden">
-    <button id="closeModalTerms"></button>
-    <div id="modalContentTerms" class="w-[800px]">
+  <div id="footerBarModalTerms" class="fixed inset-0 justify-center text-black bg-black/80 backdrop-blur-sm z-50 hidden">
+    <button id="footerBarCloseModalTerms"></button>
+    <div id="modalContentTerms">
       <%= render 'pages/Terms_of_use' %>
     </div>
   </div>
 
-  <div id="modalPolicy" class="fixed inset-0 justify-center bg-black/80 backdrop-blur-sm z-50 hidden">
-    <button id="closeModalPolicy"></button>
-    <div id="modalContent" class="w-[800px]">
+  <div id="footerBarModalPolicy" class="fixed inset-0 justify-center text-black bg-black/80 backdrop-blur-sm z-50 hidden">
+    <button id="footerBarCloseModalPolicy"></button>
+    <div id="modalContent">
       <%= render 'pages/policy' %>
     </div>
   </div>
