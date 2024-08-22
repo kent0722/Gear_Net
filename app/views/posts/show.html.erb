@@ -1,6 +1,6 @@
 <div class="absolute top-24 lg:top-20 left-20 md:left-52 lg:left-64 mx-8">
     <div class="lg:w-auto flex justify-center">
-      <div class="min-w-[360px] max-w-[360px] md:min-w-[420px] lg:min-w-[580px] bg-white rounded-lg md:rounded-l-lg md:rounded-none lg:rounded-l-lg lg:rounded-none">
+      <div class="min-w-[330px] max-w-[330px] md:min-w-[420px] lg:min-w-[580px] bg-white rounded-lg md:rounded-l-lg md:rounded-none lg:rounded-l-lg lg:rounded-none">
         <div class="flex items-center justify-center h-24 md:h-28 lg:h-32 cursor-default">
           <div class="pt-4 pl-5">
             <!-- アイコン画像 -->
@@ -39,19 +39,19 @@
           <div class="grid grid-cols-2 h-12">
             <div class="flex items-center pl-4 text-xl lg:text-2xl italic">
               <%= l @post.created_at, format: :custom_default %>
-              <span class="hidden md:block text-xs px-2 lg:px-4 pt-2 md:w-20 lg:w-24"><%= time_ago_in_words(@post.created_at) %>前</span>
+              <span class="hidden md:block text-xs px-2 lg:px-2 pt-2 md:w-16"><%= time_ago_in_words(@post.created_at) %>前</span>
                <span class="text-xs pt-2 ml-2 md:ml-0 -mr-0 md:-mr-8">#ギター</span>
             </div>
             <div class="flex items-center">
               <!-- フォロー機能 -->
               <%= link_to "フォローする", '#', class: "text-white text-xs px-3 py-2 ml-4 md:ml-16 lg:ml-24 bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-700 hover:to-blue-900 rounded-full shadow-md transition-all duration-300 ease-in-out transform hover:-translate-y-1" %>
               <!-- いいね機能 -->
-              <div class="absolute top-[405px] md:top-[590px] lg:top-[605px] right-[35px] md:right-[310px] lg:right-[365px]">
+              <div class="absolute top-[405px] md:top-[590px] lg:top-[605px] right-[20px] md:right-[310px] lg:right-[365px]">
                 <%= render 'likes/like_button' %>
               </div>
               <% if @post.user == current_user %>
                 <span class="block md:hidden w-4 h-10">
-                  <div class="ml-10">
+                  <div class="ml-8">
                     <div id="showSmDropdownButton" class="pt-2">
                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 12.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5ZM12 18.75a.75.75 0 1 1 0-1.5.75.75 0 0 1 0 1.5Z" />
@@ -105,7 +105,7 @@
           <% end %>
         </div>
         <!-- コメント一覧 -->
-        <div class="top-12 ml-1 absolute h-[685px] w-[330px] custom-scrollbar overflow-auto">
+        <div class="top-12 ml-1 absolute h-[663px] lg:h-[660px] w-[330px] custom-scrollbar overflow-auto">
           <div id="comment" class="h-16">
             <%= render @comments %>
           </div>
