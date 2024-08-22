@@ -82,7 +82,7 @@
       </div> 
     </div>
     <!-- ここからコメントフォーム -->
-    <div class="hidden md:block border-l border-gray-700/20 bg-white md:min-w-[300px] lg:min-w-[330px] rounded-r-lg"> 
+    <div class="hidden md:block border-l border-gray-700/20 bg-white md:min-w-[280px] lg:min-w-[330px] rounded-r-lg"> 
       <div class="border-b border-gray-700/20 h-12 pr-4">
         <% if @post.user == current_user %>
           <div class="flex justify-end h-12">
@@ -105,13 +105,13 @@
         <% end %>
       </div>
       <!-- コメント一覧 -->
-      <div class="top-12 ml-1 absolute h-[663px] lg:h-[680px] w-[330px] custom-scrollbar overflow-auto">
+      <div class="top-12 ml-1 absolute h-[663px] lg:h-[680px]  md:min-w-[330px] md:max-w-[280px] lg:min-w-[280px] lg:max-w-[330px] custom-scrollbar overflow-auto">
         <div id="comment" class="h-16">
           <%= render @comments %>
         </div>
       </div>
       <!-- ここからコメント入力フォーム -->
-      <div class="border-t border-gray-700/20 absolute z-50 bottom-0 md:bottom-12 p-4 h-20 w-[294px] lg:w-[380px]">
+      <div class="border-t border-gray-700/20 pt-4 pl-2 mt-[680px] md:max-w-[280px] lg:min-w-[280px]  lg:min-w-[330px] lg:max-w-[330px]">
         <%= render 'comments/form', comment: @comment, post: @post %>
       </div>
     </div>
