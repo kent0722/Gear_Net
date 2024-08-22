@@ -1,6 +1,6 @@
-<div class="absolute top-24 lg:top-20 -left-4 md:left-52 lg:left-64 mx-8">
+<div class="absolute top-24 lg:top-20 left-0 md:left-52 lg:left-64 right-0 bottom-0 mx-8">
   <div class="lg:w-auto flex justify-center">
-    <div class="min-w-[330px] max-w-[330px] md:min-w-[420px] lg:min-w-[580px] bg-white rounded-lg md:rounded-l-lg md:rounded-none lg:rounded-l-lg lg:rounded-none">
+    <div class="min-w-[330px] max-w-[330px] md:min-w-[420px] md:max-w-[420px] lg:min-w-[580px] lg:max-w-[580px] bg-white rounded-lg md:rounded-l-lg md:rounded-none lg:rounded-l-lg lg:rounded-none">
       <div class="flex items-center justify-center h-24 md:h-28 lg:h-32 cursor-default">
         <div class="pt-4 pl-5">
           <!-- アイコン画像 -->
@@ -46,7 +46,7 @@
             <!-- フォロー機能 -->
             <%= link_to "フォローする", '#', class: "text-white text-xs px-3 py-2 ml-4 md:ml-16 lg:ml-24 bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-700 hover:to-blue-900 rounded-full shadow-md transition-all duration-300 ease-in-out transform hover:-translate-y-1" %>
             <!-- いいね機能 -->
-            <div class="absolute top-[405px] md:top-[590px] lg:top-[605px] right-[20px] md:right-[310px] lg:right-[365px]">
+            <div class="ml-2 md:ml-4 lg:ml-8">
               <%= render 'likes/like_button' %>
             </div>
             <% if @post.user == current_user %>
@@ -82,7 +82,7 @@
       </div> 
     </div>
     <!-- ここからコメントフォーム -->
-    <div class="hidden md:block border-l border-gray-700/20 bg-white md:min-w-[300px] lg:w-[330px] rounded-r-lg"> 
+    <div class="hidden md:block border-l border-gray-700/20 bg-white md:min-w-[300px] lg:min-w-[330px] rounded-r-lg"> 
       <div class="border-b border-gray-700/20 h-12 pr-4">
         <% if @post.user == current_user %>
           <div class="flex justify-end h-12">
@@ -105,13 +105,13 @@
         <% end %>
       </div>
       <!-- コメント一覧 -->
-      <div class="top-12 ml-1 absolute h-[663px] lg:h-[660px] w-[330px] custom-scrollbar overflow-auto">
+      <div class="top-12 ml-1 absolute h-[663px] lg:h-[680px] w-[330px] custom-scrollbar overflow-auto">
         <div id="comment" class="h-16">
           <%= render @comments %>
         </div>
       </div>
       <!-- ここからコメント入力フォーム -->
-      <div class="border-t border-gray-700/20 absolute z-50 bottom-0 lg:bottom-5 p-4 h-20 w-[294px] lg:w-[380px]">
+      <div class="border-t border-gray-700/20 absolute z-50 bottom-0 md:bottom-12 p-4 h-20 w-[294px] lg:w-[380px]">
         <%= render 'comments/form', comment: @comment, post: @post %>
       </div>
     </div>
