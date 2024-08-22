@@ -1,7 +1,7 @@
 <% header_class = logged_in? ? 'bg-[#171718] z-50' : 'z-0' %>
 <header class="fixed top-0 left-0 right-0 flex items-center text-white h-20 <%= header_class %>">
   <nav class="mx-12 w-full">
-    <div class="flex items-center justify-between -ml-4 md:ml-0">    
+    <div class="flex items-center justify-between -ml-8 md:ml-0">    
       <div class="flex items-center">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="text-yellow-600 size-5 md:size-6">
           <path stroke-linecap="round" stroke-linejoin="round" d="m3.75 13.5 10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z" />
@@ -23,8 +23,8 @@
             </div>
           </div>
         <% else %> 
-          <%= link_to 'Log In', login_path, class: 'bg-gray-600 py-[2px] px-5 text-sm font-bold hover:opacity-40' %>
-          <%= link_to 'Sign Up', new_user_path, class: 'p-1 px-3 ml-8 md:ml-16 text-black bg-white transition hover:opacity-40 text-xs font-bold rounded-sm' %>
+          <%= link_to 'LogIn', login_path, class: 'bg-gray-600 py-[2px] px-5 ml-4 md:ml-0 text-xs md:text-sm font-bold hover:opacity-40' %>
+          <%= link_to 'SignUp', new_user_path, class: 'p-1 px-3 ml-10 md:ml-16 text-black bg-white transition hover:opacity-40 text-xs font-bold rounded-sm' %>
         <% end %>
       </div>
     </div>
