@@ -3,7 +3,7 @@
   <nav class="mx-12 w-full">
     <div class="flex items-center justify-between">    
       <div class="flex items-center">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="text-yellow-600 size-6">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="text-yellow-600 size-5 md:size-6">
           <path stroke-linecap="round" stroke-linejoin="round" d="m3.75 13.5 10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z" />
         </svg>
         <a harf="root_path" class="ml-3 text-white text-2xl md:text-3xl xl:text-3xl font-sans font-bold ">GearNet.</a>
@@ -24,7 +24,7 @@
           </div>
         <% else %> 
           <%= link_to 'Log In', login_path, class: 'bg-gray-600 py-[2px] px-5 text-sm font-bold hover:opacity-40' %>
-          <%= link_to 'Sign Up', new_user_path, class: 'p-1 px-3 ml-16 text-black bg-white transition hover:opacity-40 text-xs font-bold rounded-sm' %>
+          <%= link_to 'Sign Up', new_user_path, class: 'p-1 px-3 ml-8 md:ml-16 text-black bg-white transition hover:opacity-40 text-xs font-bold rounded-sm' %>
         <% end %>
       </div>
     </div>
