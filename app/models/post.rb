@@ -3,7 +3,7 @@ class Post < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :like_users, through: :likes, source: :user
-  has_one_attached :image
+  has_many_attached :images
 
   validates :brand, presence: true, length: { maximum: 20 }
   validates :category, presence: true, length: { maximum: 20 }
