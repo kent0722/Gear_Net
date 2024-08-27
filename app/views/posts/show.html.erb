@@ -31,7 +31,6 @@
       <!-- メイン画像 -->
       <% if @post.images.present? %>
         <%= image_tag @post.images.first.variant(resize_to_fit: [580, 800]), class: "object-contain h-[320px] md:h-[490px] w-[480px] md:w-[680px] border-2 border-gray-700/50 bg-black/90" %>
-
       <% else %>
         <%= image_tag 'default.jpg', class: "object-contain h-[320px] md:h-[490px] w-[480px] md:w-[680px] border-2 border-gray-700/50 bg-black/90" %> 
       <% end %>
@@ -91,7 +90,7 @@
         </div>
       </div>
       <!-- ここからコメント入力フォーム -->
-      <div class="border-t border-gray-700/20 pt-4 pl-2 mt-[680px] md:max-w-[280px] lg:min-w-[280px]  lg:min-w-[330px] lg:max-w-[330px]">
+      <div class="border-t border-gray-700/20 pt-4 pl-2 mt-[680px] md:max-w-[280px] md:min-w-[280px]  lg:min-w-[330px] lg:max-w-[330px]">
         <%= render 'comments/form', comment: @comment, post: @post %>
       </div>
     </div>

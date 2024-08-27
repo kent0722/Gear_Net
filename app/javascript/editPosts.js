@@ -4,10 +4,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeModal = document.getElementById("closeModal");
     const modal = document.getElementById("modal");
 
-    const openSmModal = document.getElementById("openSmModal");
-    const closeSmModal = document.getElementById("closeSmModal");
-    const smModal = document.getElementById("smModal");
-
     const editBrandInput = document.getElementById('edit_brand');
     const nodeList = document.querySelectorAll('#edit_brand-list option')
     const editDatalistOptions = Array.from(nodeList).map(option => option.value);
@@ -23,38 +19,18 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!editPostForm) return;
 
     if(openModal){
-      //クリックでモーダルを開く
       openModal.addEventListener("click", () => {
         modal.style.display = "flex";
         document.body.style.overflow = "hidden";
       });
-      //モーダル背景を閉じるボタンとなる
       closeModal.addEventListener("click", () => {
         modal.style.display = "none";
         document.body.style.overflow = "";
       });
 
       modal.addEventListener("click", (e) => {
-        // クリックされた要素がモーダルの背景部分であることを確認
         if (e.target === modal) {
           modal.style.display = "none";
-          document.body.style.overflow = "";
-        }
-      });
-    }
-
-    if(openSmModal){
-      openSmModal.addEventListener('click', () => {
-        smModal.style.display = 'flex';
-        document.body.style.overflow = 'hidden';
-      })
-      closeSmModal.addEventListener('click', () => {
-        smModal.style.display = "none";
-        document.body.style.overflow = "";
-      })
-      smModal.addEventListener('click', (e) => {
-        if (e.target === smModal) {
-          smModal.style.display = 'none';
           document.body.style.overflow = "";
         }
       });
@@ -88,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
       })
     }
 
-    // PostEdit image_upload
+    /// PostEdit image_upload
     if(editFileInput){
       editFileInput.addEventListener('change', (e) => {
         const files = Array.from(e.target.files);

@@ -30,10 +30,10 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-    redirect_to post_path(@post), flash: { notice: '編集しました' }
-   else
-    flash.now[:danger] = '編集に失敗しました'
-    redirect_to posts_path(@pso)
+      redirect_to post_path(@post), flash: { notice: '編集しました' }
+    else
+      flash.now[:danger] = '編集に失敗しました'
+      redirect_to posts_path(@post)
    end
   end
 
