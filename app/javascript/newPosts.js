@@ -51,6 +51,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if(files.length > 6){
           alert("投稿できる画像は6枚までです");
           e.target.value = ''; // ファイル選択をリセット
+          previewList.innerHTML = '';
+          imagePreview.classList.add('hidden');
+          fileSvg.classList.remove('hidden');
+          placeholderText.classList.remove('hidden');
           return;
         }
         
