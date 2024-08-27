@@ -44,13 +44,13 @@
           </div>
           <div class="flex items-center">
             <!-- フォロー機能 -->
-            <%= link_to "フォローする", '#', class: "text-white text-xs px-3 py-2 ml-4 md:ml-16 lg:ml-24 bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-700 hover:to-blue-900 rounded-full shadow-md transition-all duration-300 ease-in-out transform hover:-translate-y-1" %>
+            <%= link_to "フォローする", '#', class: "text-white text-xs px-3 py-2 ml-4 md:ml-12 lg:ml-24 bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-700 hover:to-blue-900 rounded-full shadow-md transition-all duration-300 ease-in-out transform hover:-translate-y-1" %>
             <!-- いいね機能 -->
             <div class="ml-2 md:ml-4 lg:ml-8">
               <%= render 'likes/like_button' %>
             </div>
             <% if @post.user == current_user %>
-              <span class="block md:hidden w-4 h-10">
+              <span class="block w-4 h-10 ml-0 lg:ml-4">
                 <div>
                   <div id="showSmDropdownButton" class="pt-2">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
@@ -58,13 +58,13 @@
                     </svg>
                   </div>
                 </div> 
-                <div id="showSmDropdownMenu" class="absolute z-50 top-50 right-0 bg-[#353539] w-28 rounded-lg hidden">
-                  <ul class="text-white text-center w-28">
+                <div id="showSmDropdownMenu" class="relative z-50 top-50 right-12 bg-[#353539] w-20 md:w-28 rounded-lg hidden">
+                  <ul class="text-white text-center w-20 md:w-28">
                     <li>
-                      <button id="openModal" class="block px-4 py-2 w-28 hover:bg-gray-600 rounded-lg">編集</button>   
+                      <button id="openModal" class="block text-sm md:text-base px-4 py-2 w-20 md:w-28 hover:bg-gray-600 rounded-lg">編集</button>   
                     </li>
                     <li>
-                      <%= link_to '削除', post_path, data: { turbo_method: "delete", turbo_confirm: '削除しますか' }, class: 'block px-4 py-2 hover:bg-gray-600 rounded-lg' %>
+                      <%= link_to '削除', post_path, data: { turbo_method: "delete", turbo_confirm: '削除しますか' }, class: 'block text-sm md:text-base px-4 py-2 hover:bg-gray-600 rounded-lg' %>
                     </li>
                   </ul>
                 </div>
@@ -83,27 +83,7 @@
     </div>
     <!-- ここからコメントフォーム -->
     <div class="hidden md:block border-l border-gray-700/20 bg-white md:min-w-[280px] lg:min-w-[330px] rounded-r-lg"> 
-      <div class="border-b border-gray-700/20 h-12 pr-4">
-        <% if @post.user == current_user %>
-          <div class="flex justify-end h-12">
-            <div id="showDropdownButton" class="pt-2">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-8 cursor-pointer">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM18.75 12a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
-              </svg>
-            </div>
-          </div> 
-          <div id="showDropdownMenu" class="relative z-50 top-0 md:left-44 lg:left-56 bg-[#353539] w-28 rounded-lg hidden">
-            <ul class="text-white text-center w-28">
-              <li>
-                <button id="openSmModal" class="block px-4 py-2 w-28 hover:bg-gray-600 rounded-lg">編集</button>   
-              </li>
-              <li>
-                <%= link_to '削除', post_path, data: { turbo_method: "delete", turbo_confirm: '削除しますか' }, class: 'block px-4 py-2 hover:bg-gray-600 rounded-lg' %>
-              </li>
-            </ul>
-          </div>
-        <% end %>
-      </div>
+      <div class="border-b border-gray-700/20 h-12 pr-4"></div>
       <!-- コメント一覧 -->
       <div class="top-12 ml-1 absolute h-[663px] lg:h-[680px]  md:min-w-[330px] md:max-w-[280px] lg:min-w-[280px] lg:max-w-[330px] custom-scrollbar overflow-auto">
         <div id="comment" class="h-16">
@@ -118,16 +98,10 @@
   </div>
 </div>
 
-<div id="modal" class="fixed inset-0 justify-center bg-black/80 backdrop-blur-sm z-50 custom-scrollbar overflow-auto hidden">
-  <button id="closeModal">閉じる</button>
-  <div id="modalContent">
-    <%= render 'posts/edit', post: @post %>
-  </div>
-</div>
-
-<div id="smModal" class="fixed inset-0 justify-center bg-black/80 backdrop-blur-sm z-50 custom-scrollbar overflow-auto hidden">
-  <button id="closeSmModal">閉じる</button>
-  <div id="modalContent">
-    <%= render 'posts/edit', post: @post %>
+  <div id="modal" class="fixed inset-0 justify-center bg-black/80 backdrop-blur-sm z-50 custom-scrollbar overflow-auto hidden">
+    <button id="closeModal">閉じる</button>
+    <div id="modalContent">
+      <%= render 'posts/edit', post: @post %>
+    </div>
   </div>
 </div>
