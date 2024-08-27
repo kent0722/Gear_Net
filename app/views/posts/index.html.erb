@@ -1,5 +1,5 @@
 <div class="absolute top-20 left-1/2 transform -translate-x-1/2 z-0 flex justify-center ml-[auto] md:ml-[60px] lg:ml-[120px] xl:ml-[120px] max-w-[330px] md:min-w-[620px] lg:min-w-[940px] xl:min-w-[1250px] custom-scrollbar overflow-y-auto">
-  <div class="mx-2 grid grid-row md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+  <div class="mx-2 grid grid-row md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 pb-36">
     <% @posts.each do |post| %>
       <%= link_to post_path(post), class: "bg-white max-w-xs rounded-2xl transition-transform transform hover:scale-105 cursor-pointer" do %>
         <div class="hidden md:block">
