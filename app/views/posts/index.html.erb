@@ -4,7 +4,7 @@
       <%= link_to post_path(post), class: "bg-white max-w-xs rounded-2xl transition-transform transform hover:scale-105 cursor-pointer" do %>
         <div class="hidden md:block">
           <div class="flex items-center justify-center pt-1 px-2 h-20 min-w-sm">
-            <div class="-ml-1 min-w-[60px]">
+            <div class="-ml-1 min-w-[65px]">
               <!-- アイコン画像 -->
               <%= image_tag 'defaultUser.jpg', class: "border border-black/80 rounded-full min-w-11 ml-1", width: 20, height: 20 %>
               <!-- ユーザー名 -->
@@ -18,7 +18,7 @@
               </div>
               <!-- 楽器のモデル -->
               <% if post.instrument_model.present? %>
-                <div class="text-sm mr-2 truncate"><%= post.instrument_model %></div>
+                <div class="border border-red-500 text-sm mr-2 truncate"><%= post.instrument_model %></div>
               <% else %>
                 <div class="text-md mr-2">&nbsp;</div>
               <% end %>
