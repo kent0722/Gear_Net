@@ -1,7 +1,7 @@
 <div class="absolute top-24 lg:top-20 left-0 md:left-52 lg:left-52 right-0 bottom-0 mx-8">
   <div class="pb-36 lg:w-auto flex justify-center">
     <div class="min-w-[330px] max-w-[330px] md:min-w-[420px] md:max-w-[420px] lg:min-w-[580px] lg:max-w-[580px] bg-white rounded-lg md:rounded-l-lg md:rounded-none lg:rounded-l-lg lg:rounded-none">
-      <div class="flex items-center justify-center h-24 md:h-28 lg:h-28 cursor-default">
+      <div class="flex items-center justify-center h-24 md:h-28 cursor-default">
         <div class="pt-4 pl-5">
           <!-- アイコン画像 -->
           <%= image_tag 'defaultUser.jpg', class: "border border-black/80 rounded-full cursor-pointer", width: 50, height: 50 %>
@@ -9,20 +9,20 @@
           <div class="text-xs md:text-sm font-semibold pt-1 pr-2 w-20"><%= @post.user.name %></div>
         </div>
         <div class="flex flex-col w-[500px] ml-4 font-semibold italic">
-          <div class="text-xl md:text-2xl lg:text-3xl pt-8 pr-2">
+          <div class="text-xl md:text-2xl pt-8 pr-2">
             <!-- ブランド・楽器の種類 -->
             <%= @post.brand %>
-            <span class="ml-4"><%= @post.category %></span>
+            <span class="ml-2"><%= @post.category %></span>
           </div>
           <!-- 楽器のモデル -->
           <% if @post.instrument_model.present? %>
-            <div class="text-md lg:text-2xl mt-2 ml-0 md:ml-4"><%= @post.instrument_model %></div>
+            <div class="text-md lg:text-xl mt-2 ml-0 md:ml-4"><%= @post.instrument_model %></div>
           <% else %>
-            <div class="text-lg lg:text-2xl pl-2">&nbsp;</div>  
+            <div class="text-lg lg:text-xl pl-2">&nbsp;</div>  
           <% end %>
           <!-- 製造年月 -->
           <% if @post.production_year.present? %>
-            <div class="text-md lg:text-xl text-right mr-5 mb-5"><%= @post.production_year %>年製</div>
+            <div class="text-md lg:text-lg text-right mr-5 mb-5"><%= @post.production_year %>年製</div>
           <% else %>
             <div class="text-lg lg:text-2xl text-right pr-6 pb-2">&nbsp;</div>
           <% end %>
