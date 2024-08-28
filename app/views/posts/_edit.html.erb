@@ -50,7 +50,6 @@
                 </datalist>
                 <label for="production_year" class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">製造年月:</label>
               </div>
-
               <div class="relative z-0 w-full mb-5 group">
                 <label for="tags" class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">タグ:</label>
               </div>
@@ -64,28 +63,22 @@
                 <p class="text-red-500"><%= body.full_message %></p>
               <% end %>
             </div>
-          </div>
-          <div>
+
             <!-- File Upload -->
-            <div class="grid grid-cols-2 group"> 
-              <%= f.file_field :images, multiple: true, class: 'hidden', id: 'edit-file-input', accept: 'image/png, image/jpeg' %>
-              <label for="edit-file-input" class="relative bg-gray-300 h-40 md:h-56 w-[160px] md:w-[250px] mr-4 flex flex-col items-center justify-center rounded-lg cursor-pointer overflow-hidden">
-                <svg id='edit-fileSvg' xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="absolute z-50 size-16 md:size-20 text-white">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M6.827 6.175A2.31 2.31 0 0 1 5.186 7.23c-.38.054-.757.112-1.134.175C2.999 7.58 2.25 8.507 2.25 9.574V18a2.25 2.25 0 0 0 2.25 2.25h15A2.25 2.25 0 0 0 21.75 18V9.574c0-1.067-.75-1.994-1.802-2.169a47.865 47.865 0 0 0-1.134-.175 2.31 2.31 0 0 1-1.64-1.055l-.822-1.316a2.192 2.192 0 0 0-1.736-1.039 48.774 48.774 0 0 0-5.232 0 2.192 2.192 0 0 0-1.736 1.039l-.821 1.316Z" />
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 12.75a4.5 4.5 0 1 1-9 0 4.5 4.5 0 0 1 9 0ZM18.75 10.5h.008v.008h-.008V10.5Z" />
-                </svg>
-                <img id="edit-image-preview" class="relative h-full w-full object-cover" src="<%=  url_for(@post.images.first) %>%" alt="選択された画像" />
-              </label>
-              <div id="edit-previews" class="flex overflow-x-auto overflow-y-hidden mt-12 md:mt-28 ml-4 md:ml-auto h-28 w-[130px] md:w-full">
-                <% @post.images.each do |image|%>
-                  <%= image_tag image, class: 'object-cover w-[70px] h-[100px] mx-1' %>
-                <% end %>
+            <%= f.file_field :images, multiple: true, accept: 'image/png, image/jpeg', class: 'text-xs', id: 'edit-file-input'%>
+            <% if @post.images.attached? %>
+              <div id="edit-previews" class="flex overflow-x-auto overflow-y-hidden mt-4 md:mt-10 ml-auto h-36 md:h-48 w-full">
+                <% @post.images.each do |image| %>
+                  <div class="relative flex-shrink-0 mx-1">
+                    <%= image_tag image, class: 'object-cover w-[70px] md:w-[78px] h-[100px] md:h-[120px] cursor-pointer' %>
+                    <%= f.check_box :image_ids, {multiple: true}, image.id, false %>
+                  </div>
+                <% end %> 
               </div>
-            </div>
+            <% end %> 
           </div>
         <% end %>
       </div>
     </div>
   </div>
 </div>
-

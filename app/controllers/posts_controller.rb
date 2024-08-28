@@ -29,7 +29,17 @@ class PostsController < ApplicationController
   def edit; end
 
   def update
-    if @post.update(post_params)
+    if params[:post][:images].present?
+      @post.images.attach(params[:post][:images])
+    end
+
+    if params[:post][:image_ids].present?
+      params[:post][:image_ids].each do |image_id|
+        @post.images.destroy(image_id)
+      end
+    end
+    
+    if @post.update(post_params.except(:images))
       redirect_to post_path(@post), flash: { notice: '編集しました' }
     else
       flash.now[:danger] = '編集に失敗しました'
@@ -44,6 +54,7 @@ class PostsController < ApplicationController
   end
 
   private
+  
   def post_params
     params.require(:post).permit(:brand, :category, :production_year, :instrument_model, :body, :video, images: [])
   end

@@ -9,13 +9,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const editDatalistOptions = Array.from(nodeList).map(option => option.value);
     const editCategoryInput = document.getElementById('edit_category');
     const editInstrumentModelInput = document.getElementById('edit_instrument_model')
-    // image_upload
+    
+    // image_upload preview
     const editFileInput = document.getElementById('edit-file-input');
-    const editFileSvg = document.getElementById('edit-fileSvg');
-    const editImagePreview = document.getElementById('edit-image-preview');
-    // preview
+    const imagePreviews = document.getElementById('edit-previews');
     const editPostForm = document.getElementById('edit_post');
-    const editPreviewList = document.getElementById('edit-previews');
     if (!editPostForm) return;
 
     if(openModal){
@@ -65,54 +63,27 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /// PostEdit image_upload
-    if(editFileInput){
-      editFileInput.addEventListener('change', (e) => {
-        const files = Array.from(e.target.files);
+    editFileInput.addEventListener('change', (e) => {
+      const files = Array.from(e.target.files);
+      const imageCount = imagePreviews.children.length;
+      const totalImageCount = imageCount + files.length;
 
-        if(files.length > 6) {
-          alert("投稿できる画像は6枚までです");
-          e.target.value = ''; // ファイル選択をリセット
-          return;
-        }
+      if(totalImageCount > 6) {
+        alert("投稿できる画像は6枚までです");
+        e.target.value = ''; // ファイル選択をリセット
+        return;
+      }
+    })
 
-        const file = files[0]
-        if (file) {
-          const editReader = new FileReader();
-          editReader.readAsDataURL(file);
-          editReader.onload = (e) => {
-            editImagePreview.src = e.target.result;
-            editImagePreview.classList.remove('hidden');
-            editFileSvg.classList.add('hidden');
-          }
-        } else {
-          editImagePreview.classList.add('hidden');
-          editFileSvg.classList.remove('hidden');
-        }
-        
-        // preview
-        editPreviewList.innerHTML = '';
-        files.map((file) => {
-          const blob = URL.createObjectURL(file);
-          const previewWrapper = document.createElement('div');
-          previewWrapper.setAttribute('class', 'preview flex-shrink-0 mx-1');
-
-          const previewImage = document.createElement('img');
-          previewImage.setAttribute('class', 'preview-image');
-          previewImage.setAttribute('src', blob);
-          previewImage.style.width = '70px';
-          previewImage.style.height = '100px';
-          previewImage.style.objectFit = 'cover';
-
-          // 画像クリック時に label の imagePreview に表示
-          previewImage.addEventListener('click', () => {
-            editImagePreview.src = blob;
-          });
-
-          previewWrapper.appendChild(previewImage);
-          editPreviewList.appendChild(previewWrapper);
-        });     
-      });
+    const checkImageCount = () => {
+      const imageCount = imagePreviews.children.length;
+      if (imageCount >= 6) {
+        editFileInput.disabled = true;
+      } else {
+        editFileInput.disabled = false;
+      }
     }
+    checkImageCount();
   }
   document.addEventListener("turbo:load", editModal);
 })
