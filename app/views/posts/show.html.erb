@@ -1,55 +1,55 @@
-<div class="absolute top-24 lg:top-20 left-0 md:left-52 lg:left-64 right-0 bottom-0 mx-8">
-  <div class="pb-36 lg:w-auto flex justify-center">
-    <div class="min-w-[330px] max-w-[330px] md:min-w-[420px] md:max-w-[420px] lg:min-w-[580px] lg:max-w-[580px] bg-white rounded-lg md:rounded-l-lg md:rounded-none lg:rounded-l-lg lg:rounded-none">
-      <div class="flex items-center justify-center h-24 md:h-28 lg:h-32 cursor-default">
+<div class="absolute top-24 left-0 md:left-52 right-0 bottom-0 mx-8">
+  <div class="pb-36 flex justify-center">
+    <div class="min-w-[330px] max-w-[330px] md:min-w-[420px] md:max-w-[420px] bg-white rounded-lg md:rounded-l-lg md:rounded-none ">
+      <div class="flex items-center justify-center h-24 md:h-28 cursor-default">
         <div class="pt-4 pl-5">
           <!-- アイコン画像 -->
-          <%= image_tag 'defaultUser.jpg', class: "border border-black/80 rounded-full cursor-pointer", width: 60, height: 60 %>
+          <%= image_tag 'defaultUser.jpg', class: "border border-black/80 rounded-full cursor-pointer", width: 50, height: 50 %>
           <!-- ユーザー名 -->
           <div class="text-xs md:text-sm font-semibold pt-1 pr-2 w-20"><%= @post.user.name %></div>
         </div>
         <div class="flex flex-col w-[500px] ml-4 font-semibold italic">
-          <div class="text-xl md:text-2xl lg:text-3xl pt-5 pr-2">
+          <div class="text-xl md:text-2xl pt-8 pr-2">
             <!-- ブランド・楽器の種類 -->
             <%= @post.brand %>
-            <span class="ml-2"><%= @post.category %></span>
+            <span class="ml-4"><%= @post.category %></span>
           </div>
           <!-- 楽器のモデル -->
           <% if @post.instrument_model.present? %>
-            <div class="text-md lg:text-2xl mt-2 ml-0 md:ml-4"><%= @post.instrument_model %></div>
+            <div class="text-md mt-2 ml-0 md:ml-4"><%= @post.instrument_model %></div>
           <% else %>
-            <div class="text-lg lg:text-2xl pl-2">&nbsp;</div>  
+            <div class="text-lg pl-2">&nbsp;</div>  
           <% end %>
           <!-- 製造年月 -->
           <% if @post.production_year.present? %>
-            <div class="text-md lg:text-xl text-right mr-5"><%= @post.production_year %>年製</div>
+            <div class="text-md ltext-right mr-5 mb-5"><%= @post.production_year %>年製</div>
           <% else %>
-            <div class="text-lg lg:text-2xl text-right pr-6 pb-2">&nbsp;</div>
+            <div class="text-lg text-right pr-6 pb-2">&nbsp;</div>
           <% end %>
         </div>  
       </div>
       <!-- メイン画像 -->
       <% if @post.images.present? %>
-        <%= image_tag @post.images.first.variant(resize_to_fit: [580, 800]), class: "object-contain h-[320px] md:h-[490px] w-[480px] md:w-[680px] border-2 border-gray-700/50 bg-black/90" %>
+        <%= image_tag @post.images.first.variant(resize_to_fit: [580, 800]), class: "object-contain h-[320px] md:h-[360px] w-[480px] md:w-[580px] border-2 border-gray-700/50 bg-black/90" %>
       <% else %>
-        <%= image_tag 'default.jpg', class: "object-contain h-[320px] md:h-[490px] w-[480px] md:w-[680px] border-2 border-gray-700/50 bg-black/90" %> 
+        <%= image_tag 'default.jpg', class: "object-contain h-[320px] md:h-[490px] w-[380px] md:w-[680px] border-2 border-gray-700/50 bg-black/90" %> 
       <% end %>
       <div class="h-48 cursor-default">
         <div class="grid grid-cols-2 h-12">
-          <div class="flex items-center pl-4 text-xl lg:text-2xl italic">
+          <div class="flex items-center pl-4 text-xl italic">
             <%= l @post.created_at, format: :custom_default %>
-            <span class="hidden md:block text-xs px-2 lg:px-2 pt-2 md:w-16"><%= time_ago_in_words(@post.created_at) %>前</span>
+            <span class="hidden md:block text-xs px-2 pt-2 md:w-20"><%= time_ago_in_words(@post.created_at) %>前</span>
               <span class="text-xs pt-2 ml-2 md:ml-0 -mr-0 md:-mr-8">#ギター</span>
           </div>
           <div class="flex items-center">
             <!-- フォロー機能 -->
-            <%= link_to "フォローする", '#', class: "text-white text-xs px-3 py-2 ml-4 md:ml-12 lg:ml-24 bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-700 hover:to-blue-900 rounded-full shadow-md transition-all duration-300 ease-in-out transform hover:-translate-y-1" %>
+            <%= link_to "フォローする", '#', class: "text-white text-xs px-2 py-2 ml-4 md:ml-12 bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-700 hover:to-blue-900 rounded-full shadow-md transition-all duration-300 ease-in-out transform hover:-translate-y-1" %>
             <!-- いいね機能 -->
-            <div class="ml-2 md:ml-4 lg:ml-8">
+            <div class="ml-2 md:ml-4">
               <%= render 'likes/like_button' %>
             </div>
             <% if @post.user == current_user %>
-              <span class="block w-4 h-10 ml-0 lg:ml-4">
+              <span class="block w-4 h-10 ml-0">
                 <div>
                   <div id="showSmDropdownButton" class="pt-2">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
@@ -72,7 +72,7 @@
           </div>
         </div>
         <div>
-          <div class="h-32">
+          <div class="mt-2 ml-4 h-32 min-w-[295px] md:min-w-[545px] max-w-[295px] md:max-w-[545px]">
             <div class="pt-2 pl-5">
               <%= simple_format(@post.body) %>
             </div>
@@ -81,16 +81,16 @@
       </div> 
     </div>
     <!-- ここからコメントフォーム -->
-    <div class="hidden md:block border-l border-gray-700/20 bg-white md:min-w-[280px] lg:min-w-[330px] rounded-r-lg"> 
+    <div class="hidden md:block border-l border-gray-700/20 bg-white md:min-w-[280px] rounded-r-lg"> 
       <div class="border-b border-gray-700/20 h-12 pr-4"></div>
       <!-- コメント一覧 -->
-      <div class="top-12 ml-1 absolute h-[663px] lg:h-[680px]  md:min-w-[330px] md:max-w-[280px] lg:min-w-[280px] lg:max-w-[330px] custom-scrollbar overflow-auto">
+      <div class="top-12 ml-1 absolute h-[663px] lg:h-[590px]  md:min-w-[330px] md:max-w-[280px] custom-scrollbar overflow-auto">
         <div id="comment" class="h-16">
           <%= render @comments %>
         </div>
       </div>
       <!-- ここからコメント入力フォーム -->
-      <div class="border-t border-gray-700/20 pt-4 pl-2 mt-[680px] md:max-w-[280px] md:min-w-[280px]  lg:min-w-[330px] lg:max-w-[330px]">
+      <div class="border-t border-gray-700/20 pt-2 pl-2 pb-2 mt-[600px] md:max-w-[280px] md:min-w-[280px]">
         <%= render 'comments/form', comment: @comment, post: @post %>
       </div>
     </div>
