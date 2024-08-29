@@ -22,3 +22,21 @@ body.logged-out {
 .custom-scrollbar::-webkit-scrollbar{
   display: none;
 }
+
+.swiper-button-prev,
+.swiper-button-next {
+  height: 50px;
+  width: 20px;
+}
+
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  color: white;
+  font-size: 24px;
+  hight: 50px;
+  widht: 30px;
+}
+
+.swiper-pagination-bullet {
+  background-color: white;
+}

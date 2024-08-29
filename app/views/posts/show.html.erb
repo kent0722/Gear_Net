@@ -29,11 +29,26 @@
         </div>  
       </div>
       <!-- メイン画像 -->
-      <% if @post.images.present? %>
-        <%= image_tag @post.images.first.variant(resize_to_fit: [580, 800]), class: "object-contain h-[320px] md:h-[360px] w-[480px] md:w-[580px] border-2 border-gray-700/50 bg-black/90" %>
-      <% else %>
-        <%= image_tag 'default.jpg', class: "object-contain h-[320px] md:h-[490px] w-[380px] md:w-[680px] border-2 border-gray-700/50 bg-black/90" %> 
-      <% end %>
+      <div class="container">
+        <div class="swiper">
+          <div class="swiper-wrapper">
+            <% if @post.images.present? %>
+              <% @post.images.each do |image| %>
+                <div class="swiper-slide">
+                  <%= image_tag image.variant(resize_to_fit: [580, 800]), class: "object-contain h-[320px] md:h-[360px] w-[480px] md:w-[580px] border-2 border-gray-700/50 bg-black/90" %>
+                </div>
+              <% end %>
+            <% else %>
+              <%= image_tag 'default.jpg', class: "object-contain h-[320px] md:h-[490px] w-[380px] md:w-[680px] border-2 border-gray-700/50 bg-black/90" %> 
+            <% end %>
+          </div>
+          <!-- 前後の矢印 -->
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+           <!-- ページネーション -->
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
       <div class="h-48 cursor-default">
         <div class="grid grid-cols-2 h-12">
           <div class="flex items-center pl-4 text-xl lg:text-xl italic">
@@ -104,3 +119,30 @@
     </div>
   </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const renderSwiper = () => {
+    const swiper = new Swiper('.swiper', {
+    effect: "slide",
+    loop: true,
+    // If we need pagination
+    pagination: {
+      el: '.swiper-pagination',
+    },
+
+    // Navigation arrows
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+
+    // And if we need scrollbar
+    scrollbar: {
+      el: '.swiper-scrollbar',
+    },
+  });
+  }
+  document.addEventListener('turbo:load', renderSwiper)
+});
+</script>
