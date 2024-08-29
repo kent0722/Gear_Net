@@ -4,6 +4,7 @@ class Post < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :like_users, through: :likes, source: :user
   has_many_attached :images
+  acts_as_taggable_on :tags
 
   validates :brand, presence: true, length: { maximum: 20 }
   validates :category, presence: true, length: { maximum: 20 }

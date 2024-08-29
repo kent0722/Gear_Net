@@ -8,7 +8,7 @@ gem 'sorcery'
 gem "aws-sdk-s3"
 gem 'image_processing', '~> 1.2'
 gem 'mini_magick'
-gem 'acts-as-taggable-on', '~> 6.0'
+gem 'acts-as-taggable-on'
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.1.3", ">= 7.1.3.4"
 
