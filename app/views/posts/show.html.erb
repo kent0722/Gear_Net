@@ -1,4 +1,4 @@
-<div class="absolute top-24 lg:top-20 left-0 md:left-52 lg:left-52 right-0 bottom-0 mx-8">
+<div class="absolute top-24 left-0 md:left-52 lg:left-52 right-0 bottom-0 mx-8">
   <div class="pb-36 lg:w-auto flex justify-center">
     <div class="min-w-[330px] max-w-[330px] md:min-w-[420px] md:max-w-[420px] lg:min-w-[580px] lg:max-w-[580px] bg-white rounded-lg md:rounded-l-lg md:rounded-none lg:rounded-l-lg lg:rounded-none">
       <div class="flex items-center justify-center h-24 md:h-28 cursor-default">
@@ -29,11 +29,26 @@
         </div>  
       </div>
       <!-- メイン画像 -->
-      <% if @post.images.present? %>
-        <%= image_tag @post.images.first.variant(resize_to_fit: [580, 800]), class: "object-contain h-[320px] md:h-[360px] w-[480px] md:w-[580px] border-2 border-gray-700/50 bg-black/90" %>
-      <% else %>
-        <%= image_tag 'default.jpg', class: "object-contain h-[320px] md:h-[490px] w-[380px] md:w-[680px] border-2 border-gray-700/50 bg-black/90" %> 
-      <% end %>
+      <div class="container">
+        <div class="swiper">
+          <div class="swiper-wrapper">
+            <% if @post.images.present? %>
+              <% @post.images.each do |image| %>
+                <div class="swiper-slide">
+                  <%= image_tag image.variant(resize_to_fit: [580, 800]), class: "object-contain h-[320px] md:h-[360px] w-[480px] md:w-[580px] border-2 border-gray-700/50 bg-black/90" %>
+                </div>
+              <% end %>
+            <% else %>
+              <%= image_tag 'default.jpg', class: "object-contain h-[320px] md:h-[490px] w-[380px] md:w-[680px] border-2 border-gray-700/50 bg-black/90" %> 
+            <% end %>
+          </div>
+          <!-- 前後の矢印 -->
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+           <!-- ページネーション -->
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
       <div class="h-48 cursor-default">
         <div class="grid grid-cols-2 h-12">
           <div class="flex items-center pl-4 text-xl lg:text-xl italic">
@@ -104,3 +119,30 @@
     </div>
   </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const renderSwiper = () => {
+    const swiper = new Swiper('.swiper', {
+    effect: "slide",
+    loop: true,
+    // If we need pagination
+    pagination: {
+      el: '.swiper-pagination',
+    },
+
+    // Navigation arrows
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+
+    // And if we need scrollbar
+    scrollbar: {
+      el: '.swiper-scrollbar',
+    },
+  });
+  }
+  document.addEventListener('turbo:load', renderSwiper)
+});
+</script>
