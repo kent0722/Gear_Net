@@ -11,6 +11,7 @@ class PostsController < ApplicationController
     @comment = Comment.new
     @comments = @post.comments.includes(:user).order(created_at: :desc)
     @likes = @post.likes.includes(:user)
+    @tags = @post.tag_list
   end
 
   def new
@@ -19,6 +20,7 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.build(post_params)
+    @post.tag_list = params[:post][:tag_list].split.map { |tag| "##{tag}"}.join(",")
     if @post.save
       redirect_to posts_path, flash: { notice: '投稿しました' }
     else
@@ -56,7 +58,7 @@ class PostsController < ApplicationController
   private
   
   def post_params
-    params.require(:post).permit(:brand, :category, :production_year, :instrument_model, :body, :video, images: [])
+    params.require(:post).permit(:brand, :category, :production_year, :instrument_model, :body, :tag_list, :video, images: [])
   end
 
   def set_user

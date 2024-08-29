@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const datalistOptions = Array.from(nodeList).map(option => option.value);
     const categoryInput = document.getElementById('category');
     const instrumentModelInput = document.getElementById('instrument_model')
+    const tagInput = document.getElementById('tag')
     //image_upload
     const fileInput = document.getElementById('file-input');
     const fileSvg = document.getElementById('fileSvg')
@@ -42,6 +43,15 @@ document.addEventListener('DOMContentLoaded', () => {
       instrumentModelInput.addEventListener('blur', () => {
         instrumentModelInput.setAttribute('placeholder', '')
       })
+    }
+    //tag 入力補助
+    if (tagInput) {
+      tagInput.addEventListener('focus', () => { 
+        tagInput.setAttribute('placeholder', "例: guitar bass (スペース区切りで入力)");
+      });
+      tagInput.addEventListener('blur', () => {
+        tagInput.setAttribute('placeholder', ' ');
+      });
     }
     //PostNew image_upload
     if(fileInput){

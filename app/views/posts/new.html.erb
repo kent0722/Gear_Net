@@ -1,6 +1,6 @@
 <div class="flex justify-center mt-20 pb-36 md:ml-48 lg:ml-24 animate-fadeIn">
   <div class="mx-auto min-w-[330px] max-w-[330px] md:min-w-[550px] md:max-w-[550px]">
-    <div class="bg-gray-100 h-[630px] md:h-[720px] rounded-lg">
+    <div class="bg-gray-100 h-[680px] md:h-[720px] rounded-lg">
       <div class="w-full mx-auto px-4">
         <%= form_with(model: @post, id: 'new_post', local: true) do |f| %>
           <div class="border-b border-gray-700/20 grid grid-cols-3 font-medium">
@@ -14,7 +14,7 @@
             <!-- Brand / Category -->
             <div class="grid md:grid-cols-2 mt-4 md:mt-16">
               <div class="relative z-0 w-full mb-3 md:mb-5 group">
-                <%= f.text_field :brand, id: "brand", list: "brand-list", class: "block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-500/70 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer", placeholder: " ", required: true %>
+                <%= f.text_field :brand, list: "brand-list", class: "block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-500/70 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer", placeholder: " ", required: true %>
                 <datalist id="brand-list">
                   <% Post.brands.keys.each do |brand| %>
                     <option value="<%= brand %>"></option>
@@ -53,6 +53,7 @@
               </div>
 
               <div class="relative z-0 w-full mb-3 md:mb-5 group">
+                <%= f.text_field :tag_list, id: 'tag', maxlength: 15, class: "block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-500/70 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer", placeholder: " " %>
                 <label for="tags" class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">タグ:</label>
               </div>
             </div>
