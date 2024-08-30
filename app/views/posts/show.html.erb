@@ -55,7 +55,7 @@
             <%= l @post.created_at, format: :custom_default %>
             <span class="hidden md:block text-xs px-2 lg:px-2 pt-2 md:w-20"><%= time_ago_in_words(@post.created_at) %>前</span>
               <span class="text-xs pt-2 ml-2 md:ml-0 -mr-0 md:-mr-8">
-                <%= @tags %>
+                <%= @tags_list %>
               </span>
           </div>
           <div class="flex items-center">
