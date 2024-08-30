@@ -41,13 +41,17 @@ class PostsController < ApplicationController
         @post.images.destroy(image_id)
       end
     end
-    
+
+    if params[:post][:tag_list].present?
+      params[:post][:tag_list] = params[:post][:tag_list].split.map { |tag| tag.start_with?('#') ? tag : "##{tag}" }.join(", ")
+    end
+       
     if @post.update(post_params.except(:images))
       redirect_to post_path(@post), flash: { notice: '編集しました' }
     else
       flash.now[:danger] = '編集に失敗しました'
       redirect_to posts_path(@post)
-   end
+    end
   end
 
   def destroy
