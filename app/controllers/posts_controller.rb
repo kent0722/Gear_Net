@@ -11,7 +11,8 @@ class PostsController < ApplicationController
     @comment = Comment.new
     @comments = @post.comments.includes(:user).order(created_at: :desc)
     @likes = @post.likes.includes(:user)
-    @tags = @post.tag_list
+    @tags_list = @post.tag_list
+    @tags = @post.tag_counts_on(:tags)
   end
 
   def new
