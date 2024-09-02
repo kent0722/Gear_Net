@@ -10,8 +10,9 @@
           <span class="hidden">ホーム</span>
         <% end %>
       </div>
+
       <!-- 検索 -->
-      <div class="flex items-center w-4">
+      <div id="openSearchSmButton" class="flex items-center w-4">
         <a class="flex items-center w-16 h-14 px-3 mt-2 hover:bg-gray-700 rounded-lg" href="#">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-7">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
@@ -19,6 +20,15 @@
             <span class="hidden">検索</span>
           </a>
       </div>
+
+      <!-- 検索フォーム -->
+      <div id="slideSmMenu" class="fixed left-0 bottom-0 transform translate-y-full duration-300 border-t-2 border-gray-500 h-[100px] w-full bg-[#171718] ">
+        <%= search_form_for @q, url: posts_path do |f| %>
+          <%= f.search_field :brand_or_category_or_instrument_model_or_user_name_cont, id: 'search_input', class: 'text-black ml-6 mt-6 w-[350px] rounded-xl', placeholder: '検索ワード' %>
+          <%= f.button '検索', class: 'py-2 px-6 ml-4 text-gray-700 bg-gray-300 rounded-lg' %>
+        <% end %>
+      </div>
+
       <!-- メッセージ -->
       <div class="flex items-center w-4">
         <a class="flex items-center w-16 h-14 px-3 mt-2 hover:bg-gray-700 rounded-lg" href="#">
@@ -90,5 +100,28 @@
       <%= render 'pages/policy' %>
     </div>
   </div>
-
 </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const renderSearchSmForm = () => {
+      const openSmSearchButton = document.getElementById('openSearchSmButton');
+      const slideSmMenu = document.getElementById('slideSmMenu');
+
+      if(openSearchSmButton){
+        openSearchSmButton.addEventListener('click', (e) => {
+        e.stopPropagation();
+        slideSmMenu.classList.toggle('translate-y-full');
+        slideSmMenu.classList.toggle('translate-y-0');
+        });
+        document.addEventListener('click', (e) => {
+          if (!openSearchSmButton.contains(e.target) && !slideSmMenu.contains(e.target)) {
+            slideSmMenu.classList.add('translate-y-full');
+            slideSmMenu.classList.remove('translate-y-0');
+          }
+        });
+      }
+    }
+    document.addEventListener('turbo:load', renderSearchSmForm);
+  });
+</script>

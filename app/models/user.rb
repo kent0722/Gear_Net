@@ -17,4 +17,12 @@ class User < ApplicationRecord
   def liked?(post)
      self.likes.exists?(post_id: post.id)
   end
+
+  def self.ransackable_attributes(auth_object = nil)
+    %w[name]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    %w[]
+  end
 end

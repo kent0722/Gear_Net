@@ -79,4 +79,12 @@ class Post < ApplicationRecord
   'Yamaha': 'yamaha',
   'その他': 'brand_other'
   }
+
+  def self.ransackable_attributes(auth_object = nil)
+    %w[brand category instrument_model]
+  end
+
+  def self.ransackable_associations(auth_object = nil)
+    %w[user]
+  end
 end
