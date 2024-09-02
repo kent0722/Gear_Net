@@ -31,7 +31,7 @@
         <div class="pt-4 px-8">
           <% @tags.each do |tag| %>
             <span class="text-white hover:text-gray-400 mr-2 mb-2">
-              <%= link_to "#{tag.name}(#{tag.taggings_count})" %>
+              <%= link_to "#{tag.name}(#{tag.taggings_count})", posts_path(tag: tag.name) %>
             </span>
           <% end %>
         </div>

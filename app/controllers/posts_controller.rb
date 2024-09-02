@@ -6,7 +6,11 @@ class PostsController < ApplicationController
   before_action :set_search, only: %i[index show new create edit update]
   
   def index
-    @posts = @q.result.includes(:user).order(created_at: :desc)
+    if params[:tag]
+      @posts = Post.tagged_with(params[:tag])
+    else
+      @posts = @q.result.includes(:user).order(created_at: :desc)
+    end 
   end
 
   def show
