@@ -2,9 +2,11 @@ class PostsController < ApplicationController
   before_action :require_login
   before_action :guest_authenticated, only: %i[new create edit destroy] 
   before_action :set_user, only: %i[show edit update destroy]
+  before_action :set_tags, only: %i[index show new]
+  before_action :set_search, only: %i[index show new create edit update]
   
   def index
-    @posts = Post.all.includes(:user).order(created_at: :desc)
+    @posts = @q.result.includes(:user).order(created_at: :desc)
   end
 
   def show
@@ -12,7 +14,6 @@ class PostsController < ApplicationController
     @comments = @post.comments.includes(:user).order(created_at: :desc)
     @likes = @post.likes.includes(:user)
     @tags_list = @post.tag_list
-    @tags = @post.tag_counts_on(:tags)
   end
 
   def new
@@ -68,5 +69,13 @@ class PostsController < ApplicationController
 
   def set_user
     @post = Post.find(params[:id])
+  end
+
+  def set_tags
+    @tags = Post.tag_counts_on(:tags)
+  end
+
+  def set_search
+    @q = Post.ransack(params[:q])
   end
 end

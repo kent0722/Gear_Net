@@ -9,6 +9,7 @@ gem "aws-sdk-s3"
 gem 'image_processing', '~> 1.2'
 gem 'mini_magick'
 gem 'acts-as-taggable-on'
+gem 'ransack', '>= 4.0.0'
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.1.3", ">= 7.1.3.4"
 

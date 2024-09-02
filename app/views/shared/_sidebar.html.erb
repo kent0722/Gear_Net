@@ -10,8 +10,9 @@
           <span class="hidden md:block ml-2 text-sm font-medium">ホーム</span>
         <% end %>
       </div>
+      
       <!-- 検索 -->
-      <div class="flex items-center w-56 ml-2">
+      <div id="openSearchButton" class="flex items-center w-56 ml-2">
         <a class="flex items-center w-16 md:w-44 h-14 md:h-16 px-3 mt-2 hover:bg-gray-700 rounded-lg" href="#">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-9 md:size-6">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
@@ -19,6 +20,23 @@
             <span class="hidden md:block ml-2 text-sm font-medium">検索</span>
           </a>
       </div>
+      <!-- 検索フォーム -->
+      <div id="slideMenu" class="fixed top-20 left-0 transform -translate-x-full  duration-300 border-r-2 border-gray-500 h-full w-[360px] bg-[#171718] ">
+        <h1 class="text-xl mt-20 ml-8 mb-4">検索</h1>
+        <%= search_form_for @q, url: posts_path do |f| %>
+          <%= f.search_field :brand_or_category_or_instrument_model_or_user_name_cont, id: 'search_input', class: 'text-black ml-6 mb-12 w-[300px] rounded-xl', placeholder: '検索ワード' %>
+        <% end %>
+        <div class="border-b-2 border-gray-500/20 w-[clac(100vh-10)]"></div>
+         <!-- タグ検索一覧 --> 
+        <div class="pt-4 px-8">
+          <% @tags.each do |tag| %>
+            <span class="text-white hover:text-gray-400 mr-2 mb-2">
+              <%= link_to "#{tag.name}(#{tag.taggings_count})" %>
+            </span>
+          <% end %>
+        </div>
+      </div>
+      
       <!-- メッセージ -->
       <div class="flex items-center w-56 ml-2">
         <a class="flex items-center w-16 md:w-44 h-14 md:h-16 px-3 mt-2 hover:bg-gray-700 rounded-lg" href="#">
@@ -47,7 +65,7 @@
         <% end %>
       </div>
       <!-- その他 -->
-    <div id="sideDropdownButton" class="absolute items-center w-56 ml-2">
+    <div id="sideDropdownButton" class="flex items-center w-56 ml-2">
         <div class="flex items-center w-16 md:w-44 h-14 md:h-16 px-3 mt-2 hover:bg-gray-700 rounded-lg cursor-pointer" href="#">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-9 md:size-6">
             <path fill-rule="evenodd" d="M3 6.75A.75.75 0 0 1 3.75 6h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 6.75ZM3 12a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 12Zm0 5.25a.75.75 0 0 1 .75-.75H12a.75.75 0 0 1 0 1.5H3.75a.75.75 0 0 1-.75-.75Z" clip-rule="evenodd" />
@@ -55,7 +73,7 @@
           <span class="hidden md:block ml-2 text-sm font-medium">その他</span>
         </div>
       </div> 
-      <div id="sideDropdownMenu" class="hidden flex justify-center text-center w-48 px-1 mt-16 lg:mt-20 bg-[#353539] rounded-lg">
+      <div id="sideDropdownMenu" class="hidden flex justify-center text-center w-48 px-1 mt-2 bg-[#353539] rounded-lg">
         <div class="mx-auto">
           <ul class="text-sm text-white">
             <li>
@@ -90,5 +108,34 @@
       <%= render 'pages/policy' %>
     </div>
   </div>
-
 </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const renderSearchForm = () => {
+      const openSearchButton = document.getElementById('openSearchButton');
+      const slideMenu = document.getElementById('slideMenu');
+      const seachInput = document.getElementById('search_input')
+
+      if(openSearchButton){
+        openSearchButton.addEventListener('click', (e) => {
+        e.stopPropagation();
+        slideMenu.classList.toggle('-translate-x-full');
+        slideMenu.classList.toggle('translate-x-0');
+        });
+        document.addEventListener('click', (e) => {
+          if (!openSearchButton.contains(e.target) && !slideMenu.contains(e.target)) {
+            slideMenu.classList.add('-translate-x-full');
+            slideMenu.classList.remove('translate-x-0');
+          }
+        });
+      }
+      searchInput.addEventListener('click', (e) => {
+         searchInput.value = '';
+      });
+    }
+    document.addEventListener('turbo:load', renderSearchForm);
+  });
+</script>
+
+
