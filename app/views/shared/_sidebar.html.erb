@@ -27,12 +27,12 @@
           <%= search_form_for @q, url: posts_path do |f| %>
             <div class="flex justify-center mb-12">
               <%= f.search_field :brand_or_category_or_instrument_model_or_user_name_cont, 
-                id: 'search_input', class: 'text-black ml-6 w-[300px] rounded-xl',
+                id: 'search_input', class: 'text-black w-[300px] rounded-xl',
                 data: { autocomplete_target: 'input' },
                 placeholder: 'ブランド名'
               %> 
               <%= f.hidden_field :brand, data: { autocomplete_target: 'hidden' } %>
-              <ul class="mt-12 ml-6 list-group bg-white absolute w-full text-sm max-w-max" data-autocomplete-target="results"></ul>
+              <ul class="mt-12 list-group bg-white absolute w-full text-sm max-w-max" data-autocomplete-target="results"></ul>
             </div>
           <% end %>
         </div>
