@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'pages/policy'
   resources :users, only: %i[new create]
   resources :posts do
+    get :auto_search, on: :collection
     resources :comments, only: %i[create destroy], shallow: true
     resource :likes, only: %i[create destroy]
   end
