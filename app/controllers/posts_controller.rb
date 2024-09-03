@@ -3,7 +3,8 @@ class PostsController < ApplicationController
   before_action :guest_authenticated, only: %i[new create edit destroy] 
   before_action :set_user, only: %i[show edit update destroy]
   before_action :set_tags, only: %i[index show new]
-  before_action :set_search, only: %i[index show new create edit update]
+  before_action :set_search, only: %i[index show new edit]
+
   
   def index
     if params[:tag]
@@ -63,6 +64,13 @@ class PostsController < ApplicationController
     @post.destroy
     flash[:notice] = '削除しました'
     redirect_to posts_path, status: :see_other
+  end
+
+  def auto_search
+    @posts = Post.where("brand like ?", "%#{params[:q]}%")
+    respond_to do |format|
+      format.js
+    end
   end
 
   private

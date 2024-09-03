@@ -21,11 +21,21 @@
           </a>
       </div>
       <!-- 検索フォーム -->
-      <div id="slideMenu" class="fixed top-20 left-0 transform -translate-x-full  duration-300 border-r-2 border-gray-500 h-full w-[360px] bg-[#171718] ">
+      <div id="slideMenu" class="fixed top-20 left-0 transform -translate-x-full duration-300 border-r-2 border-gray-500 h-full w-[360px] bg-[#171718] ">
         <h1 class="text-xl mt-20 ml-8 mb-4">検索</h1>
-        <%= search_form_for @q, url: posts_path do |f| %>
-          <%= f.search_field :brand_or_category_or_instrument_model_or_user_name_cont, id: 'search_input', class: 'text-black ml-6 mb-12 w-[300px] rounded-xl', placeholder: '検索ワード' %>
-        <% end %>
+        <div id="auto-input" data-controller="autocomplete" data-autocomplete-url-value="/posts/auto_search" role="combobox">
+          <%= search_form_for @q, url: posts_path do |f| %>
+            <div class="flex justify-center mb-12">
+              <%= f.search_field :brand_or_category_or_instrument_model_or_user_name_cont, 
+                id: 'search_input', class: 'text-black ml-6 w-[300px] rounded-xl',
+                data: { autocomplete_target: 'input' },
+                placeholder: 'ブランド名'
+              %> 
+              <%= f.hidden_field :brand, data: { autocomplete_target: 'hidden' } %>
+              <ul class="mt-12 ml-6 list-group bg-white absolute w-full text-sm max-w-max" data-autocomplete-target="results"></ul>
+            </div>
+          <% end %>
+        </div>
         <div class="border-b-2 border-gray-500/20 w-[clac(100vh-10)]"></div>
          <!-- タグ検索一覧 --> 
         <div class="pt-4 px-8">
@@ -109,33 +119,3 @@
     </div>
   </div>
 </div>
-
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const renderSearchForm = () => {
-      const openSearchButton = document.getElementById('openSearchButton');
-      const slideMenu = document.getElementById('slideMenu');
-      const seachInput = document.getElementById('search_input')
-
-      if(openSearchButton){
-        openSearchButton.addEventListener('click', (e) => {
-        e.stopPropagation();
-        slideMenu.classList.toggle('-translate-x-full');
-        slideMenu.classList.toggle('translate-x-0');
-        });
-        document.addEventListener('click', (e) => {
-          if (!openSearchButton.contains(e.target) && !slideMenu.contains(e.target)) {
-            slideMenu.classList.add('-translate-x-full');
-            slideMenu.classList.remove('translate-x-0');
-          }
-        });
-      }
-      searchInput.addEventListener('click', (e) => {
-         searchInput.value = '';
-      });
-    }
-    document.addEventListener('turbo:load', renderSearchForm);
-  });
-</script>
-
-
