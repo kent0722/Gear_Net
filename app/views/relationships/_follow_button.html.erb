@@ -1,0 +1,7 @@
+<%= turbo_frame_tag "follow-button-#{@user.id}" do %>
+  <% if current_user.followee?(@user) %>
+    <%= render 'relationships/unfollow', user: @user %>
+  <% else %>
+    <%= render 'relationships/follow', user: @user %>
+  <% end %>
+<% end %>
