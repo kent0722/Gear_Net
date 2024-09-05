@@ -60,7 +60,16 @@
           </div>
           <div class="flex items-center">
             <!-- フォロー機能 -->
-            <%= link_to "フォローする", '#', class: "text-white text-xs px-2 py-2 ml-4 md:ml-12 lg:ml-24 bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-700 hover:to-blue-900 rounded-full shadow-md transition-all duration-300 ease-in-out transform hover:-translate-y-1" %>
+            <% if current_user != @post.user %>
+              <% if current_user.followee?(@post.user) %>
+                <%= link_to "フォロー外す", user_relationships_path(@post.user.id), data: { turbo_method: :delete }, class: "text-white text-xs px-2 py-2 ml-4 md:ml-12 lg:ml-24 bg-gradient-to-r from-gray-500 to-gray-700 hover:from-gray-700 hover:to-gray-900 rounded-full shadow-md transition-all duration-300 ease-in-out transform hover:-translate-y-1" %>
+              <% else %>
+                <%= link_to "フォローする", user_relationships_path(@post.user.id), data: { turbo_method: :post }, class: "text-white text-xs px-2 py-2 ml-4 md:ml-12 lg:ml-24 bg-gradient-to-r from-blue-500 to-blue-700 hover:from-blue-700 hover:to-blue-900 rounded-full shadow-md transition-all duration-300 ease-in-out transform hover:-translate-y-1" %>
+              <% end %>
+            <% else %>
+              <div class="px-2 py-2 ml-20">&nbsp;</div>
+            <% end %>
+     
             <!-- いいね機能 -->
             <div class="ml-2 md:ml-4 lg:ml-8">
               <%= render 'likes/like_button' %>
