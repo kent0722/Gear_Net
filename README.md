@@ -76,13 +76,11 @@
 | その他 | Swiper |
 
 **Gem** <br>
-  ・acts_as_follower: フォロー機能の実装 <br>
   ・ransack: 検索機能 <br>
   ・stimulus-autocomplete: 検索補完機能の実装予定 <br>
   ・image_processing: 画像のリサイズ <br>
   ・streamio-ffmpeg: 動画の長さ、ファイルサイズの検証および変換 <br>
   ・acts-as-taggable-on: タグ機能 <br>
-  ・acts_as_followe：フォロー機能 <br>
   ・pundit: 権限管理 <br>
   <!-- ・kaminari: ページネーションの実装 ※Sweperでの実装が難しい場合代用する <br> -->
 
