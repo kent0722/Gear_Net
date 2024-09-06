@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_action :require_login
   before_action :guest_authenticated, only: %i[new create edit destroy] 
-  before_action :set_user, only: %i[show edit update destroy]
+  before_action :set_post, only: %i[show edit update destroy]
   before_action :set_tags, only: %i[index show new]
   before_action :set_search, only: %i[index show new edit]
 
@@ -80,7 +80,7 @@ class PostsController < ApplicationController
     params.require(:post).permit(:brand, :category, :production_year, :instrument_model, :body, :tag_list, :video, images: [])
   end
 
-  def set_user
+  def set_post
     @post = Post.find(params[:id])
   end
 

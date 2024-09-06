@@ -10,15 +10,15 @@
       </div>
       <div class="flex items-center">
         <% if logged_in? %>
-          <div class="fixed top-1 right-1">
-            <div id="dropdownButton" class="mx-6 p-3 hover:bg-gray-700 rounded-full cursor-pointer">
+          <div class="fixed top-1 right-1 md:right-3">
+            <div id="dropdownButton" class="mx-8 p-3 hover:bg-gray-700 rounded-full cursor-pointer">
               <%= image_tag 'defaultUser.jpg', class:'border border-black/80 size-10 md:size-12 xl:size-12 rounded-full' %>
             </div>   
-            <div id="dropdownMenu" class="bg-[#353539] w-28 rounded-lg hidden">
-              <div class="block text-center border-b-2 border-gray-300/60 px-4 py-3 cursor-default"><%= current_user.name %></div>
-              <ul class="text-center w-28">
-                <li><%= link_to 'マイページ', "#", class: 'block px-4 py-2 hover:bg-gray-600 rounded-lg' %></li>
-                <li><%= link_to 'Logout', logout_path, data: { turbo_method: "delete" }, class: 'block px-4 py-2 hover:bg-gray-600 rounded-lg' %></li>
+            <div id="dropdownMenu" class="bg-[#353539] w-28 md:w-32 rounded-lg hidden">
+              <div class="block text-center text-sm md:text-base border-b-2 border-gray-300/60 px-4 py-3 cursor-default"><%= current_user.name %></div>
+              <ul class="text-center w-28 md:w-32">
+                <li><%= link_to 'プロフィール', user_profile_path(current_user), class: 'block px-4 py-4 text-xs md:text-base hover:bg-gray-600 rounded-lg' %></li>
+                <li><%= link_to 'Logout', logout_path, data: { turbo_method: "delete" }, class: 'block px-4 py-4 text-sm md:text-base hover:bg-gray-600 rounded-lg' %></li>
               </ul>
             </div>
           </div>

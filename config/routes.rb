@@ -1,9 +1,4 @@
 Rails.application.routes.draw do
-  get 'relationships/create'
-  get 'relationships/destroy'
-  get 'create/destroy'
-  get 'follows/create'
-  get 'follows/destroy'
   post 'guest_login', to: 'user_sessions#guest_login'
   get '/login', to:'user_sessions#new'
   post '/login', to:'user_sessions#create'
@@ -15,7 +10,8 @@ Rails.application.routes.draw do
     member do
       get :follows, :followers
     end
-    resource :relationships, only: [:create, :destroy]
+    resource :profile, only: %i[show edit update destroy]
+    resource :relationships, only: %i[create destroy]
   end
   resources :posts do
     get :auto_search, on: :collection

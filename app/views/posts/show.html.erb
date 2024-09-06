@@ -4,7 +4,9 @@
       <div class="flex items-center justify-center h-24 md:h-28 cursor-default">
         <div class="pt-4 pl-5">
           <!-- アイコン画像 -->
-          <%= image_tag 'defaultUser.jpg', class: "border border-black/80 rounded-full cursor-pointer", width: 50, height: 50 %>
+          <%= link_to user_profile_path(@user) do %>
+            <%= image_tag 'defaultUser.jpg', class: "border border-black/80 rounded-full cursor-pointer", width: 50, height: 50 %>
+          <% end %>
           <!-- ユーザー名 -->
           <div class="text-xs md:text-sm font-semibold pt-1 pr-2 w-16 md:w-20"><%= @post.user.name %></div>
         </div>
