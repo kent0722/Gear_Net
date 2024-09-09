@@ -1,0 +1,94 @@
+<div class="absolute top-24 left-0 md:left-52 lg:left-52 right-0 bottom-0 mx-8">
+  <div class="mx-auto pb-32 min-w-[330px] max-w-[330px] md:min-w-[780px] md:max-w-[780px]">
+    <div class="bg-gray-100 rounded-lg">
+      <div class="w-full mx-auto px-4">
+        <div class="grid grid-cols-3">
+          <div class="mx-auto h-[180px] mt-24">
+            <div class="flex justify-center pt-6">
+              <%= image_tag @profile.image.present? ? @profile.image : 'defaultUser.jpg', class: 'rounded-full size-40', width: 50, height: 50 %>
+            </div>
+            <div class="flex items-center justify-center font-normal mt-2">
+              <% if current_user != @user %>
+              <div class="flex justify-center mt-4 -ml-24">
+                  <%= render 'relationships/follow_button' %>
+              </div>
+              <% else %>
+                <button id="openProfileModal" class="border border-gray-500 px-2 py-2 mt-4 text-xs rounded-full">プロフィールの編集</button>
+                <%# link_to "プロフィールの編集", edit_user_profile_path(@user), class: "border border-gray-500 px-2 py-2 mt-4 text-xs rounded-full" %>
+              <% end %>
+            </div>
+          </div>      
+          <div class="w-[480px] mt-8 ml-2">
+            <div class="flex items-center">
+              <div class="pt-8 pl-2 text-4xl font-semibold min-w-[200px] max-w-[200px]">
+                <%= @user.name %>
+              </div>
+              <div class="mt-12 ml-2">
+                <% if @user.follower_users.present? %>
+                  <div class="cursor-pointer">
+                    フォロワー <%= @user.follower_users.count %>人
+                  </div>
+                <% else %>
+                  フォロワー
+                <% end %>
+              </div>
+              <div class="mt-12 ml-10">
+                <% if @user.followee_users.present? %>
+                  <div class="cursor-pointer">
+                    フォロー中 : <%= @user.followee_users.count %>人
+                  </div>
+                <% else %>
+                フォロー
+                <% end %>
+              </div>
+            </div>
+            <div class="grid grid-cols-2 pt-6 h-20">
+              <div class="relative z-0 w-full mb-3 group">
+                <div class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-500/70">
+                  楽器 : <%= @profile.instrument.present? ? @profile.instrument : '' %>
+                </div>
+              </div>
+              <div class="relative z-0 w-full mb-3 group">
+                <div class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-500/70">
+                  音楽 : <%= @profile.favorite_music.present? ? @profile.favorite_music : '' %>
+                </div>
+              </div>
+            </div>
+            <div class="relative z-0 w-full mb-3 group">               
+              <div class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-500/70">
+                お気に入りアーティスト : <%= @profile.favorite_artist.present? ? @profile.favorite_artist : '' %>
+              </div>
+            </div>
+            <div class="relative z-0 w-full mb-3 group">
+              <div class="block h-24 py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-500/70" %>
+                自己紹介：<%= @profile.introduction.present? ? @profile.introduction : '' %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="w-full mt-8 ml-20 text-gray-900 font-semibold">
+          <% if @user.posts.present? %>
+            投稿一覧 <%= @user.posts.count %>件
+          <% else %>
+            投稿一覧 0件
+          <% end %>
+        </div>
+        <div class="grid grid-cols-3 gap-1 mt-2 mx-4 pb-8 overflow-y-auto overflow-x-none">  
+          <% @users.each do |user| %>
+            <%= link_to post_path(user) do %>
+              <%= image_tag user.images.first, class: "object-cover h-52 w-64", size: "80x80" %> 
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="profileModal" class="fixed inset-0 justify-center bg-black/80 backdrop-blur-sm z-50 custom-scrollbar overflow-auto hidden">
+  <button id="closeProfileModal" class="w-screen">閉じる</button>
+  <div id="modalContent">
+    <%= render 'profiles/edit', user: @user %>
+  </div>
+</div>
+

@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_action :require_login
-  before_action :guest_authenticated, only: %i[new create edit destroy] 
-  before_action :set_user, only: %i[show edit update destroy]
+  before_action :guest_authenticated, only: %i[new create edit destroy]
+  before_action :set_post, only: %i[show edit update destroy]
   before_action :set_tags, only: %i[index show new]
   before_action :set_search, only: %i[index show new edit]
 
@@ -11,11 +11,11 @@ class PostsController < ApplicationController
       @posts = Post.tagged_with(params[:tag])
     else
       @posts = @q.result.includes(:user).order(created_at: :desc)
-    end 
+    end
   end
 
   def show 
-    @user = @post.user 
+    @user = @post.user
     @comment = Comment.new
     @comments = @post.comments.includes(:user).order(created_at: :desc)
     @likes = @post.likes.includes(:user)
@@ -80,15 +80,7 @@ class PostsController < ApplicationController
     params.require(:post).permit(:brand, :category, :production_year, :instrument_model, :body, :tag_list, :video, images: [])
   end
 
-  def set_user
+  def set_post
     @post = Post.find(params[:id])
-  end
-
-  def set_tags
-    @tags = Post.tag_counts_on(:tags)
-  end
-
-  def set_search
-    @q = Post.ransack(params[:q])
   end
 end
