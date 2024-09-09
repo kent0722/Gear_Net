@@ -12,7 +12,7 @@
         <% if logged_in? %>
           <div class="fixed top-1 right-1 md:right-3">
             <div id="dropdownButton" class="mx-8 p-3 hover:bg-gray-700 rounded-full cursor-pointer">
-              <%= image_tag 'defaultUser.jpg', class:'border border-black/80 size-10 md:size-12 xl:size-12 rounded-full' %>
+              <%= image_tag @header_image, class:'border border-black/80 size-10 md:size-12 xl:size-12 rounded-full' %>
             </div>   
             <div id="dropdownMenu" class="bg-[#353539] w-28 md:w-32 rounded-lg hidden">
               <div class="block text-center text-sm md:text-base border-b-2 border-gray-300/60 px-4 py-3 cursor-default"><%= current_user.name %></div>

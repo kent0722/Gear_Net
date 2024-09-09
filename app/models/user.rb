@@ -5,7 +5,7 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :like_posts, through: :likes, source: :post
   has_one :profile
-  has_one_attached :images
+  after_create :create_profile
 
   # 自分がフォローしているユーザーとの関係
   has_many :followees, class_name: "Relationship", foreign_key: "followee_id", dependent: :destroy
@@ -20,6 +20,11 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
   validates :password, length: { minimum: 4 }, if: -> { new_record? || changes[:crypted_password] }
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
+
+  def create_profile
+    build_profile
+    profile.save
+  end
 
   def own?(object)
     id == object&.user_id

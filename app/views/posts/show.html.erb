@@ -5,7 +5,7 @@
         <div class="pt-4 pl-5">
           <!-- アイコン画像 -->
           <%= link_to user_profile_path(@user) do %>
-            <%= image_tag 'defaultUser.jpg', class: "border border-black/80 rounded-full cursor-pointer", width: 50, height: 50 %>
+            <%= image_tag @user.profile.image.present? ? @user.profile.image : 'defaultUser.jpg', class: "border border-black/80 rounded-full cursor-pointer size-14", width: 50, height: 50 %>
           <% end %>
           <!-- ユーザー名 -->
           <div class="text-xs md:text-sm font-semibold pt-1 pr-2 w-16 md:w-20"><%= @post.user.name %></div>
@@ -65,7 +65,7 @@
             <% if current_user != @post.user %>
               <%= render 'relationships/follow_button' %>
             <% else %>
-              <div class="px-2 py-2 ml-20">&nbsp;</div>
+              <div class="px-2 py-2 ml-20 md:ml-32 lg:ml-40">&nbsp;</div>
             <% end %>
             <!-- いいね機能 -->
             <div class="ml-2 md:ml-4 lg:ml-8">

@@ -5,7 +5,7 @@
         <div class="grid grid-cols-3">
           <div class="mx-auto h-[180px] mt-24">
             <div class="flex justify-center pt-6">
-              <%= image_tag 'defaultUser.jpg', class: 'rounded-full size-40', width: 50, height: 50 %>
+              <%= image_tag @profile.image.present? ? @profile.image : 'defaultUser.jpg', class: 'rounded-full size-40', width: 50, height: 50 %>
             </div>
             <div class="flex items-center justify-center font-normal mt-2">
               <% if current_user != @user %>
@@ -13,8 +13,8 @@
                   <%= render 'relationships/follow_button' %>
               </div>
               <% else %>
-                <%# <button  class="border border-gray-500 px-2 py-2 mt-4 text-xs rounded-full">プロフィールの編集</button> %>
-                <%= link_to "プロフィールの編集", edit_user_profile_path(@profile), class: "border border-gray-500 px-2 py-2 mt-4 text-xs rounded-full" %>
+                <button id="openProfileModal" class="border border-gray-500 px-2 py-2 mt-4 text-xs rounded-full">プロフィールの編集</button>
+                <%# link_to "プロフィールの編集", edit_user_profile_path(@user), class: "border border-gray-500 px-2 py-2 mt-4 text-xs rounded-full" %>
               <% end %>
             </div>
           </div>      
@@ -45,23 +45,23 @@
             <div class="grid grid-cols-2 pt-6 h-20">
               <div class="relative z-0 w-full mb-3 group">
                 <div class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-500/70">
-                  楽器 : <%= @profile&.instrument.present? ? @profile.instrument : "" %>
+                  楽器 : <%= @profile.instrument.present? ? @profile.instrument : '' %>
                 </div>
               </div>
               <div class="relative z-0 w-full mb-3 group">
                 <div class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-500/70">
-                  音楽 : <%= @profile&.instrument.present? ? @profile.instrument : "" %>
+                  音楽 : <%= @profile.favorite_music.present? ? @profile.favorite_music : '' %>
                 </div>
               </div>
             </div>
             <div class="relative z-0 w-full mb-3 group">               
               <div class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-500/70">
-                お気に入りアーティスト : <%= @profile&.instrument.present? ? @profile.instrument : "" %>
+                お気に入りアーティスト : <%= @profile.favorite_artist.present? ? @profile.favorite_artist : '' %>
               </div>
             </div>
             <div class="relative z-0 w-full mb-3 group">
               <div class="block h-24 py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-500/70" %>
-                自己紹介：<%= @profile&.instrument.present? ? @profile.instrument : "" %>
+                自己紹介：<%= @profile.introduction.present? ? @profile.introduction : '' %>
               </div>
             </div>
           </div>
@@ -82,6 +82,13 @@
         </div>
       </div>
     </div>
+  </div>
+</div>
+
+<div id="profileModal" class="fixed inset-0 justify-center bg-black/80 backdrop-blur-sm z-50 custom-scrollbar overflow-auto hidden">
+  <button id="closeProfileModal" class="w-screen">閉じる</button>
+  <div id="modalContent">
+    <%= render 'profiles/edit', user: @user %>
   </div>
 </div>
 
