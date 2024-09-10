@@ -7,9 +7,10 @@ Rails.application.routes.draw do
   get 'pages/Terms_of_use'
   get 'pages/policy'
   resources :users, only: %i[new create] do
-    resource :profile, only: %i[show edit update destroy] do 
+    member do
       get :follows, :followers
     end
+    resource :profile, only: %i[show edit update destroy]
     resource :relationships, only: %i[create destroy]
   end
   resources :posts do

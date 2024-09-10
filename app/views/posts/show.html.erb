@@ -2,13 +2,13 @@
   <div class="pb-36 lg:w-auto flex justify-center">
     <div class="min-w-[330px] max-w-[330px] md:min-w-[420px] md:max-w-[420px] lg:min-w-[580px] lg:max-w-[580px] bg-white rounded-lg md:rounded-l-lg md:rounded-none lg:rounded-l-lg lg:rounded-none">
       <div class="flex items-center justify-center h-24 md:h-28 cursor-default">
-        <div class="pt-4 pl-5">
+        <div class="pt-4 ml-4">
           <!-- アイコン画像 -->
           <%= link_to user_profile_path(@user) do %>
-            <%= image_tag @user.profile.image.present? ? @user.profile.image : 'defaultUser.jpg', class: "border border-black/80 rounded-full cursor-pointer size-14", width: 50, height: 50 %>
+            <%= image_tag @user.profile.image.present? ? @user.profile.image : 'defaultUser.jpg', class: "mx-auto border border-black/80 rounded-full cursor-pointer size-14", width: 50, height: 50 %>
           <% end %>
           <!-- ユーザー名 -->
-          <div class="text-xs md:text-sm font-semibold pt-1 pr-2 w-16 md:w-20"><%= @post.user.name %></div>
+          <div class="flex justify-center text-xs md:text-sm font-semibold pt-1 w-16 md:w-20"><%= @post.user.name %></div>
         </div>
         <div class="flex flex-col w-[500px] ml-4 font-semibold italic">
           <div class="text-lg md:text-2xl pt-8 pr-2">

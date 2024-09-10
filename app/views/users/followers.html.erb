@@ -1,0 +1,26 @@
+<div class="bg-blue-500/30 flex justify-center mx-auto animate-fadeIn">
+  <div class="fixed top-20 left-1/2 transform -translate-x-1/2 min-w-[330px] max-w-[330px] md:min-w-[550px] md:max-w-[550px] pb-36">
+    <div class="bg-gray-100 h-[730px] rounded-xl overflow-hidden">
+      <div class="w-full mx-auto px-4">
+        <div class="border-b border-gray-700/20 grid grid-cols-3 font-medium">
+          <%= link_to '戻る', user_profile_path(@user), class: 'py-2 mt-1 ml-2 w-12 text-xs md:text-base text-gray-700' %>
+          <div class="flex items-center justify-center text-xs md:text-base font-semibold cursor-default">フォロワーリスト</div>
+        </div>
+        <div class="cursor-pointer overflow-hidden">
+          <% @follower.each do |follower| %>
+            <div class="border-b-2 border-gray-700/20 mx-4 flex items-center cursor-de">
+              <div class="mt-4">
+                <%= link_to user_profile_path(follower) do %>
+                  <%= image_tag follower.profile.image.present? ? follower.profile.image : 'defaultUser.jpg', class: "rounded-full size-12 cursor-pointer" %>
+                <% end %>
+                <div class="flex justify-center">
+                <%= follower.name %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

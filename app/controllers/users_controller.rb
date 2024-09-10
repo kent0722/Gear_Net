@@ -14,6 +14,18 @@ class UsersController < ApplicationController
       render :new, status: :unprocessable_entity
     end
   end
+
+  # フォロー一覧
+  def follows
+    @user = User.find(params[:id])
+    @follow = @user.followee_users
+  end
+
+  # フォロワー一覧
+  def followers
+    @user = User.find(params[:id])
+    @follower = @user.follower_users
+  end
   
   private
   

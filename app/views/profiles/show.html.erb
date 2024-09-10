@@ -2,8 +2,6 @@
   <div class="mx-auto pb-32 min-w-[330px] max-w-[330px] md:min-w-[780px] md:max-w-[780px]">
     <div class="bg-gray-100 rounded-lg">
       <div class="w-full mx-auto px-4">
-
-
         <!--通常サイズ-->
         <div class="grid grid-cols-3">
           <div class="mx-auto h-[180px] mt-4 md:mt-24">
@@ -13,32 +11,34 @@
             <div class="flex items-center justify-center font-normal mt-2">
               <% if current_user != @user %>
               <div class="flex justify-center mt-4 -ml-4 md:-ml-24">
-                  <%= render 'relationships/follow_button' %>
+                <%= render 'relationships/follow_button' %>
               </div>
               <% else %>
                 <button id="openProfileModal" class="border border-gray-500 px-2 py-2 mt-2 md:mt-4 text-xs rounded-full">プロフィールの編集</button>
               <% end %>
             </div>
           </div>      
-          <div class="w-[480px] mt-8 ml-2">
+          <div class="w-[480px] mt-8 ml-0 md:ml-2">
             <div class="block md:flex items-center">
-              <div class="pt-4 md:pt-8 pl-2 text-2xl md:text-4xl font-semibold min-w-[200px] max-w-[200px]">
+              <div class="pt-4 md:pt-8 pl-1 md:pl-2 text-2xl md:text-4xl font-semibold min-w-[200px] max-w-[200px]">
                 <%= @user.name %>
               </div>
               <div class="flex items-center">
-                <div class="text-sm md:text-base mt-1 md:mt-12 ml-2">
+                <div class="text-sm md:text-base mt-1 md:mt-12 ml-">
                   <% if @user.follower_users.present? %>
                     <div class="cursor-pointer">
-                      フォロワー <%= @user.follower_users.count %>人
+                      <%= link_to followers_user_path(@user) do %>
+                        フォロワー <%= @user.follower_users.count %>人
+                      <% end %>
                     </div>
                   <% else %>
                     フォロワー
                   <% end %>
                 </div>
-                <div class="text-sm md:text-base mt-1 md:mt-12 ml-4 md:ml-10">
+                <div class="text-sm md:text-base mt-1 md:mt-12 ml-1 md:ml-10">
                   <% if @user.followee_users.present? %>
                     <div class="cursor-pointer">
-                      <%= link_to follows_user_profile_path do %>
+                      <%= link_to follows_user_path(@user) do %>
                         フォロー中 : <%= @user.followee_users.count %>人
                       <% end %>
                     </div>

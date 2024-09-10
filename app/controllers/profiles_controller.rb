@@ -1,8 +1,8 @@
 class ProfilesController < ApplicationController
   before_action :set_user_id
   before_action :set_profile
-  before_action :set_tags, only: %i[show edit follows followers]
-  before_action :set_search, only: %i[show edit follows followers]
+  before_action :set_tags, only: %i[show edit]
+  before_action :set_search, only: %i[show edit]
 
   def show
     @users = @user.posts
@@ -22,17 +22,6 @@ class ProfilesController < ApplicationController
 
   def destroy
   end
-
-  # フォロー一覧
-  def follows
-    @follow = @user.followee_users
-  end
-
-  # フォロワー一覧
-  def followers
-    @follower = @user.follower_users
-  end
-  
 
   private
 
