@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   skip_before_action :require_login, only: %i[new create]
+  before_action :set_user, only: %i[edit update destroy follows followers]
   
   def new
     @user = User.new
@@ -15,15 +16,30 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit; end
+
+  def update
+    if @user.update(user_params)
+      redirect_to request.referer, flash: { notice: '編集しました' }
+    else
+      flash.now[:danger] = '編集に失敗しました'
+      render :edit
+    end
+  end
+
+  def destroy
+    @user.destroy
+    flash[:notice] = '削除しました'
+    redirect_to root_path, status: :see_other
+  end
+
   # フォロー一覧
   def follows
-    @user = User.find(params[:id])
     @follow = @user.followee_users
   end
 
   # フォロワー一覧
   def followers
-    @user = User.find(params[:id])
     @follower = @user.follower_users
   end
   
@@ -31,6 +47,10 @@ class UsersController < ApplicationController
   
   def user_params
     params.require(:user).permit(:name, :email, :password)
+  end
+
+  def set_user
+    @user = User.find(params[:id])
   end
 end
  
