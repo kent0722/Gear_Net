@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
   post 'guest_login', to: 'user_sessions#guest_login'
   get '/login', to:'user_sessions#new'
   post '/login', to:'user_sessions#create'
@@ -6,6 +7,7 @@ Rails.application.routes.draw do
   root 'home#top'
   get 'pages/Terms_of_use'
   get 'pages/policy'
+  resources :password_resets, only: %i[new create edit update]
   resources :users do
     member do
       get :follows, :followers

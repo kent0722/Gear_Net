@@ -5,6 +5,7 @@ gem 'react-rails'
 gem 'pry-rails'
 gem 'rails-i18n', '~> 7.0.0'
 gem 'sorcery'
+gem 'config'
 gem "aws-sdk-s3"
 gem 'image_processing', '~> 1.2'
 gem 'mini_magick'
@@ -69,6 +70,10 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+end
+
+group :development do
+  gem 'letter_opener_web', '~> 1.0'
 end
 
 group :test do
