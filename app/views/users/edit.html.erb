@@ -1,0 +1,48 @@
+<div class="bg-blue-500/30 flex justify-center mx-auto animate-fadeIn">
+  <div class="absolute top-20 left-1/2 transform -translate-x-1/2 min-w-[330px] max-w-[330px] md:min-w-[550px] md:max-w-[550px] pb-36">
+    <div class="bg-gray-100 h-[550px] rounded-xl overflow-hidden">
+      <div class="w-full mx-auto px-4">
+        <%= form_with(model: @user, url: user_path(@user), method: :patch, local: true) do |f| %>
+          <div class="border-b border-gray-700/20 grid grid-cols-3 font-medium">
+            <%= link_to '戻る',posts_path(@post), class: 'py-2 mt-1 ml-2 text-left text-xs md:text-base rounded-lg text-gray-700' %>
+            <div class="flex items-center justify-center font-semibold text-sm md:text-base"> アカウント管理</div>
+            <div class="text-right">
+              <%= f.submit "保存する", class: "text-blue-500 hover:text-blue-700 font-medium text-xs md:text-base py-2 mt-1" %>
+            </div>
+          </div>  
+          <div class="relative z-0 w-full mt-12 mb-3 md:mb-5 group">
+            <%= f.text_field :name, class: "block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-500/70 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer", placeholder: " " %>
+            <label for="name" class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+              ユーザー名 :
+            </label>
+          </div>
+          <div class="relative z-0 w-full mt-8 mb-3 md:mb-5 group">
+            <%= f.text_field :email, class: "block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-500/70 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer", placeholder: " " %>
+            <label for="email" class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+              メールアドレス :
+            </label>
+          </div>
+
+          <div class="relative z-0 w-full mt-8 mb-3 md:mb-5 group">
+            <%= f.password_field :password, class: "block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-500/70 appearance-none focus:outline-none focus:ring-0 focus:border-blue-600 peer", placeholder: " " %>
+            <label for="password" class="peer-focus:font-medium absolute text-sm text-gray-500 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 peer-focus:text-blue-600 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+              新しいパスワード :
+            </label>
+          </div>
+        <% end %>
+      </div>
+      <div class="grid grid-cols-3 mx-4">
+        <div class="mt-36 w-[150px] md:w-[300px]">
+          <span class="text-sm md:text-base font-semibold">データとアカウントを削除する</span>
+          <p class="text-xs md:text-sm">
+            アカウントに関連付けられている<br>
+            すべての投稿も完全に削除
+          </p>
+        </div>
+        <div class="flex items-center justify-center mt-36 ml-20 md:ml-24 w-[110px] md:w-[250px]">
+          <%= link_to 'アカウントを削除する', user_path, data: { turbo_method: :delete, turbo_confirm: '本当にアカウントを削除してよろしいですか？'}, class: 'border-2 border-gray-400 hover:border-gray-700 text-gray-500 hover:text-gray-700 p-4 text-xs md:text-sm rounded-3xl' %>
+        </div> 
+      </div>
+    </div>
+  </div>
+</div>

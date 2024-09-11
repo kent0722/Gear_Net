@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   root 'home#top'
   get 'pages/Terms_of_use'
   get 'pages/policy'
-  resources :users, only: %i[new create] do
+  resources :users do
     member do
       get :follows, :followers
     end
