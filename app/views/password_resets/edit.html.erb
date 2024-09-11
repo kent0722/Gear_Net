@@ -7,7 +7,7 @@
         </div>
         <%= form_with model: @user, url: password_reset_path(@token) do |f| %>
           <div class="pt-8 ml-20 mb-2 mx-auto">
-            <%= f.password_field :password, class: 'block w-[240px] md:w-[350px] rounded-md', placeholder: '新しいパスワード' %>
+            <%= f.password_field :password, class: 'block w-[240px] md:w-[350px] rounded-md', placeholder: '新しいパスワード', required: true %>
           </div>
           <div class="flex justify-center pt-4">
             <%= f.submit "パスワードを更新", class: 'w-60 md:w-[350px] h-12 mb-6 text-white text-sm bg-indigo-500 hover:bg-indigo-600 rounded-xl' %>

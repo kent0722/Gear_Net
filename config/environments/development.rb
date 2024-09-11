@@ -37,12 +37,22 @@ Rails.application.configure do
   config.active_storage.service = :local
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
-  config.action_mailer.perform_caching = false
-  # config.action_mailer.delivery_method = :letter_opener_web
+  # config.action_mailer.perform_caching = false
+  config.action_mailer.default_url_options = Settings.default_url_options.to_h
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:              'smtp.gmail.com', # GmailのSMTPサーバー
+    port:                 587,
+    domain:               'gmial.com', # 自分のドメイン名
+    user_name:            ENV['GMAIL_USERNAME'], # 環境変数から取得
+    password:             ENV['GMAIL_PASSWORD'], # 環境変数から取得
+    authentication:       'plain',
+  }
+
   # config.action_mailer.perform_deliveries = true
-  # config.action_mailer.default_url_options = { host: 'localhost:3000' }
+  # config.action_mailer.default_url_options = Settings.default_url_options.to_h
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log

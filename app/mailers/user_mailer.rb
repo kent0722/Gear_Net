@@ -1,5 +1,5 @@
 class UserMailer < ApplicationMailer
-  default from: 'from@example.com'
+  default from: ENV['GMAIL_USERNAME']
 
   def reset_password_email(user)
     @user = User.find(user.id)
