@@ -76,13 +76,13 @@ Rails.application.configure do
   # config.action_mailer.default_url_options = Settings.default_url_options.to_h
   config.action_mailer.raise_delivery_errors = true
 
-  config.action_mailer.default_url_options = { host:'gear-net-5ecaa1f2c6d8.herokuapp.com'}
+  config.action_mailer.default_url_options = { protocol: 'https', host:'gear-net-5ecaa1f2c6d8.herokuapp.com'}
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     address:              'smtp.gmail.com',
     enable_starttls_auto: true,
     port:                 587,
-    domain:               'gmail.com',
+    domain:               'gear-net-5ecaa1f2c6d8.herokuapp.com',
     user_name:            ENV['GMAIL_USERNAME'],
     password:             ENV['GMAIL_PASSWORD'],
     authentication:       'plain',

@@ -37,19 +37,10 @@ Rails.application.configure do
   config.active_storage.service = :local
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = true
-
-  config.action_mailer.default_url_options = { host:'gear-net-5ecaa1f2c6d8.herokuapp.com'}
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    address:              'smtp.gmail.com',
-    enable_starttls_auto: true,
-    port:                 587,
-    domain:               'gmail.com',
-    user_name:            'moonrabbit0722@gmail.com',
-    password:             'uadk elcg usub xqix',
-    authentication:       'plain',
-  }
+  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.delivery_method = :letter_opener_web
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.default_url_options = Settings.default_url_options.to_h
 
 
   config.action_mailer.perform_caching = false
