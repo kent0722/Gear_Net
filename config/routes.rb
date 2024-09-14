@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'notifications/index'
+  get 'notifications/destory'
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
   post 'guest_login', to: 'user_sessions#guest_login'
   get '/login', to:'user_sessions#new'
@@ -14,6 +16,7 @@ Rails.application.routes.draw do
     end
     resource :profile, only: %i[show edit update destroy]
     resource :relationships, only: %i[create destroy]
+    resources :notifications, only: %i[index]
   end
   resources :posts do
     get :auto_search, on: :collection
