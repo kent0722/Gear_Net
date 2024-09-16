@@ -7,6 +7,7 @@ class Comment < ApplicationRecord
   validates :body, presence: true, length: { maximum: 150 }
 
   def create_notification
+    return if self.user_id == self.post.user_id
     Notification.create(subject: self, user: self.post.user, action: :commented_to_own_post)
   end
 end

@@ -1,19 +1,20 @@
 <div class="bg-blue-500/30 flex justify-center mx-auto animate-fadeIn">
   <div class="absolute top-20 left-1/2 transform -translate-x-1/2 min-w-[330px] max-w-[330px] md:min-w-[550px] md:max-w-[550px] pb-36">
-    <div class="bg-gray-100 h-[730px] rounded-xl cursor-pointer overflow-hidden">
+    <div class="bg-gray-100 rounded-xl cursor-pointer overflow-hidden">
       <div class="w-full mx-auto px-4">
         <div class="border-b border-gray-700/20 grid grid-cols-3 font-medium">
-          <%= link_to 'キャンセル', user_profile_path, class: 'py-2 mt-1 text-left text-xs md:text-base rounded-lg text-gray-700' %>
-          <div class="flex items-center justify-center font-semibold">通知</div>
-        </div>
-          <% if @notifications.present? %>
-            <%= link_to "全削除", user_notifications_path(@notifications), data: { turbo_method: :delete }, class:"btn btn-light" %>
-            <% @notifications.each do |notification| %>
-                <%= render "#{notification.action}", notification: notification %>
-            <% end %>
-          <% else %>
-            通知はありません
+          <%= link_to 'キャンセル', posts_path, class: 'py-2 mt-1 text-left text-xs md:text-base rounded-lg text-gray-700' %>
+        <div class="flex items-center justify-center font-semibold">お知らせ</div>
+      </div>
+      <div class="border w-full mx-auto px-4 pb-4">
+        <% if @notifications.present? %>
+         <%# link_to "全削除", user_notifications_path(@notifications), data: { turbo_method: :delete }, class:"btn btn-light"  %>
+          <% @notifications.each do |notification| %>
+            <%= render "#{notification.action}", notification: notification %>
           <% end %>
+        <% else %>
+          通知はありません
+        <% end %>
       </div>
     </div>
   </div>
