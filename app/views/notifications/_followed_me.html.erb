@@ -1,0 +1,15 @@
+<%= link_to transition_path(notification) do %>
+  <% if current_user != notification.subject.follower %>
+    <div class="flex border-b-2 border-gray-700/30 w-full">
+      <div class="py-3">
+        <%= link_to user_profile_path(notification.subject.follower) do %>
+          <%= image_tag notification.subject.follower.profile.image.present? ? notification.subject.follower.profile.image : 'defaultUser.jpg', class: "rounded-full size-12 cursor-pointer" %>
+        <% end %>
+      </div>
+      <div class="flex items-center ml-4 mb-2">
+        <%= notification.subject.follower.name %> があなたをフォローしました
+        <%= " (#{time_ago_in_words(notification.created_at)}前)" %>
+      </div>
+    </div>
+  <% end %>
+<% end %>

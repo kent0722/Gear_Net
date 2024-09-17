@@ -14,6 +14,11 @@ Rails.application.routes.draw do
     end
     resource :profile, only: %i[show edit update destroy]
     resource :relationships, only: %i[create destroy]
+    resources :notifications, only: %i[index] do
+      collection do
+        delete :delete_selected
+      end
+    end
   end
   resources :posts do
     get :auto_search, on: :collection
