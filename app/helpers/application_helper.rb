@@ -8,4 +8,31 @@ module ApplicationHelper
     else "bg-gray-500"
     end
   end
+
+  def default_meta_tags
+    {
+      site: 'GearNET.',
+      title: 'GearNET.',
+      reverse: true,
+      charset: 'utf-8',
+      description: '',
+      keywords: '楽器,音楽,コミュニティ',
+      canonical: request.original_url,
+      separator: '|',
+      og:{
+        site_name: :site,
+        title: :title,
+        description: :description,
+        type: 'website',
+        url: request.original_url,
+        image: image_url('haikei3.jpg'),
+        local: 'ja-JP'
+      },
+      twitter: {
+        card: 'summary_large_image',
+        site: '@',
+        image: image_url('haikei3.jpg')
+      }
+    }
+  end
 end
