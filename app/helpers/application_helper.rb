@@ -32,7 +32,7 @@ module ApplicationHelper
         local: 'ja-JP',
       },
       twitter: {
-        card: 'summary_large_image', # Twitterで表示する場合は大きいカードに変更
+        card: 'summary', # Twitterで表示する場合は大きいカードに変更
         site: '@ohtake_53a', # アプリの公式Twitterアカウントがあれば、アカウント名を記載
         image: image_url('haikei3.jpg'),# 配置するパスやファイル名によって変更
       }
