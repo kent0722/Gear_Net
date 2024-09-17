@@ -35,7 +35,6 @@ module ApplicationHelper
       twitter: {
         card: 'summary_large_image', # Twitterで表示する場合は大きいカードに変更
         site: '@', # アプリの公式Twitterアカウントがあれば、アカウント名を記載
-        image: image_url('haikei3.jpg'),# 配置するパスやファイル名によって変更
       }
     }
   end
