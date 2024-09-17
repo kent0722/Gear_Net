@@ -6,7 +6,7 @@
           <div class="flex items-center justify-center pt-1 px-2 h-20 min-w-sm">
             <div class="-ml-1 min-w-[65px]">
               <!-- アイコン画像 -->
-              <%= image_tag post.user.profile.image.present? ? post.user.profile.image : 'defaultUser.jpg', class: "border border-black/80 rounded-full min-w-11 ml-1 size-12", width: 20, height: 20 %>
+              <%= image_tag post.user.profile.image.present? ? post.user.profile.image : 'defaultUser.jpg', class: "border border-black/80 object-cover rounded-full min-w-11 ml-1 size-12", width: 20, height: 20 %>
               <!-- ユーザー名 -->
               <div class="text-center text-xs font-semibold pr-2"><%= post.user.name %></div>
             </div>

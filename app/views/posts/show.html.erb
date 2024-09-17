@@ -5,7 +5,7 @@
         <div class="pt-4 ml-4">
           <!-- アイコン画像 -->
           <%= link_to user_profile_path(@user) do %>
-            <%= image_tag @user.profile.image.present? ? @user.profile.image : 'defaultUser.jpg', class: "mx-auto border border-black/80 rounded-full cursor-pointer size-14", width: 50, height: 50 %>
+            <%= image_tag @user.profile.image.present? ? @user.profile.image : 'defaultUser.jpg', class: "mx-auto border border-black/80 object-cover rounded-full cursor-pointer size-14", width: 50, height: 50 %>
           <% end %>
           <!-- ユーザー名 -->
           <div class="flex justify-center text-xs md:text-sm font-semibold pt-1 w-16 md:w-20"><%= @post.user.name %></div>

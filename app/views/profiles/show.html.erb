@@ -6,7 +6,7 @@
         <div class="grid grid-cols-3">
           <div class="mx-auto h-[180px] mt-4 md:mt-24">
             <div class="flex justify-center pt-6">
-              <%= image_tag @profile.image.present? ? @profile.image : 'defaultUser.jpg', class: 'rounded-full size-20 md:size-40', width: 50, height: 50 %>
+              <%= image_tag @profile.image.present? ? @profile.image : 'defaultUser.jpg', class: 'object-cover rounded-full size-20 md:size-40', width: 50, height: 50 %>
             </div>
             <div class="flex items-center justify-center font-normal mt-2">
               <% if current_user != @user %>
