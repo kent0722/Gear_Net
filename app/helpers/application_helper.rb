@@ -15,7 +15,7 @@ module ApplicationHelper
       title: 'GearNET.',
       reverse: true,
       charset: 'utf-8',
-      description: '',
+      description: 'GearNET.は、楽器を愛する人々のためのコミュニティツールです。',
       keywords: '楽器,音楽,コミュニティ',
       canonical: request.original_url,
       separator: '|',
