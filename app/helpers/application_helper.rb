@@ -12,10 +12,10 @@ module ApplicationHelper
   def default_meta_tags
     {
       site: 'GearNET.',
-      title: '',
+      title: '楽器好きのためのコミュニティツール',
       reverse: true,
       charset: 'utf-8',
-      description: '',
+      description: 'GearNET.は、ギターやベースなどの楽器を愛する人々のためのコミュニティーツールです。楽器の紹介、情報交換、仲間作りができます。',
       keywords: '',
       canonical: request.original_url,
       separator: '|',
@@ -31,8 +31,7 @@ module ApplicationHelper
       # Twitter用の設定を個別で設定する
       twitter: {
         card: 'summary_large_image', # Twitterで表示する場合は大きいカードにする
-        site: '@', # アプリの公式Twitterアカウントがあれば、アカウント名を書く
-        image: image_url('haikei3.jpg') # 配置するパスやファイル名によって変更すること
+        image: image_url('haikei3.jpg')# 配置するパスやファイル名によって変更すること
       }
     }
   end
