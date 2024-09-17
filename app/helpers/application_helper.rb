@@ -13,7 +13,6 @@ module ApplicationHelper
     {
       site: 'GearNET.',
       title: '楽器好きのためのコミュニティツール',
-      reverse: true,
       charset: 'utf-8',
       description: 'GearNET.は、ギターやベースなどの楽器を愛する人々のためのコミュニティーツールです。楽器の紹介、情報交換、仲間作りができます。',
       keywords: '',
@@ -29,12 +28,12 @@ module ApplicationHelper
         description: :description,
         type: 'website',
         url: request.original_url,
-        image: image_url('haikei3.jpg'),# 配置するパスやファイル名によって変更する
+        image: image_url('haikei3.jpg'),
         local: 'ja-JP',
       },
       twitter: {
         card: 'summary_large_image', # Twitterで表示する場合は大きいカードに変更
-        site: '@あなたのツイッターアカウント', # アプリの公式Twitterアカウントがあれば、アカウント名を記載
+        site: '@ohtake_53a', # アプリの公式Twitterアカウントがあれば、アカウント名を記載
         image: image_url('haikei3.jpg'),# 配置するパスやファイル名によって変更
       }
     }
