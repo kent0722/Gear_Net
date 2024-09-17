@@ -8,8 +8,16 @@ class NotificationsController < ApplicationController
     end
   end
 
-  def destroy
-    @notifications = current_user.notifications.destroy_all
-    redirect_to notifications_path
+  def delete_selected
+    if params[:notification_ids].present?
+      params[:notification_ids].each do |notification_id|
+        current_user.notifications.destroy(notification_id)
+      end
+      flash[:notice] = '削除しました'
+      redirect_to user_notifications_path(current_user), status: :see_other
+    else
+      flash[:damger] = '選択されていません'
+      redirect_to user_notifications_path(current_user), status: :see_other
+    end
   end
 end
