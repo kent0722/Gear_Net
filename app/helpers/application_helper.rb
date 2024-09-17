@@ -9,5 +9,34 @@ module ApplicationHelper
     end
   end
 
-
+  def default_meta_tags
+    {
+      site: 'GearNET.',
+      title: 'GearNET.',
+      reverse: true,
+      charset: 'utf-8',
+      description: 'GearNET.は、ギターやベースなどの楽器を愛する人々のためのコミュニティーツールです。楽器の紹介、情報交換、仲間作りができます。',
+      keywords: '楽器,コミュニティ,音楽',
+      canonical: request.original_url,
+      separator: '|',
+      icon: [
+        { href: image_url("favicon.ico"), sizes: "60x60" },
+        { href: image_url('haikei3.jpg'), rel: 'apple-touch-icon', sizes: "90x90", type: 'image/jpg' },
+      ],
+      og: {
+        site_name: :site,
+        title: :title,
+        description: :description,
+        type: 'website',
+        url: request.original_url,
+        image: image_url('haikei3.jpg'),
+        local: 'ja-JP',
+      },
+      twitter: {
+        card: 'summary_large_image',
+        site: '@',
+        image: image_url('haikei3.jpg'),
+      }
+    }
+  end
 end
