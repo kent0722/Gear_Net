@@ -21,7 +21,7 @@ module ApplicationHelper
       separator: '|',
       icon: [
         { href: image_url('haikei3.jpg') },
-        { href: image_url('top_image.png'), rel: 'apple-touch-icon', sizes: '180x180', type: 'image/png' },
+        { href: image_url('haikei3.jpg'), rel: 'apple-touch-icon', sizes: '180x180', type: 'image/png' },
       ],
       og: {
         site_name: :site,
