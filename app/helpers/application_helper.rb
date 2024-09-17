@@ -31,11 +31,6 @@ module ApplicationHelper
         url: request.original_url,
         image: image_url('haikei3.jpg'),
         local: 'ja-JP',
-      },
-      twitter: {
-        card: 'summary_large_image',
-        site: '@',
-        image: image_url('haikei3.jpg'),
       }
     }
   end
