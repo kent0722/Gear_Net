@@ -12,15 +12,16 @@ module ApplicationHelper
   def default_meta_tags
     {
       site: 'GearNET.',
-      title: '楽器好きのためのコミュニティツール',
+      title: 'GearNET.',
+      reverse: true,
       charset: 'utf-8',
       description: 'GearNET.は、ギターやベースなどの楽器を愛する人々のためのコミュニティーツールです。楽器の紹介、情報交換、仲間作りができます。',
-      keywords: '',
+      keywords: '楽器,コミュニティ,音楽',
       canonical: request.original_url,
       separator: '|',
       icon: [
-        { href: image_url('haikei3.jpg') },
-        { href: image_url('haikei3.jpg'), rel: 'apple-touch-icon', sizes: '180x180', type: 'image/png' },
+        { href: image_url("favicon.ico"), sizes: "60x60" },
+        { href: image_url('haikei3.jpg'), rel: 'apple-touch-icon', sizes: "90x90", type: 'image/jpg' },
       ],
       og: {
         site_name: :site,
@@ -32,8 +33,8 @@ module ApplicationHelper
         local: 'ja-JP',
       },
       twitter: {
-        card: 'summary', # Twitterで表示する場合は大きいカードに変更
-        site: '@ohtake_53a', # アプリの公式Twitterアカウントがあれば、アカウント名を記載
+        card: 'summary_large_image', # Twitterで表示する場合は大きいカードに変更
+        site: '@', # アプリの公式Twitterアカウントがあれば、アカウント名を記載
         image: image_url('haikei3.jpg'),# 配置するパスやファイル名によって変更
       }
     }
