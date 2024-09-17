@@ -19,19 +19,23 @@ module ApplicationHelper
       keywords: '',
       canonical: request.original_url,
       separator: '|',
+      icon: [
+        { href: image_url('haikei3.jpg') },
+        { href: image_url('top_image.png'), rel: 'apple-touch-icon', sizes: '180x180', type: 'image/png' },
+      ],
       og: {
         site_name: :site,
         title: :title,
         description: :description,
         type: 'website',
         url: request.original_url,
-        image: image_url('haikei3.jpg'), # 配置するパスやファイル名によって変更すること
-        local: 'ja-JP'
+        image: image_url('haikei3.jpg'),# 配置するパスやファイル名によって変更する
+        local: 'ja-JP',
       },
-      # Twitter用の設定を個別で設定する
       twitter: {
-        card: 'summary_large_image', # Twitterで表示する場合は大きいカードにする
-        image: image_url('haikei3.jpg')# 配置するパスやファイル名によって変更すること
+        card: 'summary_large_image', # Twitterで表示する場合は大きいカードに変更
+        site: '@あなたのツイッターアカウント', # アプリの公式Twitterアカウントがあれば、アカウント名を記載
+        image: image_url('haikei3.jpg'),# 配置するパスやファイル名によって変更
       }
     }
   end
