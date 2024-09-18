@@ -4,18 +4,23 @@
       <div class="w-full mx-auto px-4">
         <!--通常サイズ-->
         <div class="grid grid-cols-3">
-          <div class="mx-auto h-[180px] mt-4 md:mt-24">
+          <div class="mx-auto h-[180px] mt-4 md:mt-24 -ml-6 md:ml-auto">
             <div class="flex justify-center pt-6">
               <%= image_tag @profile.image.present? ? @profile.image : 'defaultUser.jpg', class: 'object-cover rounded-full size-20 md:size-40', width: 50, height: 50 %>
             </div>
-            <div class="flex items-center justify-center font-normal mt-2">
+            <div class="flex items-center justify-center font-normal md:mt-2">
               <% if current_user != @user %>
-              <div class="flex justify-center mt-4 -ml-4 md:-ml-24">
+              <div class="flex justify-center w-28 md:w-full mt-4 md:-ml-10">
                 <%= render 'relationships/follow_button' %>
               </div>
               <% else %>
-                <button id="openProfileModal" class="border border-gray-500 px-2 py-2 mt-2 md:mt-4 text-xs rounded-full">プロフィールの編集</button>
+                <button id="openProfileModal" class="border border-gray-500 w-24 md:w-auto px-auto md:px-2 py-1 md:py-2 mt-4 ml-4 md:ml-8 text-xs rounded-full">プロフィールの編集</button>
               <% end %>
+              <div class="border border-black mt-4 ml-2 md:ml-4 p-1 rounded-full">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+                </svg>
+              </div>
             </div>
           </div>      
           <div class="w-[480px] mt-8 ml-0 md:ml-2">
