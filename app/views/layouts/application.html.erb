@@ -15,7 +15,17 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", type: "module" %>
-    <%= display_meta_tags(default_meta_tags) %> 
+
+    <meta property="og:title" content="GearNET - 楽器好きのためのコミュニティ" />
+    <meta property="og:description" content="楽器や機材の情報交換、音楽活動をサポートするGearNETにようこそ。" />
+    <meta property="og:url" content="https://gear-net-5ecaa1f2c6d8.herokuapp.com/" />
+    <meta property="og:image" content="opg.jpg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="GearNET" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="GearNET - 楽器好きのためのコミュニティ" />
+    <meta name="twitter:description" content="楽器や機材の情報交換、音楽活動をサポートするGearNETにようこそ。" />
+    <meta name="twitter:image" content="https://gear-net-5ecaa1f2c6d8.herokuapp.com/path_to_your_og_image.png" />
   </head>
 
   <body class="<%= logged_in? ? 'logged-in' : 'logged-out' %> custom-scrollbar overflow-auto">
