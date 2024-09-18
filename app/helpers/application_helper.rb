@@ -25,7 +25,7 @@ module ApplicationHelper
         description: :description,
         type: 'website',
         url: request.original_url,
-        image: image_url('ogp.png'),
+        image: image_url('ogp_1.png'),
         local: 'ja-JP'
       },
       twitter: {
@@ -34,7 +34,7 @@ module ApplicationHelper
         description: :description,
         card: 'summary_large_image',
         site: '@',
-        image: image_url('ogp.png')
+        image: image_url('ogp_1.png')
       }
     }
   end
