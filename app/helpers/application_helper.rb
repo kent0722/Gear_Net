@@ -29,8 +29,6 @@ module ApplicationHelper
         local: 'ja-JP'
       },
       twitter: {
-        site_name: :site,
-        title: :title,
         card: 'summary_large_image',
         site: '@',
         image: image_url('ogp.jpg')
