@@ -8,16 +8,19 @@ class ProfilesController < ApplicationController
     @users = @user.posts
     @current_entry = Entry.where(user_id: current_user.id)
     @another_entry = Entry.where(user_id: @user.id)
+    
     unless @user.id == current_user.id
       @current_entry.each do |current|
         @another_entry.each do |another|
-          if current.room_id == another.room_id
+          if current.room_id == another.room_id  # もし共通のチャットルームがあればそのルームIDを取得
             @is_room = true
             @room_id = current.room_id
+            break  # 見つかった時点でループを終了
           end
         end
+        break if @is_room # すでにルームが見つかっていれば外側のループも終了
       end
-      unless @is_room
+      unless @is_room # チャットルームが見つからなければ新しいルームを作成
         @room = Room.new
         @entry = Entry.new
       end

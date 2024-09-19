@@ -14,8 +14,12 @@ Rails.application.routes.draw do
     end
     resource :profile, only: %i[show edit update destroy]
     resource :relationships, only: %i[create destroy]
-    resources :messages, only: [:create]
-    resources :rooms, only: [:create, :index, :show]
+    resources :messages, only: %i[create]
+    resources :rooms, only: %i[create index show] do
+      collection do
+        delete :delete_selected
+      end
+    end
     resources :notifications, only: %i[index] do
       collection do
         delete :delete_selected

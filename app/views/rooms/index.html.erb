@@ -1,0 +1,35 @@
+<div class="flex justify-center mx-auto animate-fadeIn">
+  <div class="absolute top-20 left-1/2 transform -translate-x-1/2 min-w-[330px] max-w-[330px] md:min-w-[550px] md:max-w-[550px] pb-36">
+    <div class="bg-gray-100 rounded-xl cursor-pointer overflow-hidden">
+      <%= form_with url: delete_selected_user_rooms_path(current_user), method: :delete do |f| %>
+        <div class="w-full mx-auto px-4">
+          <div class="border-b-2 border-gray-700/20 grid grid-cols-3 font-medium">
+            <%= link_to '戻る', posts_path, class: 'py-2 pl-2 mt-1 text-left text-xs md:text-base rounded-lg text-gray-700' %>
+          <div class="flex items-center justify-center font-semibold">メッセージ</div>
+          <div class="flex items-center justify-end">
+            <%= f.submit '削除', class: 'flex items-center text-red-500 w-12 text-xs md:text-base rounded-lg text-gray-700' %>
+          </div>
+        </div>
+        <% if @another_entries.present? %>
+          <% @another_entries.each do |entry| %>
+            <%= link_to user_room_path(@user, entry) do %>
+              <div class="pt-2 pb-4 mx-4"> 
+                <div class="flex items-center border-b-2 border-gray-700/20">
+                  <div class="py-2 w-14">
+                    <%= image_tag entry.user.profile.image.present? ? entry.user.profile.image :  'defaultUser.jpg', class: 'size-12 rounded-full' %>
+                  </div>
+                  <div class="px-2 w-[420px] ">
+                    <div class="font-semibold"><%= entry.user.name %></div>
+                    <div><%= entry.room.messages.last.message %></div>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        <% else %>
+          <div class="my-3">メッセージはありません</div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
