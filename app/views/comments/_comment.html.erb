@@ -1,6 +1,8 @@
 <div id="comment-<%= comment.id %>" class="flex items-center py-3">
   <div>
-    <%= image_tag comment.user.profile.image.present? ? comment.user.profile.image : 'defaultUser.jpg', class: "border border-black/80 object-cover size-12 lg:min-w-sm lg:max-w-sm rounded-full cursor-pointer", width: 40, height: 40 %>
+    <%= link_to user_profile_path(comment.user) do %>
+      <%= image_tag comment.user.profile.image.present? ? comment.user.profile.image : 'defaultUser.jpg', class: "border border-black/80 object-cover size-12 lg:min-w-sm lg:max-w-sm rounded-full cursor-pointer", width: 40, height: 40 %>
+    <% end %>
   </div>
   <div class="text-sm font-semibold w-9/12 ml-2">
     <%= comment.user.name %>

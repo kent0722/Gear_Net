@@ -4,6 +4,8 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :like_posts, through: :likes, source: :post
+  has_many :entries, dependent: :destroy
+  has_many :messages, dependent: :destroy
   has_many :notifications, dependent: :destroy
   has_one :profile, dependent: :destroy
   after_create :create_profile

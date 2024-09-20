@@ -31,6 +31,10 @@ class ApplicationController < ActionController::Base
       end
   end
 
+  def set_user_id
+    @user = User.find(params[:user_id])
+  end
+
   def set_tags
     @tags = Post.tag_counts_on(:tags)
   end
