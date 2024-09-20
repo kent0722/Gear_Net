@@ -1,7 +1,7 @@
 class NotificationsController < ApplicationController
+  before_action :set_user_id
 
   def index
-    @user = User.find(params[:user_id])
     @notifications = current_user.notifications.order(created_at: :desc)
     @notifications.where(checked: false).each do |notification|
       notification.update(checked: true)
@@ -16,7 +16,7 @@ class NotificationsController < ApplicationController
       flash[:notice] = '削除しました'
       redirect_to user_notifications_path(current_user), status: :see_other
     else
-      flash[:damger] = '選択されていません'
+      flash[:danger] = '選択されていません'
       redirect_to user_notifications_path(current_user), status: :see_other
     end
   end

@@ -48,10 +48,6 @@ class ProfilesController < ApplicationController
     params.require(:profile).permit(:instrument, :favorite_music, :favorite_artist, :introduction, :image)
   end
 
-  def set_user_id
-    @user = User.find(params[:user_id])
-  end
-
   def set_profile
     @profile = @user.profile
   end
