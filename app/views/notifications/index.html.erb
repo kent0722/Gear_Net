@@ -12,8 +12,7 @@
         </div>
         <div class="border w-full mx-auto px-4 pb-4">
           <% if @notifications.present? %>
-          <%# link_to "全削除", user_notifications_path(@notifications), data: { turbo_method: :delete }, class:"btn btn-light"  %>
-            <% @notifications.each do |notification| %>
+            <% @notifications.where.not(subject_type: 'Message').each do |notification| %>
               <div class="flex items-center">
               <%= check_box_tag 'notification_ids[]', notification.id, false, class: 'absolute right-8' %>
               <%= render "#{notification.action}", notification: notification %> 

@@ -1,4 +1,5 @@
 class MessagesController < ApplicationController
+  skip_before_action :require_login
   before_action :set_user_id
 
   def new; end

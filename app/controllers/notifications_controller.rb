@@ -1,9 +1,10 @@
 class NotificationsController < ApplicationController
+  before_action :require_login
   before_action :set_user_id
 
   def index
     @notifications = current_user.notifications.order(created_at: :desc)
-    @notifications.where(checked: false).each do |notification|
+    @notifications.where(checked: false).where.not(subject_type: 'Message').each do |notification|
       notification.update(checked: true)
     end
   end
