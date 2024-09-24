@@ -29,6 +29,8 @@
                   <%= check_box_tag 'entry_ids[]', entry.room.id, false, class: 'absolute right-8' %>
                 </div>
               </div>
+            <% else %>
+              <div class="my-3">メッセージはありません</div>
             <% end %>
           <% end %>
         <% else %>
