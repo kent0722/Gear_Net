@@ -12,11 +12,11 @@
         </div>
         <% if @another_entries.present? %>
           <% @another_entries.each do |entry| %>
-            <% if entry.room.messages.last.present? %>
+            <% if entry.room.messages.present? %>
               <div class="pt-2 pb-4 mx-4"> 
                 <div class="flex items-center border-b-2 border-gray-700/20">
                   <div class="py-2 w-14">
-                  <%= link_to user_profile_path(entry.user.profile) do%>
+                  <%= link_to user_profile_path(entry.user) do %>
                     <%= image_tag entry.user.profile.image.present? ? entry.user.profile.image :  'defaultUser.jpg', class: 'size-12 rounded-full' %>
                   <% end %>
                   </div>
@@ -29,8 +29,6 @@
                   <%= check_box_tag 'entry_ids[]', entry.room.id, false, class: 'absolute right-8' %>
                 </div>
               </div>
-            <% else %>
-              <div class="my-3">メッセージはありません</div>
             <% end %>
           <% end %>
         <% else %>
