@@ -11,15 +11,14 @@
           </div>
         </div>
         <div class="border w-full mx-auto px-4 pb-4">
-          <% if @notifications.present? %>
-            <% @notifications.where.not(subject_type: 'Message').each do |notification| %>
-              <div class="flex items-center">
-              <%= check_box_tag 'notification_ids[]', notification.id, false, class: 'absolute right-8' %>
-              <%= render "#{notification.action}", notification: notification %> 
-              </div>
-            <% end %>
-          <% else %>
-          <div class="mt-3">通知はありません</div>
+          <% @notifications.where.not(subject_type: 'Message').each do |notification| %>
+            <div class="flex items-center">
+            <%= check_box_tag 'notification_ids[]', notification.id, false, class: 'absolute right-8' %>
+            <%= render "#{notification.action}", notification: notification %> 
+            </div>
+          <% end %>
+          <% if @notifications.blank? %>
+            <div class="mt-3">通知はありません</div>
           <% end %>
         </div>
       <% end %>

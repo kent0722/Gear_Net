@@ -4,7 +4,7 @@ class Comment < ApplicationRecord
   has_one :notification, as: :subject, dependent: :destroy
   after_create_commit :create_notification
 
-  validates :body, presence: true, length: { maximum: 150 }
+  validates :body, presence: true, length: { maximum: 50 }
 
   def create_notification
     return if self.user_id == self.post.user_id

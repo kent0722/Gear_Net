@@ -8,14 +8,14 @@
         </div>
         <div class="cursor-pointer overflow-hidden">
           <% @follow.each do |follow| %>
-            <div class="border-b-2 border-gray-700/20 mx-4 flex items-center cursor-de">
-              <div class="mt-4">
+            <div class="border-b-2 border-gray-700/20 mx-4 py-3 flex items-center cursor-de">
+              <div>
                 <%= link_to user_profile_path(follow) do %>
-                  <%= image_tag follow.profile.image.present? ? follow.profile.image : 'defaultUser.jpg', class: "rounded-full size-12 cursor-pointer" %>
+                  <%= image_tag follow.profile.image.present? ? follow.profile.image : 'defaultUser.jpg', class: "rounded-full size-14 cursor-pointer" %>
                 <% end %>
-                <div class="flex justify-center">
+              </div>
+              <div class="ml-4 font-semibold">
                 <%= follow.name %>
-                </div>
               </div>
             </div>
           <% end %>
