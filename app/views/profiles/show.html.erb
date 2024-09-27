@@ -21,7 +21,7 @@
               <% if current_user.id != @user.id %>
                 <% if @is_room %>
                   <!--すでにあるチャットルーム取得し表示-->
-                  <%= link_to user_room_path(@user, @room_id), class: 'border border-black mt-4 ml-2 md:ml-4 p-1 rounded-full' do %>
+                  <%= link_to user_room_path(@user, @room_id), class: 'border border-black mt-4 ml-auto md:ml-4 p-1 rounded-full' do %>
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
                       <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
                     </svg>
@@ -31,7 +31,7 @@
                   <%= form_with model: @room, url: user_rooms_path(@user, @room), method: :post, local: true do |f| %>
                     <%= fields_for @entry do |e| %>
                       <%= e.hidden_field :user_id, value: @user.id %>
-                      <%= f.button type: 'submit', class: 'border border-black mt-4 ml-2 md:ml-4 p-1 rounded-full' do %>
+                      <%= f.button type: 'submit', class: 'border border-black mt-4 md:ml-4 p-1 rounded-full' do %>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
                           <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
                         </svg>
