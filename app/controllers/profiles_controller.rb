@@ -1,4 +1,6 @@
 class ProfilesController < ApplicationController
+  before_action :require_login
+  before_action :guest_authenticated
   before_action :set_user_id
   before_action :set_profile
   before_action :set_tags, only: %i[show edit]
@@ -34,7 +36,7 @@ class ProfilesController < ApplicationController
       flash[:notice] = "プロフィールが更新されました"
       redirect_to user_profile_path(@user), flash: { notice: '編集しました' }
     else
-      flash.now[:danger] = "プロフィールの更新に失敗しました"
+      flash[:danger] = "プロフィールの更新に失敗しました"
       redirect_to user_profile_path(@user)
     end
   end

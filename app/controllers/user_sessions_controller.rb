@@ -1,5 +1,6 @@
 class UserSessionsController < ApplicationController
   skip_before_action :require_login, only: %i[new create guest_login]
+  
   def new; end
 
   def create
@@ -7,7 +8,7 @@ class UserSessionsController < ApplicationController
     if @user
       redirect_to posts_path, flash: { notice: 'ログインしました' }
     else
-      flash.now[:alert] = 'ログインできませんでした'
+      flash.now[:danger] = 'ログインできませんでした'
       render :new, status: :unprocessable_entity
     end
   end

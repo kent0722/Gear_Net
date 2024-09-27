@@ -31,7 +31,7 @@
           <% end %>
         <% end %>
         <% if @another_entries.none? { |entry| entry.room.messages.last.present? } %>
-          <div class="my-3">表示できるメッセージはありません</div>
+          <div class="my-3">メッセージはありません</div>
         <% end %>
       <% end %>
     </div>

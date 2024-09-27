@@ -27,6 +27,11 @@ class PostsController < ApplicationController
   end
 
   def create
+    # ブランドのバリデーション
+    unless Post.brands.keys.include?(params[:post][:brand])
+      redirect_to new_post_path, flash: { danger: '無効なブランド名です。以下のブランド名から選択してください' }
+      return
+    end
     @post = current_user.posts.build(post_params)
     @post.tag_list = params[:post][:tag_list].split.map { |tag| "##{tag}"}.join(",")
     if @post.save

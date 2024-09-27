@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   skip_before_action :require_login, only: %i[new create]
+  before_action :guest_authenticated
   before_action :set_user, only: %i[edit update destroy follows followers]
   
   def new
