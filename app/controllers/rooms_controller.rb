@@ -1,4 +1,7 @@
 class RoomsController < ApplicationController
+  before_action :require_login
+  before_action :guest_authenticated
+  
   def create
     @room = Room.create
     @current_entry = @room.entries.create(user_id: current_user.id)

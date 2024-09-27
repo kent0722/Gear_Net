@@ -1,5 +1,6 @@
 class NotificationsController < ApplicationController
   before_action :require_login
+  before_action :guest_authenticated
   before_action :set_user_id
 
   def index
