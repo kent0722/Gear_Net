@@ -47,7 +47,7 @@ class ProfilesController < ApplicationController
   private
 
   def profile_params
-    params.require(:profile).permit(:instrument, :favorite_music, :favorite_artist, :introduction, :image)
+    params.require(:profile).permit(:instrument, :favorite_music, :favorite_artist, :introduction, :youtube_url, :x_url, :image)
   end
 
   def set_profile
