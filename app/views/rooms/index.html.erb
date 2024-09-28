@@ -20,7 +20,7 @@
                   <% end %>
                 </div>
                 <%= link_to user_room_path(current_user, entry.room.id) do %>
-                  <div class="px-2 w-[420px] ">
+                  <div class="px-2 md:w-[420px]">
                     <div class="font-semibold"><%= entry.user.name %></div>
                     <div><%= entry.room.messages.last.message %></div>
                   </div>

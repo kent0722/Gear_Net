@@ -95,7 +95,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_09_18_131018) do
   end
 
   create_table "posts", force: :cascade do |t|
-    t.integer "brand", null: false
+    t.string "brand", null: false
     t.string "category", null: false
     t.integer "production_year"
     t.string "instrument_model"

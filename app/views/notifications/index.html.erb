@@ -2,7 +2,7 @@
   <div class="absolute top-20 left-1/2 transform -translate-x-1/2 min-w-[330px] max-w-[330px] md:min-w-[550px] md:max-w-[550px] pb-36">
     <div class="bg-gray-100 rounded-xl cursor-pointer overflow-hidden">
        <%= form_with url: delete_selected_user_notifications_path(current_user), method: :delete do |f| %>
-        <div class="w-full mx-auto px-4">
+        <div class="w-full mx-auto px-3 md:px-4">
           <div class="border-b-2 border-gray-700/20 grid grid-cols-3 font-medium">
             <%= link_to '戻る', posts_path, class: 'py-2 pl-2 mt-1 text-left text-xs md:text-base rounded-lg text-gray-700' %>
           <div class="flex items-center justify-center font-semibold text-sm md:text-base">お知らせ</div>
@@ -13,7 +13,7 @@
         <div class="border w-full mx-auto px-4 pb-4">
           <% @notifications.where.not(subject_type: 'Message').each do |notification| %>
             <div class="flex items-center">
-            <%= check_box_tag 'notification_ids[]', notification.id, false, class: 'absolute right-8' %>
+            <%= check_box_tag 'notification_ids[]', notification.id, false, class: 'absolute right-4 md:right-8' %>
             <%= render "#{notification.action}", notification: notification %> 
             </div>
           <% end %>

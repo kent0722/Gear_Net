@@ -73,7 +73,7 @@ class PostsController < ApplicationController
   end
 
   def auto_search
-    @posts = Post.where("brand like ?", "%#{params[:q]}%")
+    @posts = Post.where("brand ILIKE ?", "%#{params[:q]}%")
     respond_to do |format|
       format.js
     end
