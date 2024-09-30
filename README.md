@@ -71,11 +71,11 @@
 | CSS | tailwind CSS |
 | その他 | Swiper |
 
-**Gem** <br>
+<!-- **Gem** <br>
   ・ransack: 検索機能 <br>
   ・stimulus-autocomplete: 検索補完機能の実装予定 <br>
   ・image_processing: 画像のリサイズ <br>
-  ・acts-as-taggable-on: タグ機能 <br>
+  ・acts-as-taggable-on: タグ機能 <br> -->
   <!-- ・streamio-ffmpeg: 動画の長さ、ファイルサイズの検証および変換 <br> -->
   <!-- ・pundit: 権限管理 <br> -->
 
