@@ -6,7 +6,7 @@
           <%= image_tag notification.subject.follower.profile.image.present? ? notification.subject.follower.profile.image : 'defaultUser.jpg', class: "object-cover rounded-full size-12 cursor-pointer" %>
         <% end %>
       </div>
-      <div class="block md:flex items-center mt-6 md:mt-auto ml-2 md:ml-4 mb-2 text-xs md:text-base">
+      <div class="block md:flex items-center mt-6 md:mt-2 ml-2 md:ml-4 mb-2 text-xs md:text-base">
         <%= notification.subject.follower.name %> があなたをフォローしました
         <%= " (#{time_ago_in_words(notification.created_at)}前)" %>
       </div>
