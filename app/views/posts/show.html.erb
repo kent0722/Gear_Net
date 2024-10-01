@@ -62,15 +62,19 @@
           </div>
           <div class="flex items-center">
             <!-- フォロー機能 -->
-            <% if current_user != @post.user %>
-              <%= render 'relationships/follow_button' %>
-            <% else %>
-              <div class="px-2 py-2 ml-20 md:ml-32 lg:ml-40">&nbsp;</div>
+            <% unless current_user.name == 'guest' %>
+              <% if current_user != @post.user %>
+                <%= render 'relationships/follow_button' %>
+              <% else %>
+                <div class="px-2 py-2 ml-20 md:ml-32 lg:ml-40">&nbsp;</div>
+              <% end %>
             <% end %>
             <!-- いいね機能 -->
-            <div class="ml-2 md:ml-4 lg:ml-8">
-              <%= render 'likes/like_button' %>
-            </div>
+             <% unless current_user.name == 'guest' %>
+              <div class="ml-2 md:ml-4 lg:ml-8">
+                <%= render 'likes/like_button' %>
+              </div>
+            <% end %>
             <% if @post.user == current_user %>
               <span class="block w-4 h-10 ml-0 lg:ml-4">
                 <div>
