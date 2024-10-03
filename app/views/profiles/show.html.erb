@@ -47,8 +47,10 @@
           </div>      
           <div class="w-[480px] mt-8 ml-0 md:ml-2">
             <div class="block">
-              <div class="flex items-center pt-4 md:pt-8 pl-1 md:pl-auto text-2xl md:text-4xl font-semibold min-w-[200px] max-w-[200px]">
-                <%= @user.name %>
+              <div class="flex items-center pt-4 md:pt-8 pl-1 md:pl-auto font-semibold min-w-[200px] max-w-[200px]">
+                <div class="text-xl md:text-4xl md:min-w-[330px] md:max-w-[330px]">
+                  <%= @user.name %>
+                </div>
                 <div class="mt-2 md:mt-3 px-4 md:px-8">
                   <% if @profile.youtube_url.present? %>
                     <%= link_to @profile.youtube_url, target: "_blank", rel: "noopener" do %>
