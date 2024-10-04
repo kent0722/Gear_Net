@@ -1,7 +1,7 @@
 <div class="absolute top-24 left-0 md:left-52 lg:left-52 right-0 bottom-0 mx-8">
   <div class="pb-36 lg:w-auto flex justify-center">
     <div class="min-w-[330px] max-w-[330px] md:min-w-[420px] md:max-w-[420px] lg:min-w-[580px] lg:max-w-[580px] bg-white rounded-lg md:rounded-l-lg md:rounded-none lg:rounded-l-lg lg:rounded-none">
-      <div class="flex items-center justify-center h-24 md:h-28 cursor-default">
+      <div class="flex items-center justify-center h-28 cursor-default">
         <div class="pt-4 ml-4">
           <!-- アイコン画像 -->
           <%= link_to user_profile_path(@user) do %>
@@ -11,14 +11,14 @@
           <div class="flex justify-center text-xs md:text-sm font-semibold pt-1 w-16 md:w-20"><%= @post.user.name %></div>
         </div>
         <div class="flex flex-col w-[500px] ml-4 font-semibold italic">
-          <div class="text-lg md:text-2xl pt-8 pr-2">
+          <div class="text-lg md:text-xl pt-8 pr-2">
             <!-- ブランド・楽器の種類 -->
             <%= @post.brand %>
             <span class="ml-2"><%= @post.category %></span>
           </div>
           <!-- 楽器のモデル -->
           <% if @post.instrument_model.present? %>
-            <div class="text-md lg:text-xl mt-2 ml-0 md:ml-4"><%= @post.instrument_model %></div>
+            <div class="text-md lg:text-xl md:mt-2 ml-0 md:ml-4"><%= @post.instrument_model %></div>
           <% else %>
             <div class="text-lg lg:text-xl pl-2">&nbsp;</div>  
           <% end %>
@@ -51,7 +51,7 @@
           <div class="swiper-pagination"></div>
         </div>
       </div>
-      <div class="h-48 cursor-default">
+      <div class="pb-6 cursor-default">
         <div class="grid grid-cols-2 h-12">
           <div class="flex items-center pl-2 ml:pl-4 text-lg lg:text-xl italic">
             <%= l @post.created_at, format: :custom_default %>
@@ -99,8 +99,8 @@
           </div>
         </div>
         <div>
-          <div class="mt-2 ml-4 h-32 min-w-[295px] md:min-w-[545px] max-w-[295px] md:max-w-[545px]">
-            <div class="pt-2 pl-5">
+          <div class="mt-2 ml-4 min-h-[150px] min-w-[295px] md:min-w-[545px] max-w-[295px] md:max-w-[545px]">
+            <div class="px-2 mx-auto">
               <%= simple_format(@post.body) %>
             </div>
           </div>
