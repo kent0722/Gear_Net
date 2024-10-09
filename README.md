@@ -1,5 +1,5 @@
 # README
-[![Image from Gyazo](https://i.gyazo.com/40444937ce0a4199ab187fe0eb8f728d.jpg)](https://gyazo.com/40444937ce0a4199ab187fe0eb8f728d)
+[![Image from Gyazo](https://i.gyazo.com/720db9e42a23cd28fca88685cb2a5194.jpg)](https://gyazo.com/720db9e42a23cd28fca88685cb2a5194)
 
 # サービス名: GearNet.
 
