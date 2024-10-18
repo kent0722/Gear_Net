@@ -107,5 +107,5 @@
 https://www.figma.com/design/otAy1mzefGG2xHZME0yxub/My_app_dev?node-id=0-1&t=c4Wbcvk5EGSpltxG-1
 
 ## **ER図**
-https://drive.google.com/file/d/1WmjND-yhE_E6vsLMml6eReQ2jVsVat8C/view?usp=sharing
+[![Image from Gyazo](https://i.gyazo.com/33c7da39f476dfad69594e11cfbffce9.png)](https://gyazo.com/33c7da39f476dfad69594e11cfbffce9)
 
